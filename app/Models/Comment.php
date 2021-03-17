@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blogapp extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    protected $table = "threadTable";
-    protected $fillable = ['title', 'contents', 'username', 'number'];
+    protected $table = "comment";
+    protected $fillable = ['name', 'comment','commentnumber'];
 }
