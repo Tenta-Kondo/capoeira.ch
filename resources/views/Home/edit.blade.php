@@ -8,8 +8,7 @@
             <form action="/blog/update/{{$blog->id}}" method="POST" onSubmit="return checkSubmit()">
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{$blog->id}}">
-                <span class="label">名前</span>
-                <input id="username" type="text" name="username" placeholder="名前(任意)" value="{{$blog->username}}">
+              
                 <span class="label">タイトル</span>
                 <input type="text" name="title" placeholder="タイトル(必須)" value="{{$blog->title}}">
                 @if($errors->has("title"))

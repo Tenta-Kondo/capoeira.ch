@@ -1,5 +1,5 @@
 <footer>
-    <p style="margin-left:1rem;">Capoeira Blog</p>
+    <p style="margin-left:1rem;">Capoeira.ch</p>
     <p style="margin-right: 1rem;"><a href="#top">TOP</a></p>
 </footer>
 </body>
@@ -23,7 +23,25 @@
                 }
             });
         });
+        $(function() {
+            $(".open-btn").click(function() {
+                $(this).next().toggleClass("flex");
+            })
+        })
     });
+    $(function() {
+        $(".tag").click(function() {
+            $(".login-data").toggleClass("position");
+        })
+    })
+
+    function checkSubmit() {
+        if (window.confirm('投稿してよろしいですか？')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
 
 </html>

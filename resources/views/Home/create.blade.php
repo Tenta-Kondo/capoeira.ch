@@ -7,8 +7,8 @@
             <h2 style="margin-bottom: 1rem;">投稿作成</h2>
             <form action="/blog/creating" method="POST" onSubmit="return checkSubmit()">
                 {{ csrf_field() }}
-                <input type="text" name="username" placeholder="名前(任意)" value="{{old('username')}}">
-                <input type="text" name="title" placeholder="タイトル(必須)" value="{{old('title')}}">
+                <input type="hidden" name="username" value="{{ Auth::user()->name }}">
+                <input type="text" name="title" placeholder="タイトル(必須)">
                 @if($errors->has("title"))
                 <div class="err_msg">
                     {{$errors->first("title")}}

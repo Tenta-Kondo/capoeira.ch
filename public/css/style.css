@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+header {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 15px;
+    position: relative;
+}
+.header-container {
+    width: 100%;
+    height: 30vh;
+    background-image: url(../image/sirokuro3.1.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-name{
+    width: 300px;
+    background-color: black;
+    color: white;
+}
+.user-data{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    width: 100%;
+   
+}
+header h2 {
+    margin-left: 15px;
+    font-weight: lighter;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+background-color: white;
+    padding: 0.5rem 0;
+}
+ul {
+    list-style: none;
+    display: flex;
+
+    font-family: "Cormorant Upright", serif;
+}
+
+ul li a {
+    color: black;
+}
+.blog-title {
+    font-family: "Cormorant Upright", serif;
+}
+.list-title {
+    margin-top: 30px;
+    margin-left: 10px;
+}
+.blog-contents {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+.blog-content {
+    margin-bottom: 3rem;
+    margin-right: 5px;
+    background-color: #ffffff;
+    border: 0.1px solid rgb(231, 231, 231);
+    padding: 10px 20px;
+    width: 500px;
+    height: 250px;
+    position: relative;
+}
+.blog-content h4 > a,
+.blog-content p > a {
+    color: black;
+}
+.all-contents {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+.contents {
+    width: 90%;
+    margin: 0 auto;
+    line-height: 3rem;
+}
+.detail-title {
+    padding-bottom: 1rem;
+    width: 50%;
+    text-align: left;
+    margin-top: 40px;
+}
+.thread-data {
+    display: flex;
+    justify-content: space-between;
+}
+.thread-head {
+    position: relative;
+}
+.comment-data {
+    display: flex;
+}
+.comment {
+    text-align: left;
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+    margin-top: 15px;
+}
+.comment-content {
+    margin-top: 20px;
+}
+.right {
+    margin-right: 30px;
+}
+footer {
+    width: 100%;
+    background-color: #575757;
+    padding: 0.5rem 0;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5rem;
+}
+footer a {
+    color: white;
+}
+footer p {
+    font-family: "Dancing Script", cursive;
+    font-size: 1.7rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+input {
+    font-size: 1.2rem;
+}
+textarea {
+    font-size: 1.1rem;
+}
+.label {
+    margin-top: 0.7rem;
+}
+.create-btn {
+    width: 7rem;
+    height: 2.5rem;
+    border: rgb(89, 89, 184) 0.5px solid;
+    border-radius: 50px;
+    background-color: #fff;
+    color: rgb(90, 90, 192);
+    margin: 0 auto;
+    margin-top: 1rem;
+    box-shadow: 0 0 5px rgb(89, 89, 184);
+    cursor: pointer;
+    transition: 300ms;
+}
+.create-btn:hover {
+    background-color: rgb(89, 89, 184);
+    color: white;
+    border: white;
+}
+.flash_message {
+    color: red;
+    text-align: center;
+}
+.err_msg {
+    color: red;
+}
+.edit-btn,
+.delete-btn {
+    width: 70px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.btn-group {
+    display: none;
+    position: absolute;
+    right: -24px;
+    top: 62px;
+
+    flex-direction: column;
+}
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgb(71, 219, 71);
+    position: absolute;
+    right: 35%;
+    top: -10px;
+}
+.block {
+    display: block;
+}
+.edit-btn {
+    border: rgb(71, 219, 71) 0.3px solid;
+    color: rgb(71, 219, 71);
+}
+.delete-btn {
+    border: rgb(71, 219, 71) 0.3px solid;
+    color: rgb(71, 219, 71);
+}
+.delete-btn:hover,
+.edit-btn:hover {
+    background-color: rgb(238, 238, 238);
+}
+.fixed-menu {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    width: 100%;
+}
+.comment-form {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20vh;
+}
+.btn {
+    padding: 10px 50px;
+    
+    border: rgb(71, 219, 71) solid 1.5px;
+    background-color: #fff;
+    color: rgb(71, 219, 71);
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: 20px;
+    transition: 300ms;
+    text-align: center;
+    cursor: pointer;
+}
+.flex {
+    display: flex !important;
+}
+.btn:hover {
+    background-color: rgb(71, 219, 71);
+    color: white;
+}
+.open-btn {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    border: rgb(71, 219, 71) solid 0.3px;
+    transition: 300ms;
+    display: none;
+    position: absolute;
+    top: 22px;
+    right: 0;
+}
+.circle {
+    border-radius: 50%;
+    background-color: rgb(71, 219, 71);
+    width: 17%;
+    height: 17%;
+    display: block;
+    margin: 0 7%;
+}
+.open-btn:hover {
+    background-color: rgb(71, 219, 71);
+}
+.open-btn:hover .circle {
+    background-color: white;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../image/無題.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.card{
+    width: 45%;
+    padding: 20px 0;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+}
+.login-form,.register-form{
+    width: 60%;
+    margin: 0 auto;
+}
+.card-header{
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 20px;
+}
+.card-header p{
+    font-size: 130%;
+}
+
+.password{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.forget{
+    font-size: 80%;
+   color: black; 
+}
+.registerlink{
+    color: black;
+    font-size: 80%;
+    border-bottom: 0.2px solid black;
+}
+.regi-inp{
+    margin-bottom: 20px;
+}
+.open-header{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: lighter;
+    margin-bottom: 20px;
+}
+.login-group{
+    display: flex;
+    flex-direction: column;
+}
+.login-data{
+    width: 450px;
+    height: 140px;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    left: -450px;
+    transition: 500ms;
+    font-family: 'Quicksand', sans-serif;
+}
+.login-data p{
+    font-size: 120%;
+    font-weight: lighter;
+}
+.login-data a{
+    color: black;
+    border-bottom: 0.3px solid black;
+}
+.tag{
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: -60px;
+    height:  140px;
+    width: 60px;
+    text-align: center;
+    cursor: pointer;
+    border-top:white solid 0.2px ;
+    border-bottom: white solid 0.2px;
+    border-right:white solid 0.2px ;
+}
+.tag p{
+    transform: rotate(90deg);
+}
+.position{
+    left: 0;
+}
+.logout{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 15px;
+}
+.toch{
+    color: black;
+}
+.count{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.choises{
+    color: black;
+    border-bottom: 0.2px solid black;
+}
