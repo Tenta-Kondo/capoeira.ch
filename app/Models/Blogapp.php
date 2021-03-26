@@ -10,5 +10,5 @@ class Blogapp extends Model
     use HasFactory;
 
     protected $table = "threadtable";
-    protected $fillable = ['title', 'contents', 'username'];
+    protected $fillable = ['title', 'contents', 'username',"number"];
 }

@@ -5,35 +5,56 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blogapp;
 use App\Http\Requests\BlogRequest;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
+use App\Models\Image;
 
 class BrogController extends Controller
 {
-    public function open(){
+    public function open()
+    {
         return view("Home.open");
     }
     public function Home()
     {
         $thread = Blogapp::all();
         $comment = Comment::all();
-        return view("Home.home", compact("thread","comment"));
+        $image = Image::all();
+        return view("Home.home", compact("thread", "comment", "image"));
     }
     public function detail($id)
     {
         $thread = Blogapp::find($id);
-        $comment = (int)$id;
-        $commentnumber = Comment::where("commentnumber", $comment)->get();
-        return view("Home.detail", compact("thread","commentnumber"));
+        $num = (int)$id;
+        $commentnumber = Comment::where("commentnumber", $num)->get();
+        $image = Image::where("number", $num)->get();
+        return view("Home.detail", compact("thread", "commentnumber", "image"));
     }
     public function create()
     {
-        return view("Home.create");
+        $thread = Blogapp::all();
+        return view("Home.create", compact("thread"));
     }
     public function creating(BlogRequest $request)
     {
         $title = $request->input("title");
         $contents = $request->input("contents");
         $username = $request->input(("username"));
+        $request->validate([
+            'image' => 'file|image|mimes:png,jpeg'
+        ]);
+        $upload_image = $request->file('image');
+        $id = $request->input("threadnumber");
+        if ($upload_image) {
+            $path = $upload_image->store('uploads', "public");
+            if ($path) {
+                Image::create([
+                    "file_name" => $upload_image->getClientOriginalName(),
+                    "file_path" => $path,
+                    "number" => $id
+                ]);
+            }
+        }
 
         Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
         return redirect("/top")->with("message", "投稿完了");
@@ -41,6 +62,9 @@ class BrogController extends Controller
     public function delete($id)
     {
         Blogapp::destroy($id);
+
+        $number = (int)$id;
+        Image::where("number", $number)->delete();
         return redirect("/top")->with("message", "削除しました");
     }
     public function edit($id)
@@ -59,15 +83,43 @@ class BrogController extends Controller
         $blog->save();
         return redirect("/home")->with("message", "更新しました");
     }
-    public function comment(Request $request)
+    public function comment(CommentRequest $request)
     {
         $username = $request->input("name");
         $comment = $request->input("comment");
         $commentnumber = $request->input("commentnumber");
-        Comment::create(["name" => $username, "comment" => $comment, "commentnumber" => $commentnumber]);
+        $commentID = $request->input("commentID");
+
+        $request->validate([
+            'image' => 'file|image|mimes:png,jpeg'
+        ]);
+        $upload_image = $request->file('image');
+
+        if ($upload_image) {
+            $path = $upload_image->store('uploads', "public");
+            if ($path) {
+                Image::create([
+                    "file_name" => $upload_image->getClientOriginalName(),
+                    "file_path" => $path,
+                    "number" => $commentnumber,
+                    "comment-img-number" => $commentID
+                ]);
+            }
+        }
+        Comment::create(["name" => $username, "comment" => $comment, "commentnumber" => $commentnumber, "commentID" => $commentID]);
         return redirect("/done");
     }
-    public function done(){
+    public function done()
+    {
         return view("Home.done");
+    }
+    function show()
+    {
+        //アップロードした画像を取得
+        $uploads = Image::orderBy("id", "desc")->get();
+
+        return view("Home.image_list", [
+            "images" => $uploads
+        ]);
     }
 }

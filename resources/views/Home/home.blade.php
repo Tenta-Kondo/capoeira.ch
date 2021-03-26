@@ -11,7 +11,7 @@ $count = 1;
         {{ session('message') }}
     </p>
     @endif
-    <h2 class="list-title">スレッド一覧</h2>
+    <h2 class="list-title">Thread List</h2>
     <div class="blog-contents">
         @foreach($thread as $threads)
         <div class="blog-content">
@@ -42,13 +42,24 @@ $count = 1;
             </div>
             <h4 style="margin-top: 20px;"> <a href="/thread/{{$threads->id}}">{{$threads->title}}</a></h4>
             <p style="margin-top: 10px;"> <a href="/thread/{{$threads->id}}">{{$threads->contents}}</a></p>
-            <a href="/thread/{{$threads->id}}">スレッドへ</a>
-            <p class="count">コメント数 : <?php
-                        $id = $threads->id;
-                        $commentN=(int)$id;
-                        $commentcount = $comment->where("commentnumber", $commentN)->count();
-                        echo $commentcount
-                        ?></p>
+            <?php
+            $id = $threads->id;
+            $commentN = (int)$id;
+            $img = $image->where("number", $commentN)->first();
+            ?>
+            @if($img)
+            <img src="{{Storage::url($img->file_path)}}" alt="">
+            @endif
+            <div class="right-bottom">
+
+                <p>コメント数 : <?php
+                                            $id = $threads->id;
+                                            $commentN = (int)$id;
+                                            $commentcount = $comment->where("commentnumber", $commentN)->count();
+                                            echo $commentcount
+                                            ?></p>
+                <a href="/thread/{{$threads->id}}" class="detail-link">スレッドへ</a>
+            </div>
         </div>
         @endforeach
     </div>

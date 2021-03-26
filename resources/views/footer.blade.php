@@ -33,7 +33,9 @@
         $(".tag").click(function() {
             $(".login-data").toggleClass("position");
         })
+
     })
+
 
     function checkSubmit() {
         if (window.confirm('投稿してよろしいですか？')) {

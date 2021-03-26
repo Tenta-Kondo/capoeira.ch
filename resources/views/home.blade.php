@@ -10,9 +10,7 @@
     @endif
 
     @if (Route::has('register'))
-    <!-- <div class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </div> -->
+    
     @endif
     @else
     <div class="login-data">
@@ -23,7 +21,7 @@
 
         <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-            {{ __('ログアウトはこちら') }}
+            {{ __('Logout') }}
         </a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

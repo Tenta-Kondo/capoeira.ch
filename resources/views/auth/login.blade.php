@@ -60,7 +60,11 @@
 
 
             </form>
-            <a href="/register" class="registerlink">アカウントをお持ちでない場合はこちら</a>
+           
+            <ul style="display:flex;flex-direction:column;">
+                <li><a href="/register" class="registerlink">アカウントをお持ちでない場合はこちら</a></li>
+                <li><a href="/open" class="registerlink">トップへ戻る</a></li>
+            </ul>
         </div>
     </div>
 </div>
