@@ -63,6 +63,8 @@ $count = 1;
         </div>
         @endforeach
     </div>
-</main>
 
+</main>
+  {{ $thread->links('pagination::default') }}
+ 
 @endsection

@@ -17,7 +17,7 @@ class BrogController extends Controller
     }
     public function Home()
     {
-        $thread = Blogapp::all();
+        $thread = Blogapp::paginate(8);
         $comment = Comment::all();
         $image = Image::all();
         return view("Home.home", compact("thread", "comment", "image"));
