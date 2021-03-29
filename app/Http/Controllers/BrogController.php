@@ -27,8 +27,10 @@ class BrogController extends Controller
         $thread = Blogapp::find($id);
         $num = (int)$id;
         $commentnumber = Comment::where("commentnumber", $num)->get();
+        $title = $thread->title;
         $image = Image::where("number", $num)->get();
-        return view("Home.detail", compact("thread", "commentnumber", "image"));
+        $topimage= Image::where("title", $title)->get();
+        return view("Home.detail", compact("thread", "commentnumber", "image","topimage"));
     }
     public function create()
     {
@@ -44,15 +46,17 @@ class BrogController extends Controller
             'image' => 'file|image|mimes:png,jpeg'
         ]);
         $upload_image = $request->file('image');
-        $id = $request->input("threadnumber");
+
         if ($upload_image) {
             $path = $upload_image->store('uploads', "public");
             if ($path) {
                 Image::create([
                     "file_name" => $upload_image->getClientOriginalName(),
                     "file_path" => $path,
-                    "number" => $id
+                    "title" => $title
                 ]);
+            } else {
+                dd("うんこ");
             }
         }
 
@@ -113,13 +117,8 @@ class BrogController extends Controller
     {
         return view("Home.done");
     }
-    function show()
+    public function userpage()
     {
-        //アップロードした画像を取得
-        $uploads = Image::orderBy("id", "desc")->get();
-
-        return view("Home.image_list", [
-            "images" => $uploads
-        ]);
+        return view("Home.user-page");
     }
 }

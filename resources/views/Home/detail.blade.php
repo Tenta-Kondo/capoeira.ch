@@ -9,7 +9,7 @@ $commentcount = $commentnumber->count();
         <div class="all-contents">
             <div class="thread-data">
                 <p style="text-align: left;">{{$thread->created_at}}</p>
-                <span class="name">作成者 : {{$thread->username}}</span>
+                <span class="name">スレッド作成者 : {{$thread->username}}</span>
             </div>
             <h2 style="font-weight:lighter;" class="detail-title">{{$thread->title}}</h2>
 
@@ -22,9 +22,8 @@ $commentcount = $commentnumber->count();
                 </div>
                 <p class="comment-content">{{$thread->contents}}</p>
                 <?php
-                $id = $thread->id;
-                $commentN = (int)$id;
-                $img = $image->first();
+                $title = $thread->title;
+                $img = $topimage->first();
                 ?>
                 @if($img)
                 <img src="{{Storage::url($img->file_path)}}" alt="">

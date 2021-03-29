@@ -9,7 +9,7 @@ $threadcount = $thread->count();
             <h2 style="margin-bottom: 1rem;font-weight:lighter;">スレッド作成</h2>
             <form action="/blog/creating" method="POST" onSubmit="return checkSubmit()" enctype="multipart/form-data" files="true">
                 {{ csrf_field() }}
-                <input type="hidden" name="threadnumber" value="{{$threadcount+1}}">
+                
                 <input type="hidden" name="username" value="{{ Auth::user()->name }}">
                 <input type="text" name="title" placeholder="タイトル(必須)">
                   

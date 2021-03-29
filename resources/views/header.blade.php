@@ -27,7 +27,8 @@
         <div class="nav">
             <!-- <h1 style=" font-family: 'Quicksand', sans-serif;">Nao pode parar</h1> -->
             <div style="position:relative;">
-                <p class="user-data btn-simple"> USER NAME : {{ Auth::user()->name }}<i class="fas fa-caret-down" style="margin-left: 5px;"></i></p>
+                <p class="user-data btn-simple"> USER NAME : {{ Auth::user()->name }}<i id="down" class="fas fa-caret-down" style="margin-left: 5px;"></i><i id="up" class="fas fa-caret-up none" style="margin-left: 5px;"></i></p>
+
                 <a class="logout-btn btn-simple" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
@@ -35,6 +36,7 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
+                <a href="/user-page" class="btn-simple user-page-btn">UserPage</a>
             </div>
             <ul>
                 <li>

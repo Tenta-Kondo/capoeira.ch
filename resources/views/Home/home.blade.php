@@ -43,9 +43,9 @@ $count = 1;
             <h4 style="margin-top: 20px;"> <a href="/thread/{{$threads->id}}">{{$threads->title}}</a></h4>
             <p style="margin-top: 10px;"> <a href="/thread/{{$threads->id}}">{{$threads->contents}}</a></p>
             <?php
-            $id = $threads->id;
-            $commentN = (int)$id;
-            $img = $image->where("number", $commentN)->first();
+            $title = $threads->title;
+            
+            $img = $image->where("title", $title)->first();
             ?>
             @if($img)
             <img src="{{Storage::url($img->file_path)}}" alt="">

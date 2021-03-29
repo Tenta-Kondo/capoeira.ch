@@ -4,37 +4,38 @@
 </footer>
 </body>
 <script>
-    $(function() {
-        $(window).scroll(function() {
-            $(function() {
-                var imgPos = $("main").offset().top;
-                var scroll = $(window).scrollTop();
-                var windowHeight = $(window).height();
-                if (scroll > imgPos) {
-                    $(".nav").addClass("fixed-menu");
-                }
-            });
-            $(function() {
-                var imgPos = $("main").offset().top;
-                var scroll = $(window).scrollTop();
-                var windowHeight = $(window).height();
-                if (imgPos > scroll) {
-                    $(".nav").removeClass("fixed-menu");
-                }
-            });
+    $(window).scroll(function() {
+        $(function() {
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > imgPos) {
+                $(".nav").addClass("fixed-menu");
+            }
         });
         $(function() {
-            $(".open-btn").click(function() {
-                $(this).next().toggleClass("flex");
-            })
-        })
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (imgPos > scroll) {
+                $(".nav").removeClass("fixed-menu");
+            }
+        });
     });
     $(function() {
+        $(".open-btn").click(function() {
+            $(this).next().toggleClass("flex");
+        })
         $(".tag").click(function() {
             $(".login-data").toggleClass("position");
         })
-
+        $(".user-data").click(function() {
+            $(".logout-btn,.user-page-btn").toggleClass("block");
+           $("#up,#down").toggleClass("none");
+        })
     })
+
+
 
 
     function checkSubmit() {

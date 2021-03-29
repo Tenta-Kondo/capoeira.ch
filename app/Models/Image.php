@@ -9,5 +9,5 @@ class Image extends Model
 {
     use HasFactory;
     protected $table ="upload_image";
-    protected $fillable = ["file_name","file_path","number","comment-img-number"];
+    protected $fillable = ["file_name","file_path","number","comment-img-number","title"];
 }

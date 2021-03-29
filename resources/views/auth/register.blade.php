@@ -11,7 +11,7 @@
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}" class="register-form">
                 @csrf
-                <label for="name" class="regi-label">{{ __('アペリード(ユーザーネーム)') }}</label>
+                <label for="name" class="regi-label">{{ __('アペリード(ユーザーネーム) *変更出来ません') }}</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                 @error('name')
                 <span class="invalid-feedback" role="alert">
