@@ -11,6 +11,9 @@ html {
 a {
     text-decoration: none;
 }
+#app{
+    overflow: hidden;
+}
 header {
     width: 100%;
     text-align: center;

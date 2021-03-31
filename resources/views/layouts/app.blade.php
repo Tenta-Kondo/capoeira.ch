@@ -22,6 +22,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <script src="{{asset('js/animsition.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('css/animsition.css')}}">
 </head>
 
 <body>
@@ -36,6 +38,19 @@
                 $(".login-data").toggleClass("position");
             })
         })
+        $(function() {
+        let fuga = '.fuga';
+        let $animsition = $('.animsition');
+
+        $animsition.animsition({
+            inClass: 'flip-in-x-fr',
+            outClass: 'flip-out-x-fr',
+            inDuration: 1500,
+            outDuration: 800,
+            linkElement: fuga
+        });
+    });
+
     </script>
 </body>
 

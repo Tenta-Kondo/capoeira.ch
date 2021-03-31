@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container animsition" data-animsition-in-class="fade-in-left-sm" data-animsition-in-duration="1000" data-animsition-out-class="fade-out-left-sm" data-animsition-out-duration="800">
     @guest
     @if (Route::has('login'))
     <!-- <div class="nav-item">
@@ -10,7 +10,7 @@
     @endif
 
     @if (Route::has('register'))
-    
+
     @endif
     @else
     <div class="login-data">
@@ -44,7 +44,7 @@
             </div>
             @endif
 
-            <a href="/top" class="toch">{{ __('掲示板へ=>') }}</a>
+            <a href="/top" class="toch fuga">{{ __('掲示板へ=>') }}</a>
         </div>
 
     </div>

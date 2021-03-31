@@ -2,7 +2,7 @@
 
 $count = 1;
 ?>
-@extends("layout")
+@extends("layout-2")
 @section("content")
 <main>
 
