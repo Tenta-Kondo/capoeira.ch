@@ -34,7 +34,10 @@
            $("#up,#down").toggleClass("none");
         })
     })
-
+    $(function() {
+            $('body').fadeMover();
+         
+        });
 
 
 

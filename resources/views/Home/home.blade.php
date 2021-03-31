@@ -44,7 +44,7 @@ $count = 1;
             <p style="margin-top: 10px;"> <a href="/thread/{{$threads->id}}">{{$threads->contents}}</a></p>
             <?php
             $title = $threads->title;
-            
+
             $img = $image->where("title", $title)->first();
             ?>
             @if($img)
@@ -53,11 +53,11 @@ $count = 1;
             <div class="right-bottom">
 
                 <p>コメント数 : <?php
-                                            $id = $threads->id;
-                                            $commentN = (int)$id;
-                                            $commentcount = $comment->where("commentnumber", $commentN)->count();
-                                            echo $commentcount
-                                            ?></p>
+                            $id = $threads->id;
+                            $commentN = (int)$id;
+                            $commentcount = $comment->where("commentnumber", $commentN)->count();
+                            echo $commentcount
+                            ?></p>
                 <a href="/thread/{{$threads->id}}" class="detail-link">スレッドへ</a>
             </div>
         </div>
@@ -65,6 +65,5 @@ $count = 1;
     </div>
 
 </main>
-  {{ $thread->links('pagination::default') }}
- 
+{{ $thread->links('pagination::default') }}
 @endsection

@@ -34,7 +34,7 @@
     @endguest
 
 
-    <div class="card">
+    <div class="card sbox">
         <div class="card-header">{{ __('Successful login!') }}</div>
 
         <div class="card-body">
@@ -44,7 +44,7 @@
             </div>
             @endif
 
-            <a href="/top" class="toch">{{ __('掲示板へ=>') }}</a>
+            <a href="/top" class="toch navigate-anchor">{{ __('掲示板へ=>') }}</a>
         </div>
 
     </div>
