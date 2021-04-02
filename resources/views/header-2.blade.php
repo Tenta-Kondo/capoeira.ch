@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    <script src="{{asset('js/style.js')}}"></script>
-    <script src="{{asset('js/animsition.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('css/animsition.css')}}">
+    <script src="{{secure_asset('js/style.js')}}"></script>
+    <script src="{{secure_asset('js/animsition.js')}}"></script>
+    <link rel="stylesheet" href="{{secure_asset('css/animsition.css')}}">
     <title>Document</title>
 </head>
 
