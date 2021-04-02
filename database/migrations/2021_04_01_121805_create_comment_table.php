@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCommentidToCommentTable extends Migration
+class CreateCommentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class AddCommentidToCommentTable extends Migration
      */
     public function up()
     {
-        Schema::table('comment', function (Blueprint $table) {
+        Schema::create('comment', function (Blueprint $table) {
+            $table->id();
+            $table->string("name");
+            $table->text("comment");
+            $table->integer("commentnumber");
             $table->integer("commentID");
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class AddCommentidToCommentTable extends Migration
      */
     public function down()
     {
-        Schema::table('comment', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('comment');
     }
 }
