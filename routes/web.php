@@ -23,12 +23,9 @@ Route::get("/blog/delete/{id}", "App\Http\Controllers\BrogController@delete")->m
 Route::get("/blog/edit/{id}", "App\Http\Controllers\BrogController@edit")->middleware('auth');
 Route::post("/blog/update/{id}", "App\Http\Controllers\BrogController@update")->middleware('auth');
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::post("/comment", "App\Http\Controllers\BrogController@comment")->middleware('auth');
-Route::get("/open", "App\Http\Controllers\BrogController@open")->name('open');
+Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
-// Route::get('/form', "App\Http\Controllers\UploadImageController@show")->name("upload_form");
-// Route::post('/upload', "App\Http\Controllers\UploadImageController@upload")->name("upload_image");
 Route::get('/user-page', "App\Http\Controllers\BrogController@userpage")->middleware('auth');
 
