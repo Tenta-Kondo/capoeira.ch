@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+if(config('app.env') === 'production'){
+    // asset()やurl()がhttpsで生成される
+    URL::forceScheme('https');
+}
 
-// Route::get("/","App\Http\Controllers\BrogController@login");
 Route::get("/top", "App\Http\Controllers\BrogController@Home")->middleware('auth');
 Route::get("/thread/{id}", "App\Http\Controllers\BrogController@detail")->middleware('auth');
 Route::get("/create", "App\Http\Controllers\BrogController@create")->middleware('auth');
