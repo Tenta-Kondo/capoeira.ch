@@ -22,7 +22,7 @@ class CreateCommentTable extends Migration
             $table->timestamps();
         });
     }
-
+  
     /**
      * Reverse the migrations.
      *
