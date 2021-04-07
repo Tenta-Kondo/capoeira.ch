@@ -20,6 +20,7 @@ $count = 1;
             <div class="thread-head">
                 <span class="right">{{$count++}}</span>
                 <p class="right">{{$threads->created_at}}</p>
+                <p>{{$threads->id}}</p>
                 <p>作成者 : {{$threads->username}}</p>
                 <?php
                 $class = "";

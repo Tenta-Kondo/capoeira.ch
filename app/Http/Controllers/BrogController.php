@@ -55,9 +55,7 @@ class BrogController extends Controller
                     "file_path" => $path,
                     "title" => $title
                 ]);
-            } else {
-                dd("うんこ");
-            }
+            } 
         }
 
         Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
