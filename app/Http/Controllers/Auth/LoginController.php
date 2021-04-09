@@ -21,11 +21,11 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-    public function redirectPath()
-    {
-        return 'auth/home';
-        //例）return 'costs/index';
-    }
+    // public function redirectPath()
+    // {
+    //     return 'auth/home';
+    //     //例）return 'costs/index';
+    // }
     protected function loggedOut(Request $request)
     {
         return redirect(route('open'));
