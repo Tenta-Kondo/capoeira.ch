@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL = parse_url(getenv("CLEARDB_DATABASE_URL"));
 return [
 
     /*
