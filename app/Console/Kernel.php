@@ -40,6 +40,6 @@ class Kernel extends ConsoleKernel
         require base_path('routes/console.php');
     }
     protected $middleware = [
-        ForceHttps::class, // 追加
+        ForceHttps::class, 
     ];
 }
