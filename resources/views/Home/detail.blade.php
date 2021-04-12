@@ -26,7 +26,7 @@ $commentcount = $commentnumber->count();
                 $img = $topimage->first();
                 ?>
                 @if($img)
-                <img src="{{Storage::url($img->file_path)}}" alt="">
+                <img src="{{$img->file_path}}" alt="">
                 @endif
                 <button type="btn" class="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
                 <button type="btn" class="btn-reply reply-close"><i class="fas fa-level-up-alt"></i>閉じる</button>
@@ -62,7 +62,7 @@ $commentcount = $commentnumber->count();
                 ?>
 
                 @if($img)
-                <img src="{{Storage::url($img->file_path)}}" alt="">
+                <img src="{{$img->file_path}}" alt="">
                 @endif
                 <button type="btn" class="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
                 <button type="btn" class="btn-reply reply-close"><i class="fas fa-level-up-alt"></i>閉じる</button>

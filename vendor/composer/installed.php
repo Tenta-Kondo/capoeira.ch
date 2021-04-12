@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'a0e0f8d63abeeb6f0e1d4aaee37bd0335a9ff01c',
+    'reference' => '5282d9e61145042635679a0d0142860e7bdebd7a',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -28,6 +28,15 @@
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'cloudinary/cloudinary_php' => 
+    array (
+      'pretty_version' => '1.20.0',
+      'version' => '1.20.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2a8e6ed5bc6cf024022c6fcc03b69e1ce92ccaab',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -422,6 +431,15 @@
         0 => 'v8.26.1',
       ),
     ),
+    'jrm2k6/cloudder' => 
+    array (
+      'pretty_version' => '0.7.0',
+      'version' => '0.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd54a7cd7c880705ae565dcc078a6f81320f21b05',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -445,7 +463,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'a0e0f8d63abeeb6f0e1d4aaee37bd0335a9ff01c',
+      'reference' => '5282d9e61145042635679a0d0142860e7bdebd7a',
     ),
     'laravel/sail' => 
     array (

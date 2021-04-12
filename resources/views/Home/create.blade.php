@@ -7,7 +7,7 @@ $threadcount = $thread->count();
     <section>
         <div class="all-contents">
             <h2 style="margin-bottom: 1rem;font-weight:lighter;">スレッド作成</h2>
-            <form action="/blog/creating" method="POST" onSubmit="return checkSubmit()" enctype="multipart/form-data" files="true">
+            <form action="/threadCreating" method="POST" onSubmit="return checkSubmit()" enctype="multipart/form-data" files="true">
                 {{ csrf_field() }}
                 
                 <input type="hidden" name="username" value="{{ Auth::user()->name }}">

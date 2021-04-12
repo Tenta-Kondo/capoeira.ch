@@ -8,6 +8,7 @@ use App\Http\Requests\BlogRequest;
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Image;
+use JD\Cloudder\Facades\Cloudder;
 
 class BrogController extends Controller
 {
@@ -44,6 +45,7 @@ class BrogController extends Controller
     }
     public function creating(BlogRequest $request)
     {
+
         $title = $request->input("title");
         $contents = $request->input("contents");
         $username = $request->input(("username"));
@@ -51,17 +53,34 @@ class BrogController extends Controller
             'image' => 'file|image|mimes:png,jpeg'
         ]);
         $upload_image = $request->file('image');
-
         if ($upload_image) {
-            $path = $upload_image->store('uploads', "public");
-            if ($path) {
-                Image::create([
-                    "file_name" => $upload_image->getClientOriginalName(),
-                    "file_path" => $path,
-                    "title" => $title
-                ]);
-            }
+            $image_path = $upload_image->getRealPath();
+            Cloudder::upload($image_path, null);
+            //直前にアップロードされた画像のpublicIdを取得する。
+            $publicId = Cloudder::getPublicId();
+            // if (!empty($publicId)) {
+            //     dd("ee");
+            // }
+            $logoUrl = Cloudder::secureShow($publicId, [
+                'width'     => 200,
+                'height'    => 200
+            ]);
+
+            Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
+            // $post->image_path = $logoUrl;
+            // $post->public_id  = $publicId;
         }
+
+        // if ($upload_image) {
+        //     $path = $upload_image->store('uploads', "public");
+        //     if ($path) {
+        //         Image::create([
+        //             "file_name" => $upload_image->getClientOriginalName(),
+        //             "file_path" => $path,
+        //             "title" => $title
+        //         ]);
+        //     }
+        // }
 
         Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
         return redirect("/top")->with("message", "投稿完了");
@@ -101,18 +120,23 @@ class BrogController extends Controller
             'image' => 'file|image|mimes:png,jpeg'
         ]);
         $upload_image = $request->file('image');
-
         if ($upload_image) {
-            $path = $upload_image->store('uploads', "public");
-            if ($path) {
-                Image::create([
-                    "file_name" => $upload_image->getClientOriginalName(),
-                    "file_path" => $path,
-                    "number" => $commentnumber,
-                    "comment-img-number" => $commentID
-                ]);
-            }
+            $image_path = $upload_image->getRealPath();
+            Cloudder::upload($image_path, null);
+            $publicId = Cloudder::getPublicId();
+
+            $logoUrl = Cloudder::secureShow($publicId, [
+                'width'     => 200,
+                'height'    => 200
+            ]);
+
+            Image::create([
+                "file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "number" => $commentnumber,
+                "comment-img-number" => $commentID
+            ]);
         }
+
+        
         Comment::create(["name" => $username, "comment" => $comment, "commentnumber" => $commentnumber, "commentID" => $commentID]);
         return redirect("/done");
     }

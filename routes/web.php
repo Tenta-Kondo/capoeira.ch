@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get("/top", "App\Http\Controllers\BrogController@Home")->middleware('auth');
 Route::get("/thread/{id}", "App\Http\Controllers\BrogController@detail")->middleware('auth');
 Route::get("/create", "App\Http\Controllers\BrogController@create")->middleware('auth');
-Route::post("/blog/creating", "App\Http\Controllers\BrogController@creating")->middleware('auth');
+Route::post("/threadCreating", "App\Http\Controllers\BrogController@creating")->middleware('auth');
 Route::get("/blog/delete/{id}", "App\Http\Controllers\BrogController@delete")->middleware('auth');
 Route::get("/blog/edit/{id}", "App\Http\Controllers\BrogController@edit")->middleware('auth');
 Route::post("/blog/update/{id}", "App\Http\Controllers\BrogController@update")->middleware('auth');
