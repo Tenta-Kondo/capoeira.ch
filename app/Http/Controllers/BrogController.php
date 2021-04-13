@@ -52,7 +52,9 @@ class BrogController extends Controller
         $request->validate([
             'image' => 'file|image|mimes:png,jpeg'
         ]);
+
         $upload_image = $request->file('image');
+        dd("err");
         if ($upload_image) {
             $image_path = $upload_image->getRealPath();
             Cloudder::upload($image_path, null);
