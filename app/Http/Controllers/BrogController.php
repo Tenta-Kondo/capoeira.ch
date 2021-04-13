@@ -25,7 +25,7 @@ class BrogController extends Controller
     }
     public function detail($id)
     {
-
+        dd("err");
         $thread = Blogapp::find($id);
         if ($thread) {
             $num = (int)$id;
@@ -136,7 +136,7 @@ class BrogController extends Controller
             ]);
         }
 
-        
+
         Comment::create(["name" => $username, "comment" => $comment, "commentnumber" => $commentnumber, "commentID" => $commentID]);
         return redirect("/done");
     }
