@@ -32,17 +32,11 @@ class BrogController extends Controller
         $num = (int)$id;
         $commentnumber = Comment::where("commentnumber", $num)->get();
         $title = $thread->title;
+
         $image = Image::where("number", $num)->get();
+
         $topimage = Image::where("title", $title)->get();
-        if ($image) {
-            return view("Home.detail", compact("thread", "commentnumber", "image"));
-        } elseif ($topimage) {
-            return view("Home.detail", compact("thread", "commentnumber",  "topimage"));
-        } elseif ($topimage & $image) {
-            return view("Home.detail", compact("thread", "commentnumber", "image", "topimage"));
-        } else {
-            return view("Home.detail", compact("thread", "commentnumber"));
-        }
+        return view("Home.detail", compact("thread", "commentnumber", "image", "topimage"));
     }
     public function create()
     {
