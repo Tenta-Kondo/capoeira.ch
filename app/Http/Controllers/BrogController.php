@@ -54,8 +54,9 @@ class BrogController extends Controller
         ]);
 
         $upload_image = $request->file('image');
-        dd("err");
+        
         if ($upload_image) {
+            dd("err");
             $image_path = $upload_image->getRealPath();
             Cloudder::upload($image_path, null);
             //直前にアップロードされた画像のpublicIdを取得する。
