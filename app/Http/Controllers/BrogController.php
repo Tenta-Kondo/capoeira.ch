@@ -56,16 +56,34 @@ class BrogController extends Controller
         $upload_image = $request->file('image');
 
         if ($upload_image) {
+
             $image_path = $upload_image->getRealPath();
             Cloudder::upload($image_path, null);
+            //直前にアップロードされた画像のpublicIdを取得する。
             $publicId = Cloudder::getPublicId();
-           
+            // if (!empty($publicId)) {
+            //     dd("ee");
+            // }
             $logoUrl = Cloudder::secureShow($publicId, [
                 'width'     => 200,
                 'height'    => 200
             ]);
+
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
+            // $post->image_path = $logoUrl;
+            // $post->public_id  = $publicId;
         }
+
+        // if ($upload_image) {
+        //     $path = $upload_image->store('uploads', "public");
+        //     if ($path) {
+        //         Image::create([
+        //             "file_name" => $upload_image->getClientOriginalName(),
+        //             "file_path" => $path,
+        //             "title" => $title
+        //         ]);
+        //     }
+        // }
 
         Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
         return redirect("/top")->with("message", "投稿完了");
