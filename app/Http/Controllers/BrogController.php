@@ -25,19 +25,23 @@ class BrogController extends Controller
     }
     public function detail($id)
     {
-        
+
         $thread = Blogapp::find($id);
-        if ($thread) {
-           
-            $num = (int)$id;
-            $commentnumber = Comment::where("commentnumber", $num)->get();
-            $title = $thread->title;
-            dd($title);
-            $image = Image::where("number", $num)->get();
-            $topimage = Image::where("title", $title)->get();
+
+
+        $num = (int)$id;
+        $commentnumber = Comment::where("commentnumber", $num)->get();
+        $title = $thread->title;
+        $image = Image::where("number", $num)->get();
+        $topimage = Image::where("title", $title)->get();
+        if ($image) {
+            return view("Home.detail", compact("thread", "commentnumber", "image"));
+        } elseif ($topimage) {
+            return view("Home.detail", compact("thread", "commentnumber",  "topimage"));
+        } elseif ($topimage & $image) {
             return view("Home.detail", compact("thread", "commentnumber", "image", "topimage"));
         } else {
-            dd("err");
+            return view("Home.detail", compact("thread", "commentnumber"));
         }
     }
     public function create()
