@@ -28,7 +28,7 @@ class BrogController extends Controller
         
         $thread = Blogapp::find($id);
         if ($thread) {
-            dd("err");
+            dd("errr");
             $num = (int)$id;
             $commentnumber = Comment::where("commentnumber", $num)->get();
             $title = $thread->title;
