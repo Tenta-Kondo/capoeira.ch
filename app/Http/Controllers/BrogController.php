@@ -65,7 +65,7 @@ class BrogController extends Controller
                 'width'     => 200,
                 'height'    => 200
             ]);
-            if($logoUrl){
+            if(!$logoUrl){
                 dd("errrr");
             }else{
                 dd("debug");
