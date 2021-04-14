@@ -60,16 +60,14 @@ class BrogController extends Controller
             $image_path = $upload_image->getRealPath();
 
             Cloudder::upload($image_path, null);
-            $publicId = Cloudder::getPublicId();
-            if($publicId){
-                dd("errrr");
-            }
-            
+            $publicId = Cloudder::getPublicId();            
             $logoUrl = Cloudder::secureShow($publicId, [
                 'width'     => 200,
                 'height'    => 200
             ]);
-
+            if($logoUrl){
+                dd("errrr");
+            }
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
         } 
 
