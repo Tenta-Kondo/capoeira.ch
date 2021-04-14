@@ -68,6 +68,8 @@ class BrogController extends Controller
             ]);
 
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
+        } else {
+            dd("err");
         }
 
 
