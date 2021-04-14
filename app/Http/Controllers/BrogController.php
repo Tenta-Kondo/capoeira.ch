@@ -66,7 +66,7 @@ class BrogController extends Controller
                 'width'     => 200,
                 'height'    => 200
             ]);
-           
+            dd($upload_image->getClientOriginalName());
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
         }
 
@@ -127,6 +127,7 @@ class BrogController extends Controller
 
 
         Comment::create(["name" => $username, "comment" => $comment, "commentnumber" => $commentnumber, "commentID" => $commentID]);
+
         return redirect("/done");
     }
     public function done()
