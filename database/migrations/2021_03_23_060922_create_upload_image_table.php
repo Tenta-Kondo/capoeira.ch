@@ -16,7 +16,10 @@ class CreateUploadImageTable extends Migration
         Schema::create('upload_image', function (Blueprint $table) {
             $table->id();
             $table->string("file_name");
-			$table->string("file_path");
+            $table->string("file_path");
+            $table->integer("number");
+            $table->integer("comment-img-number");
+            $table->string("title");
             $table->timestamps();
         });
     }
