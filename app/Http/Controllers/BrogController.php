@@ -56,7 +56,6 @@ class BrogController extends Controller
         $upload_image = $request->file('image');
 
         if ($upload_image) {
-
             $image_path = $upload_image->getRealPath();
             Cloudder::upload($image_path, null);
 
@@ -66,7 +65,6 @@ class BrogController extends Controller
                 'width'     => 200,
                 'height'    => 200
             ]);
-            dd($title);
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
         }
 
