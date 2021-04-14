@@ -67,7 +67,7 @@ class BrogController extends Controller
                 'height'    => 200
             ]);
 
-            $cre = Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
+           Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
             dd("err");
         }
 
