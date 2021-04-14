@@ -63,7 +63,9 @@ class BrogController extends Controller
             $publicId = Cloudder::getPublicId();    
             if($publicId){
                 dd("ww");
-            }        
+            }else{
+                dd("www");
+            }       
             $logoUrl = Cloudder::secureShow($publicId, [
                 'width'     => 200,
                 'height'    => 200
