@@ -5,21 +5,16 @@ import Header from './Header';
 
 
 
-// const App = () => {
-//     return(
-//         <React.StrictMode>
-//             <Header />
+const App = () => {
+    return(
+        <React.StrictMode>
+            <Header />
            
          
-//            </React.StrictMode>
-//     )
-// }
+           </React.StrictMode>
+    )
+}
 
-ReactDOM.render(
-    <React.StrictMode>
-      <Header />
-    </React.StrictMode>,
-    document.getElementById('app')
-  );
-
-  reportWebVitals();
+if (document.getElementById('app')) {
+    ReactDOM.render(<App />, document.getElementById('app'));
+}
