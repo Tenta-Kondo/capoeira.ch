@@ -12,19 +12,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <script src="{{secure_asset('js/style.js')}}"></script>
-
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
     <title>Document</title>
 </head>
 
 <body>
     <header>
 
-        <div class="header-container">
-
-            <h1 style=" font-family: 'Quicksand', sans-serif;color:white;">Capoeira.ch</h1>
-
-
-        </div>
+        <div id="app"></div>
         <div class="nav">
             <!-- <h1 style=" font-family: 'Quicksand', sans-serif;">Nao pode parar</h1> -->
             <div style="position:relative;">

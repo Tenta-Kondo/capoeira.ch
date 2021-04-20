@@ -28,3 +28,7 @@ Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
 Route::get('/user-page', "App\Http\Controllers\BrogController@userpage")->middleware('auth');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
