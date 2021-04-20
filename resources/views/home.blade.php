@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container animsition" data-animsition-in-class="fade-in-left-sm" data-animsition-in-duration="1000" data-animsition-out-class="fade-out-left-sm" data-animsition-out-duration="800">
+<div class="container">
     @guest
     @if (Route::has('login'))
     <!-- <div class="nav-item">
