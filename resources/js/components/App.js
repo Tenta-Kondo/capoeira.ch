@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Header from './Header';
-import Footer from './Footer';
+
 
 
 const App = () => {
