@@ -44,7 +44,7 @@
             </div>
             @endif
 
-            <a href="/top" class="toch fuga">{{ __('掲示板へ=>') }}</a>
+            <a href="/top">{{ __('掲示板へ=>') }}</a>
         </div>
 
     </div>

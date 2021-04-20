@@ -14,6 +14,7 @@
     <script src="{{secure_asset('js/style.js')}}"></script>
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
     <title>Document</title>
+
 </head>
 
 <body>
