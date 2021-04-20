@@ -32,7 +32,10 @@ header {
     align-items: center;
     justify-content: center;
 }
-
+.header-container h1{
+    font-family: 'Quicksand', sans-serif;
+    color:white;
+ }
 .user-name{
     width: 300px;
     background-color: black;
