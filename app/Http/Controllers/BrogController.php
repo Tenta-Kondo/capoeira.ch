@@ -136,4 +136,12 @@ class BrogController extends Controller
     {
         return view("Home.user-page");
     }
+    public function index(Request $request)
+    {
+
+        $user = $request->user();
+        return view('subscription.subscript')->with([
+            'intent' => $user->createSetupIntent()
+        ]);
+    }
 }
