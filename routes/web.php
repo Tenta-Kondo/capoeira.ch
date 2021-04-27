@@ -33,7 +33,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('user')->middleware(['auth'])->group(function() {
+Route::get('/subscript',"App\Http\Controllers\BrogController@index")->middleware(['auth'])->group(function() {
 
     // 課金
     Route::get('subscription', 'User\SubscriptionController@index');
