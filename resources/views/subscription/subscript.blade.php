@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div id="app" class="container">
+    <div id="app" class="">
         <h1 class="mb-4">Stripeを使った月額課金・サンプル</h1>
         <div class="row">
             <div class="offset-3 col-6">
