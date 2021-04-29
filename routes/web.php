@@ -32,15 +32,6 @@ Route::get('/user-page', "App\Http\Controllers\BrogController@userpage")->middle
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/subscribe', 'App\Http\Controllers\SubscriptionController@subscribe')->middleware('auth');
+Route::get("/subscription",'App\Http\Controllers\BrogController@subscript')->middleware('auth');
 
-Route::prefix('user')->middleware(['auth'])->group(function () {
-
-    // 課金
-    Route::get('subscription', 'App\Http\Controllers\BrogController@index');
-    Route::get('ajax/subscription/status', 'App\Http\Controllers\User\Ajax\SubscriptionController@status');
-    Route::post('ajax/subscription/subscribe', 'App\Http\Controllers\User\Ajax\SubscriptionController@subscribe');
-    Route::post('ajax/subscription/cancel', 'App\Http\Controllers\User\Ajax\SubscriptionController@cancel');
-    Route::post('ajax/subscription/resume', 'App\Http\Controllers\User\Ajax\SubscriptionController@resume');
-    Route::post('ajax/subscription/change_plan', 'App\Http\Controllers\User\Ajax\SubscriptionController@change_plan');
-    Route::post('ajax/subscription/update_card', 'App\Http\Controllers\User\Ajax\SubscriptionController@update_card');
-});
