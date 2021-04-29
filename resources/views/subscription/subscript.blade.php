@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="card col-md-8">
+   
+        <div class="card">
             <form action="/subscribe" method="post" id="payment-form">
                 @csrf
 
@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <label>サブスクリプション商品:</label>
                     <select id="plan" name="plan" class="form-control">
-                        <option value="Stripeの商品ページにあるAPI_ID">テストプレミアムプラン</option>
+                        <option value="price_1IiJAqF1esSwuYHKa6JZEbZT">有料会員</option>
                     </select>
                 </div>
 
@@ -30,10 +30,10 @@
                 </div>
                 <input type="hidden" id="stripeToken" name="stripeToken">
 
-                <div id="card-button" class="btn btn-primary mt-5" data-secret="{{ $intent->client_secret }}">Submit Payment</div>
+                <div id="card-button" class="btn" data-secret="{{ $intent->client_secret }}">Submit Payment</div>
             </form>
         </div>
-    </div>
+   
 </div>
 @endsection
 
