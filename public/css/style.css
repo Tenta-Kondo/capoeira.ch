@@ -553,9 +553,12 @@ img{
     flex-direction: column;
     width: 90%;
     margin: 0 auto;
+    margin-top: 3vh;
 }
 select{
     width: 100%;
+    box-shadow: 0 0 8px rgb(200, 237, 255);
+    margin-top: 1vh;
 }
 .card-user-name,.StripeElement,#card-holder-name{
     width: 100%;
