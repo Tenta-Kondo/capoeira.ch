@@ -555,9 +555,9 @@ img{
     margin: 0 auto;
 }
 select{
-    width: 50%;
+    width: 100%;
 }
-.card-user-name,.StripeElement{
+.card-user-name,.StripeElement,#card-holder-name{
     width: 100%;
     margin: 0 auto;
 }
