@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
    
-        <div class="card">
+        <div class="subsc-window">
             <form action="/subscribe" method="post" id="payment-form">
                 @csrf
 
@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label for="card-holder-name">支払い情報:</label>
                     <div>
-                        <input id="card-holder-name" class="form-control" type="text" placeholder="カード名義人">
+                        <input id="card-holder-name" class="card-user-name" type="text" placeholder="カード名義人">
                     </div>
                     <div id="card-element" class="w-100">
                     <!-- A Stripe Element will be inserted here. -->
