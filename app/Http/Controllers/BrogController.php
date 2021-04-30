@@ -10,7 +10,7 @@ use App\Models\Comment;
 use App\Models\Image;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\Auth;
-use Stripe\Price;
+use App\Models\Price;
 
 
 class BrogController extends Controller
@@ -142,12 +142,9 @@ class BrogController extends Controller
     public function subscript()
     {
         $user = Auth::user();
-        return view('subscription.subscript', [
-            'intent'       => $user->createSetupIntent(),
-            // 現在のユーザーに紐づいているサブスクリプション
-            'userProducts' => $user->products(),
-            // dashboardで作成されているサブスクリプション全件
-            'products'     => Price::getAll(),
+    
+        return view('home', [
+            'intent' => $user->createSetupIntent()
         ]);
     }
 }
