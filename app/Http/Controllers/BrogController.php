@@ -10,7 +10,7 @@ use App\Models\Comment;
 use App\Models\Image;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Price;
+
 
 
 class BrogController extends Controller
@@ -141,8 +141,8 @@ class BrogController extends Controller
     }
     public function subscript()
     {
-        $user = Auth::user();
+   
     
-        return view("subscription.subscript");
+        return view('subscription.subscript');
     }
 }
