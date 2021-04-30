@@ -143,6 +143,6 @@ class BrogController extends Controller
     {
    
     
-        return view('subscription.subscript');
+        return view('Home.user-page');
     }
 }
