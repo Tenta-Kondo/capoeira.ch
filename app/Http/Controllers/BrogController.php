@@ -143,7 +143,7 @@ class BrogController extends Controller
     {
         $user = Auth::user();
     
-        return view('home', [
+        return view('subscription.subscript', [
             'intent' => $user->createSetupIntent()
         ]);
     }
