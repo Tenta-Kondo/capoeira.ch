@@ -4,7 +4,7 @@
 <div class="container">
 
     <div class="subsc-window">
-        <form action="" method="post" id="payment-form">
+        <form action="/subscribe" method="post" id="payment-form">
             @csrf
 
             {{-- 商品情報 --}}
