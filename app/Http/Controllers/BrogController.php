@@ -141,8 +141,15 @@ class BrogController extends Controller
     }
     public function subscript()
     {
-   
+        $user = Auth::user();
     
-        return view('subscription.subscript');
+        return view('subscription.subscript', [
+            'intent'       => $user->createSetupIntent(),
+            // 現在のユーザーに紐づいているサブスクリプション
+            'userProducts' => $user->products(),
+            // dashboardで作成されているサブスクリプション全件
+            
+            'products'     => Price::getAll(),
+        ]);
     }
 }
