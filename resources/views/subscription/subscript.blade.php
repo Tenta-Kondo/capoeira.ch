@@ -8,13 +8,15 @@
             @csrf
 
             {{-- 商品情報 --}}
+
             <div class="form-group">
                 <label>サブスクリプション商品:</label>
                 <select id="plan" name="plan" class="form-control">
-                    <option value="price_1IiJAqF1esSwuYHKa6JZEbZT">有料会員</option>
+                    @foreach ($products as $product)
+                    <option value="{{ $product->id }}">{{ $product->productName }}</option>
+                    @endforeach
                 </select>
             </div>
-
             {{-- カード情報 --}}
             <div class="form-group">
                 <label for="card-holder-name">支払い情報:</label>
