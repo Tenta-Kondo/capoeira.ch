@@ -5,7 +5,7 @@ namespace App\Http\Models;
 use Stripe\Product;
 use Stripe\Price as StripePrice;
 
-class Price extends StripePrice
+class Pricess extends StripePrice
 {
     /**
      * price に紐づくproduct name を付加して全件返す
