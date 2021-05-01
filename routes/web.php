@@ -35,7 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('user')->middleware(['auth'])->group(function() {
 
     // 課金
-    Route::get('subscription', 'BrogController@subsc')->middleware('auth');
+    Route::get('subscription', 'App\Http\Controllers\BrogController@subsc')->middleware('auth');
     Route::get('ajax/subscription/status', 'User\Ajax\SubscriptionController@status')->middleware('auth');
     Route::post('ajax/subscription/subscribe', 'User\Ajax\SubscriptionController@subscribe')->middleware('auth');
     Route::post('ajax/subscription/cancel', 'User\Ajax\SubscriptionController@cancel')->middleware('auth');
