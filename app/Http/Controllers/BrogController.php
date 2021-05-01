@@ -141,7 +141,7 @@ class BrogController extends Controller
         return view("Home.user-page");
     }
 
-    public function index(Request $request)
+    public function subsc(Request $request)
     {
 
         $user = $request->user();
