@@ -103,7 +103,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <script>
- cardElement.mount('#card-element');
     new Vue({
         el: '#app',
         data: {
