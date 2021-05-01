@@ -32,16 +32,14 @@ Route::get('/user-page', "App\Http\Controllers\BrogController@userpage")->middle
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::prefix('user')->middleware(['auth'])->group(function() {
+Route::prefix('user')->middleware(['auth'])->group(function () {
 
     // 課金
     Route::get('subscription', 'App\Http\Controllers\BrogController@subsc')->middleware('auth');
-    Route::get('ajax/subscription/status', 'User\Ajax\SubscriptionController@status')->middleware('auth');
-    Route::post('ajax/subscription/subscribe', 'User\Ajax\SubscriptionController@subscribe')->middleware('auth');
-    Route::post('ajax/subscription/cancel', 'User\Ajax\SubscriptionController@cancel')->middleware('auth');
-    Route::post('ajax/subscription/resume', 'User\Ajax\SubscriptionController@resume')->middleware('auth');
-    Route::post('ajax/subscription/change_plan', 'User\Ajax\SubscriptionController@change_plan')->middleware('auth');
-    Route::post('ajax/subscription/update_card', 'User\Ajax\SubscriptionController@update_card')->middleware('auth');
-
+    Route::get('ajax/subscription/status', 'App\Http\Controllers\User\Ajax\SubscriptionController@status')->middleware('auth');
+    Route::post('ajax/subscription/subscribe', 'App\Http\Controllers\User\Ajax\SubscriptionController@subscribe')->middleware('auth');
+    Route::post('ajax/subscription/cancel', 'App\Http\Controllers\User\Ajax\SubscriptionController@cancel')->middleware('auth');
+    Route::post('ajax/subscription/resume', 'App\Http\Controllers\User\Ajax\SubscriptionController@resume')->middleware('auth');
+    Route::post('ajax/subscription/change_plan', 'App\Http\Controllers\User\Ajax\SubscriptionController@change_plan')->middleware('auth');
+    Route::post('ajax/subscription/update_card', 'App\Http\Controllers\User\Ajax\SubscriptionController@update_card')->middleware('auth');
 });
-

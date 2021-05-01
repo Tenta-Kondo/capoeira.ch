@@ -36,7 +36,7 @@
                             <input type="text" class="form-control" v-model="cardHolderName" placeholder="名義人（半角ローマ字）">
                         </div>
                         <div class="form-group">
-                            <div id="new-card" class="bg-white"></div>
+                            <div id="card-element" class="bg-white"></div>
                         </div>
                         <div class="form-group text-right">
                             <button
@@ -103,7 +103,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 <script>
-
+ cardElement.mount('#card-element');
     new Vue({
         el: '#app',
         data: {
@@ -114,7 +114,7 @@
             cardHolderName: '',
             details: {},
             plan: '',
-            planOptions: {!! json_encode(config('services.stripe.plans')) !!}
+            planOptions: {!! json_encode(config('services.stripe.plans')) !!},
         },
         methods: {
             async subscribe(e) {
