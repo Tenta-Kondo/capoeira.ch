@@ -114,7 +114,7 @@
             cardHolderName: '',
             details: {},
             plan: '',
-            
+            planOptions: {!! json_encode(config('services.stripe.plans')) !!}
         },
         methods: {
             async subscribe(e) {
