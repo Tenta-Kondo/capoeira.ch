@@ -36,7 +36,7 @@
                             <input type="text" class="form-control" v-model="cardHolderName" placeholder="名義人（半角ローマ字）">
                         </div>
                         <div class="form-group">
-                            <div id="new-card" class="bg-white"></div>
+                            <input id="new-card" class="bg-white"></input>
                         </div>
                         <div class="form-group text-right">
                             <button
