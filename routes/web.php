@@ -22,7 +22,7 @@ Route::get("/blog/delete/{id}", "App\Http\Controllers\BrogController@delete")->m
 Route::get("/blog/edit/{id}", "App\Http\Controllers\BrogController@edit")->middleware('auth');
 Route::post("/blog/update/{id}", "App\Http\Controllers\BrogController@update")->middleware('auth');
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/success', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::post("/comment", "App\Http\Controllers\BrogController@comment")->middleware('auth');
 Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
