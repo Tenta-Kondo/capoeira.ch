@@ -35,7 +35,7 @@
 
 
     <div class="card">
-        <div class="card-header">{{ __('Successful login!') }}</div>
+        <div class="cardTitle">{{ __('Successful login!') }}</div>
 
         <div class="card-body">
             @if (session('status'))
