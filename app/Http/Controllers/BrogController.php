@@ -29,7 +29,7 @@ class BrogController extends Controller
     }
     public function sitetop()
     {
-        return view("Home.sitetop");
+        return view("Home.SiteTop");
     }
     public function success()
     {
