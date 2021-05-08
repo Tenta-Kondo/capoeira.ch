@@ -27,6 +27,14 @@ class BrogController extends Controller
         $image = Image::all();
         return view("Home.home", compact("thread", "comment", "image"));
     }
+    public function sitetop()
+    {
+        return view("Home.sitetop");
+    }
+    public function success()
+    {
+        return view("Home.success");
+    }
     public function detail($id)
     {
 

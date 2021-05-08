@@ -42,4 +42,9 @@ class LoginController extends Controller
     {
         return redirect('/');
     }
+    public function redirectPath()
+    {
+        
+      return '/success';
+    }
 }

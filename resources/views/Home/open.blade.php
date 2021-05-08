@@ -22,11 +22,8 @@
                 <h1 class="open-header">
                     Capoeira.chへようこそ！
                 </h1>
-                <p>Capoeira.chは、アペリードとメールアドレスで登録出来る<br>
-                    カポエイリスタによるカポエイリスタの為の掲示板です。<br>
-                    roda情報・情報共有・動画へのアドバイス・雑談etc...<br>
-                    所属団体不問です。<br>
-                    団体の壁を越えて繋がりましょう！
+                <p>Capoeira.chは、アペリードとメールアドレスで登録出来る掲示板です。<br>
+                    まずは無料会員登録してみよう！
                 </p>
                 <div class="login-group">
                     <button type="button" onclick="location.href='/login'" class="btn btn-outline-success">LOGIN</button>

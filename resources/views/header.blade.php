@@ -36,7 +36,7 @@
             </div>
             <ul>
                 <li>
-                    <h2 class="btn-simple"><a href="/top">Home</a></h2>
+                    <h2 class="btn-simple"><a href="/SiteTop">Site Top</a></h2>
                 </li>
                 <li>
                     <h2 class="btn-simple"><a href="/create">Thread Create</a></h2>

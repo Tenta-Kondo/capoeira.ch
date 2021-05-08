@@ -27,7 +27,8 @@ Route::post("/comment", "App\Http\Controllers\BrogController@comment")->middlewa
 Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
 Route::get('/user-page', "App\Http\Controllers\BrogController@userpage")->middleware('auth');
-
+Route::get('/SiteTop', "App\Http\Controllers\BrogController@sitetop")->middleware('auth');
+Route::get('/success', "App\Http\Controllers\BrogController@success")->middleware('auth');
 
 Auth::routes();
 
