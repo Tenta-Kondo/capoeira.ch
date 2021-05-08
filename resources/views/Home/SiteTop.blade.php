@@ -17,7 +17,7 @@
 
     </div>
     <div class="nav-link" >
-        <a href="/SiteTop">
+        <a href="/top">
         <p>掲示板へ行く</p>
         </a>
     </div>
