@@ -41,7 +41,7 @@ $count = 1;
                     <button type="button" onSubmit="return checkSubmit()" onclick="location.href='/blog/delete/{{$threads->id}}'" class="delete-btn">削除</button>
                 </div>
             </div>
-            <h4 style="margin-top: 20px;"> <a href="/thread/{{$threads->id}}">{{$threads->title}}</a></h4>
+            <h4 style="margin-top: 20px;"> <a href="/thread/{{$threads->id}}" style="font-weight: lighter;">スレッドタイトル : {{$threads->title}}</a></h4>
             <p style="margin-top: 10px;"> <a href="/thread/{{$threads->id}}">{{$threads->contents}}</a></p>
             <?php
             $title = $threads->title;
