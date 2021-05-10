@@ -1,7 +1,4 @@
-<?php
 
-$count = 1;
-?>
 @extends("layout")
 @section("content")
 <main>
@@ -18,7 +15,6 @@ $count = 1;
 
 
             <div class="thread-head">
-                <span class="right">{{$count++}}</span>
                 <p class="right">{{$threads->created_at}}</p>
                 <p>作成者 : {{$threads->username}}</p>
                 <?php
