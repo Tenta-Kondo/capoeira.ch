@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="app" class="container">
-    <h1 class="mb-4">Stripeを使った月額課金・サンプル</h1>
+    <h1 class="mb-4">Capoeira.ch 有料会員</h1>
     <div class="row">
         <div class="offset-3 col-6">
             <div class="card mb-4">
@@ -53,7 +53,7 @@
                             キャンセル済みです。（終了：<span v-text="details.end_date"></span>）
                             <button class="btn btn-info" type="button" @click="resume">元に戻す</button>
                         </div>
-                        <!-- 課金中 -->
+                        <!-- 課金中↓ -->
                         <div v-else>
                             <div class="mb-3">現在、課金中です。</div>
                             <button class="btn btn-warning" type="button" @click="cancel">キャンセル</button>
@@ -218,7 +218,7 @@
                     if(!this.isCancelled) {
 
                         const selector = (value === 'unsubscribed') ? '#new-card' : '#update-card';
-                        this.stripeCard = this.stripe.elements().create('card', {
+                        this.stripeCard = this.stripe.elements().create('#new-card', {
                             hidePostalCode: true
                         });
                         this.stripeCard.mount(selector);

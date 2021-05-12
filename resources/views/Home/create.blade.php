@@ -1,6 +1,5 @@
 <?php
 $threadcount = $thread->count();
-
 $url = url()->previous();
 ?>
 @extends("layout")

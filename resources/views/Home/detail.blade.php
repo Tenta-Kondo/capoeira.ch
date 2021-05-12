@@ -1,11 +1,13 @@
 <?php
 $count = 2;
 $commentcount = $commentnumber->count();
+$url = url()->previous();
 ?>
 @extends("layout")
 @section("content")
 <main>
     <section>
+        <a href="{{$url}}" style="color:black;margin-left:10px;"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i>前のページへ戻る</a>
         <div class="all-contents">
             <div class="thread-data">
                 <p style="text-align: left;">{{$thread->created_at}}</p>
