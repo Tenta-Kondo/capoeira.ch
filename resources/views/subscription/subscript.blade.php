@@ -218,10 +218,10 @@
                     if(!this.isCancelled) {
 
                         const selector = (value === 'unsubscribed') ? '#new-card' : '#update-card';
-                        this.stripeCard = this.stripe.elements().create('#new-card', {
+                        this.stripeCard = this.stripe.elements().create('card', {
                             hidePostalCode: true
                         });
-                        this.stripeCard.mount(selector);
+                        this.stripeCard.mount('#card-number');
 
                     }
 
