@@ -35,8 +35,8 @@ class ComposerStaticInit3d501178b0aa5004c12c4944e8854f00
         'c15243c55ab4c20eff78d1e24be20dac' => __DIR__ . '/..' . '/cloudinary/cloudinary_php/src/Helpers.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
+        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
@@ -581,6 +581,7 @@ class ComposerStaticInit3d501178b0aa5004c12c4944e8854f00
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\UploadImageController' => __DIR__ . '/../..' . '/app/Http/Controllers/UploadImageController.php',
+        'App\\Http\\Controllers\\User\\Ajax\\SubscriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/Ajax/SubscriptionController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -593,6 +594,7 @@ class ComposerStaticInit3d501178b0aa5004c12c4944e8854f00
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\BlogRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BlogRequest.php',
         'App\\Http\\Requests\\CommentRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CommentRequest.php',
+        'App\\Http\\Requests\\SubscribeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/SubscribeRequest.php',
         'App\\Models\\Blogapp' => __DIR__ . '/../..' . '/app/Models/Blogapp.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Image' => __DIR__ . '/../..' . '/app/Models/Image.php',

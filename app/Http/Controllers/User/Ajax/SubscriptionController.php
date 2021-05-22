@@ -4,102 +4,69 @@ namespace App\Http\Controllers\User\Ajax;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Models\User;
 use App\Http\Requests\SubscribeRequest;
 use Stripe\Product;
 use Stripe\Plan;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Cashier\Cashier;
+use Stripe\Stripe;
+use Stripe\Charge;
+
 
 class SubscriptionController extends Controller
 {
     public function subscribe(Request $request)
     {
-
-        $user = $request->user();
-
-        if (!$user->subscribed('main')) {
-
-            $payment_method = $request->payment_method;
-            $plan = $request->plan;
-            $user->newSubscription('main', $plan)->create($payment_method);
-            $user->load('subscriptions');
+        $user = User::find(1);
+        $user->newSubscription('main', '
+        prod_JKz92ZRkooZ9dc')->create($stripeToken, ['email' => $email, 'phone' => $phone, 'name' => $name,]);
+        if ($request->user() && !$request->user()->subscribed('main')) {
+            // このユーザーは支払っていない顧客
+            return redirect('billing');
         }
-
-        return $this->status();
-    }
-
-    // 課金をキャンセル
-    public function cancel(Request $request)
-    {
-
-        $request->user()
-            ->subscription('main')
-            ->cancel();
-        return $this->status();
-    }
-
-    // キャンセルしたものをもとに戻す
-    public function resume(Request $request)
-    {
-
-        $request->user()
-            ->subscription('main')
-            ->resume();
-        return $this->status();
-    }
-
-    // プランを変更する
-    public function change_plan(Request $request)
-    {
-
-        $plan = $request->plan;
-        $request->user()
-            ->subscription('main')
-            ->swap($plan);
-        return $this->status();
-    }
-
-    // カードを変更する
-    public function update_card(Request $request)
-    {
-
-        $payment_method = $request->payment_method;
-        $request->user()
-            ->updateDefaultPaymentMethod($payment_method);
-        return $this->status();
-    }
-
-    // 課金状態を返す
-    public function status()
-    {
-
-        $status = 'unsubscribed';
-        $user = auth()->user();
-        $details = [];
-
-        if ($user->subscribed('main')) { // 課金履歴あり
-
-            if ($user->subscription('main')->cancelled()) {  // キャンセル済み
-
-                $status = 'cancelled';
-            } else {    // 課金中
-
-                $status = 'subscribed';
-            }
-
-            $subscription = $user->subscriptions->first(function ($value) {
-
-                return ($value->name === 'main');
-            })->only('ends_at', 'stripe_plan');
-
-            $details = [
-                'end_date' => ($subscription['ends_at']) ? $subscription['ends_at']->format('Y-m-d') : null,
-                'plan' => \Arr::get(config('services.stripe.plans'), $subscription['stripe_plan']),
-                'card_last_four' => $user->card_last_four
-            ];
+        return $next($request);
+        if ($user->subscription('main')->onTrial()) {
+            //
         }
-
-        return [
-            'status' => $status,
-            'details' => $details
-        ];
+        if ($user->subscribedToPlan('monthly', 'main')) {
+            //
+        }
     }
+    public function cancsl(Request $request)
+    {
+        $request->user()->subscription('main')->cancel();
+    }
+
+
+    
+    public function subscription(Request $request){
+      $user=Auth::user();
+        return view('post.subscription',  [
+           'intent' => $user->createSetupIntent()
+        ]);
+    
+    }
+    
+
+    public function afterpay(Request $request){
+        // ログインユーザーを$userとする
+        $user=Auth::user();
+ 
+        // またStripe顧客でなければ、新規顧客にする
+        $stripeCustomer = $user->createOrGetStripeCustomer();
+ 
+        // フォーム送信の情報から$paymentMethodを作成する
+        $paymentMethod=$request->input('stripePaymentMethod');
+ 
+        // プランはconfigに設定したbasic_plan_idとする
+        $plan=config('services.stripe.basic_plan_id');
+        
+        // 上記のプランと支払方法で、サブスクを新規作成する
+        $user->newSubscription('default', $plan)
+        ->create($paymentMethod);
+ 
+        // 処理後に'ルート設定'にページ移行
+        return redirect()->route('/SiteTop');
+}
 }
