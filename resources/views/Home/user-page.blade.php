@@ -1,3 +1,6 @@
+<?php
+$url = url()->previous();
+?>
 @extends("layout")
 @section("content")
 <main>
