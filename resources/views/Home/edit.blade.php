@@ -1,14 +1,14 @@
 @extends("layout")
 @section("content")
 <main>
+    <a href="{{$url}}" class="back-btn"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i>前のページへ戻る</a>
     <section>
-
         <div class="all-contents">
             <h2 style="margin-bottom: 1rem;">投稿編集</h2>
             <form action="/blog/update/{{$blog->id}}" method="POST" onSubmit="return checkSubmit()">
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{$blog->id}}">
-              
+
                 <span class="label">タイトル</span>
                 <input type="text" name="title" placeholder="タイトル(必須)" value="{{$blog->title}}">
                 @if($errors->has("title"))

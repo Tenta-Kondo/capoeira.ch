@@ -4,7 +4,7 @@ $url = url()->previous();
 @extends("layout")
 @section("content")
 <main>
-    <a href="{{$url}}" class="back-btn"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i>前のページへ戻る</a>
+    <a href="{{$url}}" class="back-btn"><i class="fas fa-arrow-left" ></i>前のページへ戻る</a>
     <article class="user-card">
         <h1 class="page-title">User Page</h1>
         <div class="user-image"></div>

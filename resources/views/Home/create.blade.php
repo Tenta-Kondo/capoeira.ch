@@ -5,7 +5,7 @@ $url = url()->previous();
 @extends("layout")
 @section("content")
 <main>
-    <a href="{{$url}}" class="back-btn"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i>前のページへ戻る</a>
+    <a href="{{$url}}" class="back-btn"><i class="fas fa-arrow-left"></i>前のページへ戻る</a>
     <section>
         <div class="all-contents">
             <h2 style="margin-bottom: 1rem;font-weight:lighter;">スレッド作成</h2>

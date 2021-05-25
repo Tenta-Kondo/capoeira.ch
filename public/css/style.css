@@ -182,6 +182,7 @@ ul li a {
     color: black;
     margin-left: 10px;
     margin-bottom: 30px;
+    display: block;
 }
 .contents {
     width: 90%;
