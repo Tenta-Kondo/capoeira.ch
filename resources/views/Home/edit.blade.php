@@ -26,7 +26,7 @@ $url = url()->previous();
                     {{$errors->first("contents")}}
                 </div>
                 @endif
-                <button type="submit" class="create-btn">更新</button>
+                <button type="submit" class="primary-btn">更新</button>
             </form>
         </div>
     </section>
