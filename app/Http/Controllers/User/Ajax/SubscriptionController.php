@@ -16,57 +16,67 @@ use Stripe\Charge;
 
 class SubscriptionController extends Controller
 {
-    public function subscribe(Request $request)
-    {
-        $user = User::find(1);
-        $user->newSubscription('main', '
-        prod_JKz92ZRkooZ9dc')->create($stripeToken, ['email' => $email, 'phone' => $phone, 'name' => $name,]);
-        if ($request->user() && !$request->user()->subscribed('main')) {
-            // このユーザーは支払っていない顧客
-            return redirect('billing');
-        }
-        return $next($request);
-        if ($user->subscription('main')->onTrial()) {
-            //
-        }
-        if ($user->subscribedToPlan('monthly', 'main')) {
-            //
-        }
-    }
-    public function cancsl(Request $request)
-    {
-        $request->user()->subscription('main')->cancel();
-    }
+//     public function subscribe(Request $request)
+//     {
+//         $user = User::find(1);
+//         $user->newSubscription('main', '
+//         prod_JKz92ZRkooZ9dc')->create($stripeToken, ['email' => $email, 'phone' => $phone, 'name' => $name,]);
+//         if ($request->user() && !$request->user()->subscribed('main')) {
+//             // このユーザーは支払っていない顧客
+//             return redirect('billing');
+//         }
+//         return $next($request);
+//         if ($user->subscription('main')->onTrial()) {
+//             //
+//         }
+//         if ($user->subscribedToPlan('monthly', 'main')) {
+//             //
+//         }
+//     }
+//     public function cancsl(Request $request)
+//     {
+//         $request->user()->subscription('main')->cancel();
+//     }
 
 
     
-    public function subscription(Request $request){
-      $user=Auth::user();
-        return view('post.subscription',  [
-           'intent' => $user->createSetupIntent()
-        ]);
+//     public function subscription(Request $request){
+//       $user=Auth::user();
+//         return view('post.subscription',  [
+//            'intent' => $user->createSetupIntent()
+//         ]);
     
-    }
+//     }
     
 
-    public function afterpay(Request $request){
-        // ログインユーザーを$userとする
-        $user=Auth::user();
+//     public function afterpay(Request $request){
+//         // ログインユーザーを$userとする
+//         $user=Auth::user();
  
-        // またStripe顧客でなければ、新規顧客にする
-        $stripeCustomer = $user->createOrGetStripeCustomer();
+//         // またStripe顧客でなければ、新規顧客にする
+//         $stripeCustomer = $user->createOrGetStripeCustomer();
  
-        // フォーム送信の情報から$paymentMethodを作成する
-        $paymentMethod=$request->input('stripePaymentMethod');
+//         // フォーム送信の情報から$paymentMethodを作成する
+//         $paymentMethod=$request->input('stripePaymentMethod');
  
-        // プランはconfigに設定したbasic_plan_idとする
-        $plan=config('services.stripe.basic_plan_id');
+//         // プランはconfigに設定したbasic_plan_idとする
+//         $plan=config('services.stripe.basic_plan_id');
         
-        // 上記のプランと支払方法で、サブスクを新規作成する
-        $user->newSubscription('default', $plan)
-        ->create($paymentMethod);
+//         // 上記のプランと支払方法で、サブスクを新規作成する
+//         $user->newSubscription('default', $plan)
+//         ->create($paymentMethod);
  
-        // 処理後に'ルート設定'にページ移行
-        return redirect()->route('/SiteTop');
-}
+//         // 処理後に'ルート設定'にページ移行
+//         return redirect()->route('/SiteTop');
+// }
+
+public function index () {
+    return view("subscription.subscription");
+  }
+
+  public function createSubscription (Request $request) {
+    $user = Auth::user();
+    $stripeToken = $request -> stripeToken;
+    $user->newSubscription('main', '作成したプランのID')->create($stripeToken);
+  }
 }

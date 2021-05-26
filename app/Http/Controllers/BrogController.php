@@ -106,7 +106,7 @@ class BrogController extends Controller
         $blog = Blogapp::find($id);
         $blog->fill(["title" => $title, "contents" => $contents, "username" => $username]);
         $blog->save();
-        return redirect("/home")->with("message", "更新しました");
+        return redirect("/top")->with("message", "更新しました");
     }
     public function comment(CommentRequest $request)
     {
@@ -153,8 +153,10 @@ class BrogController extends Controller
     {
 
         $user = $request->user();
-        return view('subscription.subscript')->with([
+        return view('subscription.subscription')->with([
             'intent' => $user->createSetupIntent()
         ]);
+        
     }
+   
 }
