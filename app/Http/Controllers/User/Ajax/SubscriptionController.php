@@ -77,6 +77,6 @@ public function index () {
   public function createSubscription (Request $request) {
     $user = Auth::user();
     $stripeToken = $request -> stripeToken;
-    $user->newSubscription('main', '作成したプランのID')->create($stripeToken);
+    $user->newSubscription('main', 'price_1IvLOfGgpEHLIOoeGFs7MVwp')->create($stripeToken);
   }
 }
