@@ -21,7 +21,7 @@
         </a>
     </div>
     <div class="nav-link">
-        <a href="//register">
+        <a href="/register">
             <p>無料会員登録はこちら</p>
         </a>
     </div>
