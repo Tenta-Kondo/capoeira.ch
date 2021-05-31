@@ -1,10 +1,8 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
-   
+    font-family: "Quicksand", sans-serif;
 }
 html {
     font-size: 16px;
@@ -13,7 +11,10 @@ html {
 a {
     text-decoration: none;
 }
-#app{
+hr {
+    margin: 0 auto;
+}
+#app {
     overflow: hidden;
 }
 header {
@@ -35,42 +36,43 @@ header {
     display: flex;
     align-items: flex-end;
 }
-.header-container h1{
-   font-family: 'Quicksand', sans-serif;
-   color:white;
-   font-size: 300%;
+.header-container h1 {
+    font-family: "Quicksand", sans-serif;
+    color: white;
+    font-size: 300%;
 }
 
-.user-name{
+.user-name {
     width: 300px;
     background-color: black;
     color: white;
 }
-.btn-simple{
+.btn-simple {
     border: 0.1px solid rgb(231, 231, 231);
     padding: 5px;
     cursor: pointer;
     color: black;
     background-color: white;
 }
-.user-data{
+.user-data {
     margin-left: 10px;
 }
-.btn-simple:hover{
+.btn-simple:hover {
     background-color: #f1f1f1;
 }
 
-.logout-btn,.user-page-btn{
+.logout-btn,
+.user-page-btn {
     position: absolute;
     right: 0;
     display: none;
     text-align: center;
 }
-.logout-btn{
+.logout-btn {
     width: 70px;
 }
 
-.user-page-btn{
+.user-page-btn {
     width: 85px;
     top: 62px;
 }
@@ -88,65 +90,78 @@ header h2 {
 ul {
     list-style: none;
     display: flex;
-
 }
 
 ul li a {
     color: black;
 }
-.sitetop-header,.nav-link{
+.sitetop-header,
+.nav-link {
     border: 0.1px solid rgb(223, 223, 223);
-    width:55%;
+    width: 55%;
     margin: 0 auto;
-  
 }
-.sitetop-header{
-    box-shadow:  0 0 2px 2px rgb(190, 255, 204);
+.sitetop-header {
+    box-shadow: 0 0 2px 2px rgb(190, 255, 204);
     padding: 30px 20px;
 }
-.sitetop-title{
+.sitetop-title {
     text-align: center;
     margin-bottom: 20px;
 }
-.sitetop-nav{
+.sitetop-nav {
     text-align: center;
 }
-.nav-link{
-  margin-top: 20px;
-  width: 40%;
-  height: 200px;
-  background-image: url(../image/無題3.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+.nav-link {
+    margin-top: 20px;
+    width: 40%;
+    height: 200px;
+    background-image: url(../image/無題3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
-.nav-link a{
+.nav-link a {
     display: block;
     width: 100%;
     height: 100%;
 }
-.nav-link p{
+.nav-link p {
     margin-top: 30px;
-  
+
     font-size: 110%;
     color: rgb(0, 0, 0);
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   z-index: 10;
-   display: block;
-   background-color:  rgba(255,255,255,0.7);
-   padding: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
 }
-.link-name{
+.link-name {
     width: 120px;
     height: 35px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     position: absolute;
     left: 0;
     bottom: 0;
 }
-
+.search-form {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+}
+.search-input{
+    display: block;
+    margin: 0;
+    float: left;
+    font-size: 22.5px;
+}
+.search-btn{
+    padding: 6px;
+}
 .list-title {
     margin: 0 auto;
     margin-top: 40px;
@@ -155,8 +170,9 @@ ul li a {
 .blog-contents {
     width: 90%;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
+
 .blog-content {
     margin-bottom: 3rem;
     margin-right: 5px;
@@ -164,7 +180,7 @@ ul li a {
     border: 0.1px solid rgb(231, 231, 231);
     padding: 30px 20px;
     width: 500px;
-   
+
     position: relative;
 }
 .blog-content h4 > a,
@@ -175,14 +191,9 @@ ul li a {
     text-align: center;
     width: 65%;
     margin: 0 auto;
+    margin-top: 30px;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 60px 80px;
-}
-.back-btn{
-    color: black;
-    margin-left: 10px;
-    margin-bottom: 30px;
-    display: block;
 }
 .contents {
     width: 90%;
@@ -297,10 +308,11 @@ textarea {
 .block {
     display: block !important;
 }
-.none{
+.none {
     display: none !important;
 }
-.edit-btn,.delete-btn {
+.edit-btn,
+.delete-btn {
     border: rgb(71, 219, 71) 0.3px solid;
     color: rgb(71, 219, 71);
 }
@@ -322,46 +334,46 @@ textarea {
     margin: 0 auto;
     margin-top: 20vh;
 }
-.reply-form{
+.reply-form {
     width: 50%;
     margin: 10px 0 30px 20px;
     display: none;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 5px;
- 
+
     flex-direction: column;
     justify-content: center;
 }
-.reply-close{
+.reply-close {
     display: none;
 }
 
-.btn-reply{
+.btn-reply {
     border: none;
     background-color: #f5f5f5;
     margin-top: 25px;
     cursor: pointer;
 }
-.fa-level-up-alt{
+.fa-level-up-alt {
     transform: rotate(90deg);
-    margin:0 5px;
+    margin: 0 5px;
 }
 textarea::-webkit-scrollbar {
     width: 10px;
     height: 10px;
-  }
-  ::-webkit-scrollbar{
+}
+::-webkit-scrollbar {
     width: 10px;
-    }
-    ::-webkit-scrollbar-track{
+}
+::-webkit-scrollbar-track {
     background: #fff;
     border-left: solid 1px #ececec;
-    }
-    ::-webkit-scrollbar-thumb{
+}
+::-webkit-scrollbar-thumb {
     background: #ccc;
     border-radius: 10px;
     box-shadow: inset 0 0 0 2px #fff;
-    }
+}
 .btn {
     padding: 10px 50px;
     border: rgb(71, 219, 71) solid 1.5px;
@@ -408,7 +420,7 @@ textarea::-webkit-scrollbar {
 .open-btn:hover .circle {
     background-color: white;
 }
-.container-fluid{
+.container-fluid {
     width: 100%;
     height: 100vh;
     background-image: url(../image/無題.jpg);
@@ -419,53 +431,54 @@ textarea::-webkit-scrollbar {
     align-items: center;
     position: relative;
 }
-.card{
+.card {
     width: 50%;
     padding: 20px 20px;
     margin: 0 auto;
     background-color: white;
     text-align: center;
 }
-.login-form,.register-form,.reset-form{
+.login-form,
+.register-form,
+.reset-form {
     width: 70%;
     margin: 0 auto;
-   
 }
-.card-form{
+.card-form {
     width: 500px;
 }
-.cardTitle{
+.cardTitle {
     margin-top: 10px;
 }
 
-.password{
+.password {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     margin-top: 20px;
 }
-.forget{
+.forget {
     font-size: 80%;
-   color: black; 
+    color: black;
 }
-.registerlink{
+.registerlink {
     color: black;
     font-size: 80%;
 }
 
-.regi-label{
+.regi-label {
     margin-top: 15px;
 }
 
-.open-header{
+.open-header {
     font-weight: lighter;
     margin-bottom: 20px;
 }
-.login-group{
+.login-group {
     display: flex;
     flex-direction: column;
 }
-.login-data{
+.login-data {
     width: 450px;
     height: 140px;
     background-color: rgb(255, 255, 255);
@@ -475,15 +488,15 @@ textarea::-webkit-scrollbar {
     left: -450px;
     transition: 500ms;
 }
-.login-data p{
+.login-data p {
     font-size: 120%;
     font-weight: lighter;
 }
-.login-data a{
+.login-data a {
     color: black;
     border-bottom: 0.3px solid black;
 }
-.tag{
+.tag {
     background-color: rgb(71, 219, 71);
     color: white;
     display: flex;
@@ -491,58 +504,58 @@ textarea::-webkit-scrollbar {
     position: absolute;
     top: 0;
     right: -60px;
-    height:  140px;
+    height: 140px;
     width: 60px;
     text-align: center;
     cursor: pointer;
-    border-top:white solid 1.5px ;
+    border-top: white solid 1.5px;
     border-bottom: white solid 1.5px;
-    border-right:white solid 1.5px ;
+    border-right: white solid 1.5px;
 }
-.tag p{
+.tag p {
     transform: rotate(90deg);
 }
-.position{
+.position {
     left: 0;
 }
-.logout{
+.logout {
     position: absolute;
     bottom: 0;
     margin-bottom: 15px;
 }
 
-.toch{
+.toch {
     color: black;
 }
 
-.right-bottom{
+.right-bottom {
     width: 100%;
     text-align: right;
     margin-right: 10px;
     margin-bottom: 10px;
 }
 
-.choises{
+.choises {
     color: black;
     border-bottom: 0.2px solid black;
 }
-.detail-link{
+.detail-link {
     color: black;
     border-bottom: 0.2px solid black;
 }
-img{
+img {
     width: 200px;
     height: 200px;
     margin-top: 10px;
 }
-.alert ul>li{
+.alert ul > li {
     color: red;
 }
-.page-title{
-     margin-top: 40px;
+.page-title {
+    margin-top: 40px;
     text-align: center;
 }
-.user-image{
+.user-image {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -553,18 +566,18 @@ img{
     margin: 0 auto;
     margin-top: 60px;
 }
-.user-table{
+.user-table {
     margin: 0 auto;
     font-size: 140%;
     margin-top: 30px;
 }
-.user-card{
+.user-card {
     border: 0.1px solid rgb(231, 231, 231);
     width: 60%;
     margin: 0 auto;
     padding-bottom: 20px;
 }
-.user-card tr{
+.user-card tr {
     display: block;
     margin-bottom: 20px;
 }
@@ -582,8 +595,8 @@ img{
 }
 
 .paginationWrap ul.pagination li {
-  display: inline;
-  margin-right: 4px;
+    display: inline;
+    margin-right: 4px;
 }
 
 .paginationWrap ul.pagination li a {
@@ -604,14 +617,14 @@ img{
     background-color: #e1e7f0;
     border-radius: 40px;
 }
-@media (max-width:576px){
-    .card{
+@media (max-width: 576px) {
+    .card {
         padding: 10px 10px;
     }
-    .btn{
+    .btn {
         margin-top: 10px;
     }
-    p{
+    p {
         font-size: 90%;
     }
 }

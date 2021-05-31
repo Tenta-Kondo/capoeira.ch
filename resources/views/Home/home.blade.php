@@ -1,7 +1,6 @@
-
 @extends("layout")
 @section("content")
-<main>
+<main style="position: relative;">
 
     @if (session('message'))
     <p class="flash_message">
@@ -9,6 +8,10 @@
     </p>
     @endif
     <h2 class="list-title">Thread List</h2>
+    <form action="/search" class="search-form">
+        <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
+        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+    </form>
     <div class="blog-contents">
         @foreach($thread as $threads)
         <div class="blog-content">

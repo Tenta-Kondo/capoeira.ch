@@ -36,6 +36,7 @@ Route::get('/subscription', 'StripeController@subscription')->name('stripe.subsc
 Route::post('/subscription/afterpay', 'StripeController@afterpay')->name('stripe.afterpay');
 Route::get('/card', 'App\Http\Controllers\User\Ajax\SubscriptionController@index')->name('card');
 Route::post('/create/subscription', 'App\Http\Controllers\User\Ajax\SubscriptionController@createSubscription')->name('create');
+Route::get('/search', "App\Http\Controllers\BrogController@search")->middleware('auth');
 // Route::prefix('user')->middleware(['auth'])->group(function () {
 
 //     // 課金

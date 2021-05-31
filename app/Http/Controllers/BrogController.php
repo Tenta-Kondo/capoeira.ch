@@ -158,5 +158,14 @@ class BrogController extends Controller
         ]);
         
     }
-   
+    public function search(Request $request)
+    {
+        $searchWord = $request->input("search-word");
+        $comment = Comment::all();
+        $image = Image::all();
+        $searchThread = Blogapp::where('title', 'like', "%$searchWord%")->paginate(8);
+        $Threadcount =Blogapp::where('title', 'like', "%$searchWord%")->count();
+       
+        return view("Home.search", compact("searchThread", "comment", "image","Threadcount"));
+    }
 }
