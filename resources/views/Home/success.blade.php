@@ -14,7 +14,7 @@
     @endif
     @else
     <div class="login-data">
-        <p id="navbarDropdown"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        <p id="navbarDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             USER NAME : {{ Auth::user()->name }}
         </p>
         <p>MAIL ADRESS : {{ Auth::user()->email }}</p>
@@ -43,8 +43,10 @@
                 {{ session('status') }}
             </div>
             @endif
-
-            <a href="/SiteTop">{{ __('掲示板へ=>') }}</a>
+            <div style="display: flex;flex-direction:column;">
+                <a href="/">{{ __('トップページへ=>') }}</a>
+                <a href="/top">{{ __('掲示板へ=>') }}</a>
+            </div>
         </div>
 
     </div>

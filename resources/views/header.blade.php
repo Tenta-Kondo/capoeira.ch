@@ -45,11 +45,25 @@
                 <li>
                     <h2 class="btn-simple"><a href="/create">Thread Create</a></h2>
                 </li>
-                <li>
+                <?php
+                $classA = "";
+                $classB = "";
+                if (!empty(Auth::user())) {
+                    $classA = "flex";
+                    $classB = "none";
+                } else {
+                    $classA = "none";
+                    $classB = "flex";
+                }
+                ?>
+                <li class="<?php echo $classA ?>">
                     <h2 class="btn-simple"><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a></h2>
+                </li>
+                <li class="<?php echo $classB ?>">
+                    <h2 class="btn-simple"><a href="/login">Login</a></h2>
                 </li>
             </ul>
 
