@@ -149,31 +149,28 @@ ul li a {
 }
 .search-form {
     display: inline-block;
-    position: absolute;
-    right: 0;
-    margin-right: 10%;
 }
-.search-input{
+.search-input {
     display: block;
     margin: 0;
     float: left;
     font-size: 22.5px;
 }
-.search-btn{
+.search-btn {
     padding: 6px;
 }
-.search-data{
+.search-data {
     display: flex;
-    margin-bottom: 30px;
 }
-.search-data h3{
+.search-data h3 {
     font-weight: lighter;
 }
-.list-title {
-    margin: 0 auto;
-    margin-top: 40px;
-    width: 90%;
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
 }
+
 .blog-contents {
     width: 90%;
     margin: 0 auto;

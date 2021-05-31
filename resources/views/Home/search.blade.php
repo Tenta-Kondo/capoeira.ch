@@ -1,17 +1,19 @@
 @extends("layout")
 @section("content")
 <div class="blog-contents">
-    <div class="search-data">
-        <h3 style="margin-right: 3vw;">
-            検索ワード：{{$searchWord}}</h3>
-        <h3>
-            該当件数：{{ $Threadcount }}
-        </h3>
+    <div class="search-header">
+        <div class="search-data">
+            <h3 style="margin-right: 3vw;">
+                検索ワード：{{$searchWord}}</h3>
+            <h3>
+                該当件数：{{ $Threadcount }}
+            </h3>
+        </div>
+        <form action="/search" class="search-form">
+            <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        </form>
     </div>
-    <form action="/search" class="search-form">
-        <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
-        <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
-    </form>
     @foreach($searchThread as $threads)
     <div class="blog-content">
         <div class="thread-head">
