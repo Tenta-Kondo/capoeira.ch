@@ -30,8 +30,8 @@
             $(".login-data").toggleClass("position");
         })
         $(".user-data").click(function() {
-            $(".logout-btn,.user-page-btn").toggleClass("block");
-           $("#up,#down").toggleClass("none");
+            $(".user-page-btn").toggleClass("block");
+            $("#up,#down").toggleClass("none");
         })
     })
 

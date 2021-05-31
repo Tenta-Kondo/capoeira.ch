@@ -23,6 +23,11 @@
     </div>
     <div class="nav-link">
         
+        <p>無料会員登録はこちら</p>
+        
+    </div>
+    <div class="nav-link">
+        
         <p>有料会員登録はこちら</p>
         
     </div>
@@ -31,6 +36,8 @@
         <p>coming soon</p>
         
     </div>
+    <hr width="70%" style="margin-top: 50px;">
+    <div class=""></div>
     
    
 </main>

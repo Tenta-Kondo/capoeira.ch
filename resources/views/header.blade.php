@@ -31,21 +31,25 @@
                                                                 }
                                                                 ?><i id="down" class="fas fa-caret-down" style="margin-left: 5px;"></i><i id="up" class="fas fa-caret-up none" style="margin-left: 5px;"></i></p>
 
-                <a class="logout-btn btn-simple" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
-                <a href="/user-page" class="btn-simple user-page-btn">UserPage</a>
+                <a href="/user-page" class="btn-simple user-page-btn">UserInfo</a>
+
             </div>
             <ul>
                 <li>
-                    <h2 class="btn-simple"><a href="/SiteTop">Site Top</a></h2>
+                    <h2 class="btn-simple"><a href="/">Site Top</a></h2>
                 </li>
                 <li>
                     <h2 class="btn-simple"><a href="/create">Thread Create</a></h2>
+                </li>
+                <li>
+                    <h2 class="btn-simple"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a></h2>
                 </li>
             </ul>
 

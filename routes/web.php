@@ -24,19 +24,18 @@ Route::post("/blog/update/{id}", "App\Http\Controllers\BrogController@update")->
 Auth::routes();
 Route::get('/success', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::post("/comment", "App\Http\Controllers\BrogController@comment")->middleware('auth');
-Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
+// Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
 Route::get('/user-page', "App\Http\Controllers\BrogController@userpage")->middleware('auth');
-Route::get('/SiteTop', "App\Http\Controllers\BrogController@sitetop")->middleware('auth');
+Route::get('/', "App\Http\Controllers\BrogController@sitetop");
 Route::get('/success', "App\Http\Controllers\BrogController@success")->middleware('auth');
 
 Auth::routes();
 
 Route::get('/subscription', 'StripeController@subscription')->name('stripe.subscription');
 Route::post('/subscription/afterpay', 'StripeController@afterpay')->name('stripe.afterpay');
-Route::get('/card', 'App\Http\Controllers\User\Ajax\SubscriptionController@index')->name('card');
-Route::post('/create/subscription', 'App\Http\Controllers\User\Ajax\SubscriptionController@createSubscription')->name('create');
 Route::get('/search', "App\Http\Controllers\BrogController@search")->middleware('auth');
+
 // Route::prefix('user')->middleware(['auth'])->group(function () {
 
 //     // 課金

@@ -61,21 +61,16 @@ header {
     background-color: #f1f1f1;
 }
 
-.logout-btn,
+
 .user-page-btn {
     position: absolute;
     right: 0;
     display: none;
     text-align: center;
-}
-.logout-btn {
-    width: 70px;
+    width: 85px;
+    top: 32px;
 }
 
-.user-page-btn {
-    width: 85px;
-    top: 62px;
-}
 header h2 {
     margin-left: 15px;
     font-weight: lighter;
@@ -85,7 +80,7 @@ header h2 {
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    padding: 0.5rem 0;
+    padding: 0.5rem 10px 0.5rem 0;
 }
 ul {
     list-style: none;
