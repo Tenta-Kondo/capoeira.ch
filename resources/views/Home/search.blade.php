@@ -1,9 +1,13 @@
 @extends("layout")
 @section("content")
 <div class="blog-contents">
-    <p style="margin-bottom: 30px;">
-        該当件数：{{ $Threadcount }}
-    </p>
+    <div class="search-data">
+        <h3 style="margin-right: 3vw;">
+            検索ワード：{{$searchWord}}</h3>
+        <h3>
+            該当件数：{{ $Threadcount }}
+        </h3>
+    </div>
     <form action="/search" class="search-form">
         <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
         <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>

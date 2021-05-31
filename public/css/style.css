@@ -162,6 +162,13 @@ ul li a {
 .search-btn{
     padding: 6px;
 }
+.search-data{
+    display: flex;
+    margin-bottom: 30px;
+}
+.search-data h3{
+    font-weight: lighter;
+}
 .list-title {
     margin: 0 auto;
     margin-top: 40px;

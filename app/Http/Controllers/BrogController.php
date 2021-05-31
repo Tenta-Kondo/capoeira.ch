@@ -156,7 +156,6 @@ class BrogController extends Controller
         return view('subscription.subscription')->with([
             'intent' => $user->createSetupIntent()
         ]);
-        
     }
     public function search(Request $request)
     {
@@ -164,8 +163,8 @@ class BrogController extends Controller
         $comment = Comment::all();
         $image = Image::all();
         $searchThread = Blogapp::where('title', 'like', "%$searchWord%")->paginate(8);
-        $Threadcount =Blogapp::where('title', 'like', "%$searchWord%")->count();
-       
-        return view("Home.search", compact("searchThread", "comment", "image","Threadcount"));
+        $Threadcount = Blogapp::where('title', 'like', "%$searchWord%")->count();
+
+        return view("Home.search", compact("searchThread", "comment", "image", "Threadcount", "searchWord"));
     }
 }
