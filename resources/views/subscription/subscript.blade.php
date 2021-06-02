@@ -4,6 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        #card-element {
+            border: black 0.2px solid;
+        }
     </style>
 </head>
 
