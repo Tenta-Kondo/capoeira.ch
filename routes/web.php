@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,9 +32,19 @@ Route::get('/success', "App\Http\Controllers\BrogController@success")->middlewar
 
 Auth::routes();
 
-Route::get('/subscription', 'App\Http\Controllers\User\Ajax\SubscriptionController@index')->name('stripe.subscription');
-Route::post('/subscription/afterpay', 'StripeController@afterpay')->name('stripe.afterpay');
 Route::get('/search', "App\Http\Controllers\BrogController@search")->middleware('auth');
+
+Route::get('/subscription', 'App\Http\Controllers\User\Ajax\SubscriptionController@index')->name('stripe.subscription');
+Route::get('/user/payment/form', 'App\Http\Controllers\User\Ajax\SubscriptionController@getPaymentForm')->name('user.payment.form');
+Route::post('/user/payment/store', 'App\Http\Controllers\User\Ajax\SubscriptionController@storePaymentInfo')->name('user.payment.store');
+Route::post('/user/subscribe', function (Request $request) {
+    $request->user()->newSubscription(
+        'default',
+        'test-plan'
+    )->create($request->paymentMethodId);
+
+    // ...
+});
 
 // Route::prefix('user')->middleware(['auth'])->group(function () {
 

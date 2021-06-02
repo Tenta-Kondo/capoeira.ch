@@ -12,71 +12,107 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Cashier\Cashier;
 use Stripe\Stripe;
 use Stripe\Charge;
-
+use App\Models\Payment;
 
 class SubscriptionController extends Controller
 {
-//     public function subscribe(Request $request)
-//     {
-//         $user = User::find(1);
-//         $user->newSubscription('main', '
-//         prod_JKz92ZRkooZ9dc')->create($stripeToken, ['email' => $email, 'phone' => $phone, 'name' => $name,]);
-//         if ($request->user() && !$request->user()->subscribed('main')) {
-//             // このユーザーは支払っていない顧客
-//             return redirect('billing');
-//         }
-//         return $next($request);
-//         if ($user->subscription('main')->onTrial()) {
-//             //
-//         }
-//         if ($user->subscribedToPlan('monthly', 'main')) {
-//             //
-//         }
-//     }
-//     public function cancsl(Request $request)
-//     {
-//         $request->user()->subscription('main')->cancel();
-//     }
+  // public function index () {
+  //   return view("subscription.subscript", [
+  //     $user = Auth::user();
+  //     'intent' => $user->createSetupIntent()]);
+  // }
+
+  // public function createSubscription (Request $request) {
+  //   $user = Auth::user();
+  //   $stripeToken = $request -> stripeToken;
+  //   $user->newSubscription('main', 'price_1IvLOfGgpEHLIOoeGFs7MVwp')->create($stripeToken);
+  // }
 
 
-    
-//     public function subscription(Request $request){
-//       $user=Auth::user();
-//         return view('post.subscription',  [
-//            'intent' => $user->createSetupIntent()
-//         ]);
-    
-//     }
-    
 
-//     public function afterpay(Request $request){
-//         // ログインユーザーを$userとする
-//         $user=Auth::user();
- 
-//         // またStripe顧客でなければ、新規顧客にする
-//         $stripeCustomer = $user->createOrGetStripeCustomer();
- 
-//         // フォーム送信の情報から$paymentMethodを作成する
-//         $paymentMethod=$request->input('stripePaymentMethod');
- 
-//         // プランはconfigに設定したbasic_plan_idとする
-//         $plan=config('services.stripe.basic_plan_id');
-        
-//         // 上記のプランと支払方法で、サブスクを新規作成する
-//         $user->newSubscription('default', $plan)
-//         ->create($paymentMethod);
- 
-//         // 処理後に'ルート設定'にページ移行
-//         return redirect()->route('/SiteTop');
-// }
+  public function getCurrentPayment()
+  {
+    $user = Auth::user(); //要するにUser情報を取得したい
+    $defaultCard = Payment::getDefaultcard($user);
 
-public function index () {
-    return view("subscription.subscript");
+    return view('user.payment.index', compact('user', 'defaultCard'));
   }
 
-  public function createSubscription (Request $request) {
-    $user = Auth::user();
-    $stripeToken = $request -> stripeToken;
-    $user->newSubscription('main', 'price_1IvLOfGgpEHLIOoeGFs7MVwp')->create($stripeToken);
+  public function getPaymentForm()
+  {
+    $user = Auth::user(); //要するにUser情報を取得したい
+    return view('user.payment.form');
+  }
+
+
+  public function storePaymentInfo(Request $request)
+  {
+    /**
+     * フロントエンドから送信されてきたtokenを取得
+     * これがないと一切のカード登録が不可
+     **/
+    $token = $request->stripeToken;
+    $user = Auth::user(); //要するにUser情報を取得したい
+    $ret = null;
+
+    /**
+     * 当該ユーザーがtokenもっていない場合Stripe上でCustomer（顧客）を作る必要がある
+     * これがないと一切のカード登録が不可
+     **/
+    if ($token) {
+
+      /**
+       *  Stripe上にCustomer（顧客）が存在しているかどうかによって処理内容が変わる。
+       *
+       * 「初めての登録」の場合は、Stripe上に「Customer（顧客」と呼ばれる単位の登録をして、その後に
+       * クレジットカードの登録が必要なので、一連の処理を内包しているPaymentモデル内のsetCustomer関数を実行
+       *
+       * 「2回目以降」の登録（別のカードを登録など）の場合は、「Customer（顧客」を新しく登録してしまうと二重顧客登録になるため、
+       *  既存のカード情報を取得→削除→新しいカード情報の登録という流れに。
+       *
+       **/
+
+      if (!$user->stripe_id) {
+        $result = Payment::setCustomer($token, $user);
+
+        /* card error */
+        if (!$result) {
+          $errors = "カード登録に失敗しました。入力いただいた内容に相違がないかを確認いただき、問題ない場合は別のカードで登録を行ってみてください。";
+          return redirect('/user/payment/form')->with('errors', $errors);
+        }
+      } else {
+        $defaultCard = Payment::getDefaultcard($user);
+        if (isset($defaultCard['id'])) {
+          Payment::deleteCard($user);
+        }
+
+        $result = Payment::updateCustomer($token, $user);
+
+        /* card error */
+        if (!$result) {
+          $errors = "カード登録に失敗しました。入力いただいた内容に相違がないかを確認いただき、問題ない場合は別のカードで登録を行ってみてください。";
+          return redirect('/user/payment/form')->with('errors', $errors);
+        }
+      }
+    } else {
+      return redirect('/user/payment/form')->with('errors', '申し訳ありません、通信状況の良い場所で再度ご登録をしていただくか、しばらく立ってから再度登録を行ってみてください。');
+    }
+
+
+    return redirect('/user/payment')->with("success", "カード情報の登録が完了しました。");
+  }
+
+
+  public function deletePaymentInfo()
+  {
+    $user = User::find(Auth::id());
+
+    $result = Payment::deleteCard($user);
+
+    if ($result) {
+      return redirect('/user/payment')->with('success', 'カード情報の削除が完了しました。');
+    } else {
+      return redirect('/user/payment')->with('errors', 'カード情報の削除に失敗しました。恐れ入りますが、通信状況の良い場所で再度お試しいただくか、しばらく経ってから再度お試しください。');
+    }
   }
 }
