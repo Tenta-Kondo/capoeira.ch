@@ -71,7 +71,7 @@ class SubscriptionController extends Controller
 // }
 
 public function index () {
-    return view("subscription.subscription");
+    return view("subscription.subscript");
   }
 
   public function createSubscription (Request $request) {
