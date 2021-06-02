@@ -6,6 +6,8 @@
     <style>
         #card-element {
             border: black 0.2px solid;
+            width: 50%;
+            padding: 10px;
         }
     </style>
 </head>
