@@ -32,7 +32,7 @@ Route::get('/success', "App\Http\Controllers\BrogController@success")->middlewar
 
 Auth::routes();
 
-Route::get('/subscription', 'SubscriptionController@subscription')->name('stripe.subscription');
+Route::get('/subscription', 'SubscriptionController@index')->name('stripe.subscription');
 Route::post('/subscription/afterpay', 'StripeController@afterpay')->name('stripe.afterpay');
 Route::get('/search', "App\Http\Controllers\BrogController@search")->middleware('auth');
 
