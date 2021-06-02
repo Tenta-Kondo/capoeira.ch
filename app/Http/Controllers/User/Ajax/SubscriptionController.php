@@ -71,6 +71,7 @@ class SubscriptionController extends Controller
 // }
 
 public function index () {
+  dd("err");
     return view("subscription.subscript");
   }
 
