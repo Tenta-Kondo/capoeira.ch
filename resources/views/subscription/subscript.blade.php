@@ -14,14 +14,28 @@
         <div class="card-body">
             <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
                 {{ csrf_field() }}
-                <input id="card-holder-name" type="text">
+                <div class="form-group">
+                    <label for="name">カード番号</label>
+                    <div id="cardNumber"></div>
+                </div>
 
-                <!-- ストライプ要素プレースホルダ -->
-                <div id="card-element"></div>
+                <div class="form-group">
+                    <label for="name">セキュリティコード</label>
+                    <div id="securityCode"></div>
+                </div>
 
-                <button id="card-button">
-                    Process Payment
-                </button>
+                <div class="form-group">
+                    <label for="name">有効期限</label>
+                    <div id="expiration"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">カード名義</label>
+                    <input type="text" name="cardName" id="cardName" class="form-control" value="" placeholder="カード名義を入力">
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="create_token" class="btn btn-primary">カードを登録する</button>
+                </div>
             </form>
         </div>
     </div>
