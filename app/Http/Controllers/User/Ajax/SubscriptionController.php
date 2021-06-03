@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User\Ajax;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Models\User;
+use App\Models\User;
 use App\Http\Requests\SubscribeRequest;
 use Stripe\Product;
 use Stripe\Plan;

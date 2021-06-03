@@ -11,16 +11,19 @@
 <body>
     <div id="app" class="container">
         <h1 class="mb-4">Capoeira.ch 有料会員</h1>
-        <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
-            <input id="card-holder-name" type="text">
+        <div class="card-body">
+            <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
+                {{ csrf_field() }}
+                <input id="card-holder-name" type="text">
 
-            <!-- ストライプ要素プレースホルダ -->
-            <div id="card-element"></div>
+                <!-- ストライプ要素プレースホルダ -->
+                <div id="card-element"></div>
 
-            <button id="card-button">
-                Process Payment
-            </button>
-        </form>
+                <button id="card-button">
+                    Process Payment
+                </button>
+            </form>
+        </div>
     </div>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
