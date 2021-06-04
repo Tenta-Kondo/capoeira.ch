@@ -53,8 +53,18 @@
                 padding: "10px"
             }
         };
-        const cardElement = elements.create('card');
-        cardElement.mount('#card-element');
+        const cardNumber = elements.create('cardNumber', {
+            style: style
+        });
+        cardNumber.mount('#cardNumber');
+        const cardCvc = elements.create('cardCvc', {
+            style: style
+        });
+        cardCvc.mount('#securityCode');
+        const cardExpiry = elements.create('cardExpiry', {
+            style: style
+        });
+        cardExpiry.mount('#expiration');
 
         document.querySelector('#form_payment').addEventListener('submit', function(e) {
             /* 何も処理をかまさないとそのままクレジットカード情報が送信されてしまうので一旦HTMLのFormタグがが従来もっている送信機能を停止させる。 */
