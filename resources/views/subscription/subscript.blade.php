@@ -13,6 +13,12 @@
 <body>
     <div id="app" class="container">
         <h1 class="mb-4">Capoeira.ch 有料会員</h1>
+
+        @if (session('errors'))
+        <p class="flash_message">
+            {{ session('errors') }}
+        </p>
+        @endif
         <div class="card-body">
             <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
                 {{ csrf_field() }}
