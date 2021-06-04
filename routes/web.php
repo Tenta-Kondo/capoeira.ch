@@ -35,6 +35,7 @@ Auth::routes();
 Route::get('/search', "App\Http\Controllers\BrogController@search")->middleware('auth');
 
 Route::get('/subscription', 'App\Http\Controllers\User\Ajax\SubscriptionController@index')->name('stripe.subscription');
+Route::get('/user/payment', 'User\PaymentController@getCurrentPayment')->name('user.payment');
 Route::get('/user/payment/form', 'App\Http\Controllers\User\Ajax\SubscriptionController@getPaymentForm')->name('user.payment.form');
 Route::post('/user/payment/store', 'App\Http\Controllers\User\Ajax\SubscriptionController@storePaymentInfo')->name('user.payment.store');
 Route::post('/user/subscribe', function (Request $request) {
