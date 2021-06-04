@@ -35,7 +35,7 @@ class SubscriptionController extends Controller
     $user = Auth::user(); //要するにUser情報を取得したい
     $defaultCard = Payment::getDefaultcard($user);
 
-    return view('user.payment.index', compact('user', 'defaultCard'));
+    return view('subscription.index', compact('user', 'defaultCard'));
   }
 
   public function getPaymentForm()
