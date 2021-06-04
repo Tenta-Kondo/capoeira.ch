@@ -41,7 +41,7 @@ class SubscriptionController extends Controller
   public function getPaymentForm()
   {
     $user = Auth::user(); //要するにUser情報を取得したい
-    return view('user.payment.form');
+    return view('subscription.subscript', compact("user"));
   }
 
 
