@@ -39,7 +39,7 @@ class SubscriptionController extends Controller
 
     if ($token) {
 
-      dd("err");
+   
       /**
        *  Stripe上にCustomer（顧客）が存在しているかどうかによって処理内容が変わる。
        *
@@ -57,6 +57,7 @@ class SubscriptionController extends Controller
 
         /* card error */
         if (!$result) {
+          dd("errrr");
           $errors = "カード登録に失敗しました。入力いただいた内容に相違がないかを確認いただき、問題ない場合は別のカードで登録を行ってみてください。";
           return redirect('/user/payment/form')->with('errors', $errors);
         }
@@ -71,6 +72,7 @@ class SubscriptionController extends Controller
 
         /* card error */
         if (!$result) {
+          dd("rgr");
           $errors = "カード登録に失敗しました。入力いただいた内容に相違がないかを確認いただき、問題ない場合は別のカードで登録を行ってみてください。";
           return redirect('/user/payment/form')->with('errors', $errors);
         }
