@@ -60,7 +60,7 @@ class SubscriptionController extends Controller
      * これがないと一切のカード登録が不可
      **/
     if ($token) {
-     
+
 
       /**
        *  Stripe上にCustomer（顧客）が存在しているかどうかによって処理内容が変わる。
@@ -102,7 +102,7 @@ class SubscriptionController extends Controller
       return redirect('/user/payment/form')->with('errors', '申し訳ありません、通信状況の良い場所で再度ご登録をしていただくか、しばらく立ってから再度登録を行ってみてください。');
     }
 
-
+    dd("err5");
     return redirect('/user/payment')->with("success", "カード情報の登録が完了しました。");
   }
 
