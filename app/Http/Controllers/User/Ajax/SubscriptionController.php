@@ -60,7 +60,7 @@ class SubscriptionController extends Controller
      * これがないと一切のカード登録が不可
      **/
     if ($token) {
-      dd("err");
+
 
       /**
        *  Stripe上にCustomer（顧客）が存在しているかどうかによって処理内容が変わる。
@@ -74,6 +74,7 @@ class SubscriptionController extends Controller
        **/
 
       if (!$user->stripe_id) {
+        dd("err");
         $result = Payment::setCustomer($token, $user);
 
         /* card error */
@@ -82,6 +83,7 @@ class SubscriptionController extends Controller
           return redirect('/user/payment/form')->with('errors', $errors);
         }
       } else {
+        dd("err2");
         $defaultCard = Payment::getDefaultcard($user);
         if (isset($defaultCard['id'])) {
           Payment::deleteCard($user);
