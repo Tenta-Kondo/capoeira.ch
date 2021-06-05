@@ -16,23 +16,9 @@ use App\Models\Payment;
 
 class SubscriptionController extends Controller
 {
-  // public function index () {
-  //   return view("subscription.subscript", [
-  //     $user = Auth::user();
-  //     'intent' => $user->createSetupIntent()]);
-  // }
-
-  // public function createSubscription (Request $request) {
-  //   $user = Auth::user();
-  //   $stripeToken = $request -> stripeToken;
-  //   $user->newSubscription('main', 'price_1IvLOfGgpEHLIOoeGFs7MVwp')->create($stripeToken);
-  // }
-
-
-
   public function getCurrentPayment()
   {
-    $user = Auth::user(); //要するにUser情報を取得したい
+    $user = Auth::user();
     $defaultCard = Payment::getDefaultcard($user);
 
     return view('subscription.index', compact('user', 'defaultCard'));
@@ -40,28 +26,20 @@ class SubscriptionController extends Controller
 
   public function getPaymentForm()
   {
-    $user = Auth::user(); //要するにUser情報を取得したい
+    $user = Auth::user();
     return view('subscription.subscript', compact("user"));
   }
 
 
   public function storePaymentInfo(Request $request)
   {
-    /**
-     * フロントエンドから送信されてきたtokenを取得
-     * これがないと一切のカード登録が不可
-     **/
     $token = $request->stripeToken;
-    $user = Auth::user(); //要するにUser情報を取得したい
+    $user = Auth::user();
     $ret = null;
 
-    /**
-     * 当該ユーザーがtokenもっていない場合Stripe上でCustomer（顧客）を作る必要がある
-     * これがないと一切のカード登録が不可
-     **/
     if ($token) {
 
-
+      dd("err");
       /**
        *  Stripe上にCustomer（顧客）が存在しているかどうかによって処理内容が変わる。
        *
