@@ -41,7 +41,7 @@ class Payment extends Model
              *  */
             return false;
         }
-
+        dd("err");
         $targetCustomer = null;
         if (isset($customer->id)) {
             $targetCustomer = User::find(Auth::id()); //要するに当該顧客のデータをUserテーブルから引っ張りたい

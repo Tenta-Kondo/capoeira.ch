@@ -52,7 +52,6 @@ class SubscriptionController extends Controller
      * これがないと一切のカード登録が不可
      **/
     $token = $request->stripeToken;
-    dd($token);
     $user = Auth::user(); //要するにUser情報を取得したい
     $ret = null;
 
