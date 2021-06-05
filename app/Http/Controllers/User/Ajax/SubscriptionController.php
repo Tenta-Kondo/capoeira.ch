@@ -60,7 +60,7 @@ class SubscriptionController extends Controller
      * これがないと一切のカード登録が不可
      **/
     if ($token) {
-      dd("err");
+     
 
       /**
        *  Stripe上にCustomer（顧客）が存在しているかどうかによって処理内容が変わる。
