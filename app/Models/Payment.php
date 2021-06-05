@@ -119,6 +119,7 @@ class Payment extends Model
                 ];
             }
         }
+        dd($default_card);
         return $default_card;
     }
 
