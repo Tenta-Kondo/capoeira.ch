@@ -20,7 +20,6 @@ class Payment extends Model
     public static function setCustomer($token, $user)
     {
         \Stripe\Stripe::setApiKey("sk_test_51Ib03OGgpEHLIOoelzMfMr8kE1oqn2NwY58SITG1blgp7s3vMBIreY7PPOYij33VgX1Dg3tJu0kMyoRMJtAZ5Pmm00swm1ct7J");
-        dd("err");
 
         //Stripe上に顧客情報をtokenを使用することで保存
         try {
@@ -41,7 +40,7 @@ class Payment extends Model
              *  */
             return false;
         }
-        
+
         $targetCustomer = null;
         if (isset($customer->id)) {
             $targetCustomer = User::find(Auth::id()); //要するに当該顧客のデータをUserテーブルから引っ張りたい
