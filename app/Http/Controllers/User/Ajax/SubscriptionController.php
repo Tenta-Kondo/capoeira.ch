@@ -38,14 +38,14 @@ class SubscriptionController extends Controller
     $ret = null;
 
     if ($token) {
-      dd("wwwww");
+
       if (!$user->stripe_id) {
-        dd("err2");
+        dd("err1");
         $result = Payment::setCustomer($token, $user);
 
         /* card error */
         if (!$result) {
-          dd("errrr");
+          dd("err2");
           $errors = "カード登録に失敗しました。入力いただいた内容に相違がないかを確認いただき、問題ない場合は別のカードで登録を行ってみてください。";
           return redirect('/user/payment/form')->with('errors', $errors);
         }
