@@ -38,19 +38,7 @@ class SubscriptionController extends Controller
     $ret = null;
 
     if ($token) {
-
-   
-      /**
-       *  Stripe上にCustomer（顧客）が存在しているかどうかによって処理内容が変わる。
-       *
-       * 「初めての登録」の場合は、Stripe上に「Customer（顧客」と呼ばれる単位の登録をして、その後に
-       * クレジットカードの登録が必要なので、一連の処理を内包しているPaymentモデル内のsetCustomer関数を実行
-       *
-       * 「2回目以降」の登録（別のカードを登録など）の場合は、「Customer（顧客」を新しく登録してしまうと二重顧客登録になるため、
-       *  既存のカード情報を取得→削除→新しいカード情報の登録という流れに。
-       *
-       **/
-
+      dd("wwwww");
       if (!$user->stripe_id) {
         dd("err2");
         $result = Payment::setCustomer($token, $user);
@@ -79,7 +67,7 @@ class SubscriptionController extends Controller
       }
     } else {
       dd("err4");
-      return redirect('/user/payment/form')->with('errors', '申し訳ありません、通信状況の良い場所で再度ご登録をしていただくか、しばらく立ってから再度登録を行ってみてください。');
+      return redirect('/user/payment/form')->with('errors', '申し訳ありません、通信状況の良い場所で再度ご登録をしていただくか、しばらく立ってから再度登録を行ってください。');
     }
 
     dd("err5");
