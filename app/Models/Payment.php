@@ -19,7 +19,7 @@ class Payment extends Model
 
     public static function setCustomer($token, $user)
     {
-        \Stripe\Stripe::setApiKey(\Config::get('payment.stripe_secret_key'));
+        \Stripe\Stripe::setApiKey("sk_test_51Ib03OGgpEHLIOoelzMfMr8kE1oqn2NwY58SITG1blgp7s3vMBIreY7PPOYij33VgX1Dg3tJu0kMyoRMJtAZ5Pmm00swm1ct7J");
 
 
         //Stripe上に顧客情報をtokenを使用することで保存

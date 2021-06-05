@@ -13,7 +13,6 @@
 <body>
     <div id="app" class="container">
         <h1 class="mb-4">Capoeira.ch 有料会員</h1>
-
         @if (session('errors'))
         <p class="flash_message">
             {{ session('errors') }}
