@@ -38,7 +38,7 @@ class SubscriptionController extends Controller
     $ret = null;
 
     if ($token) {
-
+     
       if (!$user->stripe_id) {
         dd("err1");
         $result = Payment::setCustomer($token, $user);

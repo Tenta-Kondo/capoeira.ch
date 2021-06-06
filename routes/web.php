@@ -38,14 +38,15 @@ Route::get('/subscription', 'App\Http\Controllers\User\Ajax\SubscriptionControll
 Route::get('/user/payment', 'App\Http\Controllers\User\Ajax\SubscriptionController@getCurrentPayment')->name('user.payment');
 Route::get('/user/payment/form', 'App\Http\Controllers\User\Ajax\SubscriptionController@getPaymentForm')->name('user.payment.form');
 Route::post('/user/payment/store', 'App\Http\Controllers\User\Ajax\SubscriptionController@storePaymentInfo')->name('user.payment.store');
-Route::post('/user/subscribe', function (Request $request) {
-    $request->user()->newSubscription(
-        'default',
-        'test-plan'
-    )->create($request->paymentMethodId);
+Route::post('stripe/webhook', 'WebhookController@handleWebhook');
+// Route::post('/user/subscribe', function (Request $request) {
+//     $request->user()->newSubscription(
+//         'default',
+//         'test-plan'
+//     )->create($request->paymentMethodId);
 
-    // ...
-});
+//     // ...
+// });
 
 // Route::prefix('user')->middleware(['auth'])->group(function () {
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style>
 
@@ -21,6 +22,7 @@
         <div class="card-body">
             <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
                 {{ csrf_field() }}
+                @csrf
                 <div class="form-group">
                     <label for="name">カード番号</label>
                     <div id="cardNumber"></div>
