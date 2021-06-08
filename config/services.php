@@ -33,7 +33,7 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'webhook' => [
-            'secret' => env('STRIPE_WEBHOOK'),
+            'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
         'secret' => env('STRIPE_SECRET'),
@@ -44,6 +44,6 @@ return [
         'plans' => [
             env('STRIPE_ID') => 'ベーシック'
         ]
-        ],
+    ],
 
 ];
