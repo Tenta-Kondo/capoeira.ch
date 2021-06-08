@@ -27,7 +27,7 @@ class SubscriptionController extends Controller
   public function getPaymentForm()
   {
     $user = Auth::user();
-    return view('subscription.subscript');
+    return view('subscription.subscript', compact("user"));
   }
 
 
