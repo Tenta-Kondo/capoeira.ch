@@ -21,7 +21,7 @@
         </a>
     </div>
 
-    @if($user->status === 0)
+    @if(!$user->status)
     <div class="nav-link">
         <a href="/user-page">
             <p>有料会員登録はこちら</p>
