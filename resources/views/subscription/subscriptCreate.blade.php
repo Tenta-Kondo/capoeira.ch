@@ -35,7 +35,7 @@
                     </li>
                     <li class="list-group-item">
                         <span>会員種別：</span>
-                        @if(!$user->status)
+                        @if($user->status === 0)
                         <span>無料会員</span>
                         @elseif($user->status === 1)
                         <span>有料会員</span>
@@ -44,7 +44,7 @@
                     <li class="list-group-item">
 
                         @if($user->stripe_id || $defaultCard2 )
-                        @if(!$user->status)
+                        @if($user->status === 0)
 
                         <form action="/user/paid" method="POST" onSubmit="return subscCheckSubmit()">
                             @csrf

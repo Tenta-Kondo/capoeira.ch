@@ -20,8 +20,8 @@
             <p>掲示板へ行く</p>
         </a>
     </div>
-  
-    @if(!$user->status === 1)
+
+    @if($user->status === 0)
     <div class="nav-link">
         <a href="/user-page">
             <p>有料会員登録はこちら</p>
