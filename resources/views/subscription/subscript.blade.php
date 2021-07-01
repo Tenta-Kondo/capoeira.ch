@@ -21,7 +21,7 @@
         @endif
         <div class="card-body">
             <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
-                @csrf
+                {{ csrf_field() }}
                 <div class="form-group">
                     <label for="name">カード番号</label>
                     <div id="cardNumber"></div>

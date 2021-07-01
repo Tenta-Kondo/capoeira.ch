@@ -29,7 +29,12 @@ class BrogController extends Controller
     }
     public function sitetop()
     {
-        return view("Home.SiteTop");
+        $user = Auth::user();
+        if ($user) {
+            return view("Home.SiteTop", compact("user"));
+        } else {
+            return view("Home.SiteTop-guest");
+        }
     }
     public function success()
     {
@@ -166,5 +171,10 @@ class BrogController extends Controller
         $Threadcount = Blogapp::where('title', 'like', "%$searchWord%")->count();
 
         return view("Home.search", compact("searchThread", "comment", "image", "Threadcount", "searchWord"));
+    }
+    public function test()
+    {
+
+        return view("Subscription.test");
     }
 }

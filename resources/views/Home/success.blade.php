@@ -14,7 +14,7 @@
     @endif
     @else
     <div class="login-data">
-        <p id="navbarDropdown" class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        <p id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             USER NAME : {{ Auth::user()->name }}
         </p>
         <p>MAIL ADRESS : {{ Auth::user()->email }}</p>

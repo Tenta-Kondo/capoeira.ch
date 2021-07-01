@@ -26,7 +26,7 @@ Route::get('/success', [App\Http\Controllers\HomeController::class, 'index'])->n
 Route::post("/comment", "App\Http\Controllers\BrogController@comment")->middleware('auth');
 // Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
-Route::get('/user-page', "App\Http\Controllers\BrogController@userpage")->middleware('auth');
+Route::get('/user-page', "App\Http\Controllers\User\Ajax\SubscriptionController@userpage")->middleware('auth');
 Route::get('/', "App\Http\Controllers\BrogController@sitetop");
 Route::get('/success', "App\Http\Controllers\BrogController@success")->middleware('auth');
 
@@ -35,27 +35,10 @@ Auth::routes();
 Route::get('/search', "App\Http\Controllers\BrogController@search")->middleware('auth');
 
 Route::get('/subscription', 'App\Http\Controllers\User\Ajax\SubscriptionController@index')->name('stripe.subscription');
-Route::get('/user/payment', 'App\Http\Controllers\User\Ajax\SubscriptionController@getCurrentPayment')->name('user.payment');
-Route::get('/user/payment/form', 'App\Http\Controllers\User\Ajax\SubscriptionController@getPaymentForm')->name('user.payment.form');
-Route::post('/user/payment/store', 'App\Http\Controllers\User\Ajax\SubscriptionController@storePaymentInfo')->name('user.payment.store');
-Route::post('stripe/webhook', 'WebhookController@handleWebhook');
-// Route::post('/user/subscribe', function (Request $request) {
-//     $request->user()->newSubscription(
-//         'default',
-//         'test-plan'
-//     )->create($request->paymentMethodId);
-
-//     // ...
-// });
-
-// Route::prefix('user')->middleware(['auth'])->group(function () {
-
-//     // 課金
-//     Route::get('subscription', 'App\Http\Controllers\BrogController@subsc')->middleware('auth');
-//     Route::get('ajax/subscription/status', 'App\Http\Controllers\User\Ajax\SubscriptionController@status')->middleware('auth');
-//     Route::post('ajax/subscription/subscribe', 'App\Http\Controllers\User\Ajax\SubscriptionController@subscribe')->middleware('auth');
-//     Route::post('ajax/subscription/cancel', 'App\Http\Controllers\User\Ajax\SubscriptionController@cancel')->middleware('auth');
-//     Route::post('ajax/subscription/resume', 'App\Http\Controllers\User\Ajax\SubscriptionController@resume')->middleware('auth');
-//     Route::post('ajax/subscription/change_plan', 'App\Http\Controllers\User\Ajax\SubscriptionController@change_plan')->middleware('auth');
-//     Route::post('ajax/subscription/update_card', 'App\Http\Controllers\User\Ajax\SubscriptionController@update_card')->middleware('auth');
-// });
+Route::get('/user/payment', 'App\Http\Controllers\User\Ajax\SubscriptionController@getCurrentPayment')->name('user.payment')->middleware('auth');
+Route::get('/user/payment/form', 'App\Http\Controllers\User\Ajax\SubscriptionController@getPaymentForm')->name('user.payment.form')->middleware('auth');
+Route::post('/user/payment/store', 'App\Http\Controllers\User\Ajax\SubscriptionController@storePaymentInfo')->name('user.payment.store')->middleware('auth');
+Route::get('/user/paidpage', 'App\Http\Controllers\User\Ajax\SubscriptionController@paidpage');
+Route::post('/delete/card', 'App\Http\Controllers\User\Ajax\SubscriptionController@deletePaymentInfo');
+Route::post('/user/paid', 'App\Http\Controllers\User\Ajax\SubscriptionController@becomePaidMember')->name('user.paid');
+Route::post('/user/cancel', 'App\Http\Controllers\User\Ajax\SubscriptionController@cancelPaidMember')->name('user.cancel');
