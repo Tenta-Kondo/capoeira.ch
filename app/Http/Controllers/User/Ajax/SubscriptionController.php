@@ -18,10 +18,9 @@ class SubscriptionController extends Controller
 {
   public function userpage()
   {
-    return redirect("/top");
-    // $user = Auth::user();
-    // $defaultCard2 = "";
-    // return view('Subscription.subscriptCreate', compact('user', 'defaultCard2'));
+    $user = Auth::user();
+    $defaultCard2 = "";
+    return view('Subscription.subscriptCreate', compact('user', 'defaultCard2'));
   }
   public function getCurrentPayment()
   {
