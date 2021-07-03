@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
         //ここ
         $defaultCard2 = Payment::getDefaultcard($token, $user);
 
-        return view('Subscription.subscriptCreate', compact('user', 'defaultCard2'))->with("success", "カード情報の登録が完了しました。");
+        return view('subscription.subscriptCreate', compact('user', 'defaultCard2'))->with("success", "カード情報の登録が完了しました。");
       }
     } else {
 
@@ -72,7 +72,7 @@ class SubscriptionController extends Controller
 
     $defaultCard2 = Payment::getDefaultcard($token, $user);
 
-    return view('Subscription.subscriptCreate', compact('user', 'defaultCard2'))->with("success", "カード情報の登録が完了しました。");
+    return view('subscription.subscriptCreate', compact('user', 'defaultCard2'))->with("success", "カード情報の登録が完了しました。");
 
     // return redirect('/user/payment')->with("success", "カード情報の登録が完了しました。")->with(compact("token"));
   }
@@ -127,7 +127,7 @@ class SubscriptionController extends Controller
 
     $user->status = 1;
     $user->save();
-    return view('Subscription.subscriptCreate', compact('user'))->with("success", "有料会員登録が完了しました。");
+    return view('subscription.subscriptCreate', compact('user'))->with("success", "有料会員登録が完了しました。");
   }
 
 
@@ -147,7 +147,7 @@ class SubscriptionController extends Controller
 
     $user->status = 0;
     $user->save();
-    return view('Subscription.subscriptCreate', compact('user'))->with("success", "有料会員解約が完了しました。");
+    return view('subscription.subscriptCreate', compact('user'))->with("success", "有料会員解約が完了しました。");
   }
   public function paidpage()
   {
