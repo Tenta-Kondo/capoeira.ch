@@ -18,9 +18,10 @@ class SubscriptionController extends Controller
 {
   public function userpage()
   {
-    $user = Auth::user();
-    $defaultCard2 = "";
-    return view('Subscription.subscriptCreate', compact('user', 'defaultCard2'));
+    return redirect("/top");
+    // $user = Auth::user();
+    // $defaultCard2 = "";
+    // return view('Subscription.subscriptCreate', compact('user', 'defaultCard2'));
   }
   public function getCurrentPayment()
   {
@@ -43,11 +44,8 @@ class SubscriptionController extends Controller
 
   public function storePaymentInfo(Request $request)
   {
-
     $token = $request->stripeToken;
-
     $user = Auth::user();
-
     $ret = null;
 
     if ($token) {
