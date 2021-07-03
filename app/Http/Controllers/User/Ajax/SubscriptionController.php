@@ -20,7 +20,6 @@ class SubscriptionController extends Controller
   {
     $user = Auth::user();
     $defaultCard2 = "";
-    dd($user, $defaultCard2);
     return view('Subscription.subscriptCreate', compact('user', 'defaultCard2'));
   }
   public function getCurrentPayment()
