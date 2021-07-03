@@ -113,12 +113,15 @@ class SubscriptionController extends Controller
       $stripe = new \Stripe\StripeClient(
         \Config::get('payment.stripe_secret_key')
       );
-      $stripe->subscriptions->create([
+      $subscription = $stripe->subscriptions->create([
         'customer' => $user->stripe_id,
         'items' => [
           ['price' => 'price_1IvLOfGgpEHLIOoeGFs7MVwp'],
         ],
       ]);
+
+      $user->subscriptionID = $subscription->id;
+      $user->save();
     } catch (\Stripe\Exception\CardException $e) {
       $body = $e->getJsonBody();
       $errors  = $body['error'];
@@ -127,7 +130,7 @@ class SubscriptionController extends Controller
 
     $user->status = 1;
     $user->save();
-    return view('subscription.subscriptCreate', compact('user'))->with("success", "有料会員登録が完了しました。");
+    return redirect("/user-page")->with("success", "有料会員登録が完了しました。");
   }
 
 
@@ -141,13 +144,13 @@ class SubscriptionController extends Controller
     );
 
     $stripe->subscriptions->cancel(
-      $user->stripe_id, //
+      $user->subscriptionID, //
       []
     );
 
     $user->status = 0;
     $user->save();
-    return view('subscription.subscriptCreate', compact('user'))->with("success", "有料会員解約が完了しました。");
+    return redirect("/user-page")->with("success", "有料会員解約が完了しました。");
   }
   public function paidpage()
   {
