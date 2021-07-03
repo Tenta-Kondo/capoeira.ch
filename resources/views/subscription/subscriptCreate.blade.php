@@ -44,7 +44,7 @@
                     <li class="list-group-item">
 
                         @if($user->stripe_id || $defaultCard2 )
-                        @if(!$user->status)
+                        @if(!$user->status || $user->status === 0)
 
                         <form action="/user/paid" method="POST" onSubmit="return subscCheckSubmit()">
                             @csrf
