@@ -23,27 +23,8 @@ And it has paid features for capoeirista.
 * cleardb
 * heroku
  
-# Installation
- 
-Requirementで列挙したライブラリなどのインストール方法を説明する
- 
-```bash
-pip install huga_package
-```
- 
-# Usage
- 
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
-```
- 
-# Note
- 
-注意点などがあれば書く
+
+
  
 # Author
  
@@ -52,8 +33,8 @@ python demo.py
 
  
 # License
-ライセンスを明示する
+
  
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+"Capoeira.ch" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
  
 
