@@ -29,8 +29,8 @@ And it has paid features for capoeirista.
  
 
 # Installation
-*laravel
- brew install composer 
+*laravel<br>
+ brew install composer   
  composer create-project "laravel/laravel=8.*" アプリケーション名 --prefer-dist
 *cloudinary
   composer require jrm2k6/cloudder<br>
