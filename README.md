@@ -28,7 +28,16 @@ And it has paid features for capoeirista.
 * heroku
  
 
-
+# Installation
+*laravel
+ brew install composer 
+ composer create-project "laravel/laravel=8.*" アプリケーション名 --prefer-dist
+*cloudinary
+  composer require jrm2k6/cloudder<br>
+  php artisan vendor:publish --provider="JD\Cloudder\CloudderServiceProvider"
+  
+*cleardb
+heroku addons:create cleardb:ignite --app アプリケーションid
  
 # Author
  
