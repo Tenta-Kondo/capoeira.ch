@@ -30,13 +30,14 @@ And it has paid features for capoeirista.
 
 # Installation
 *laravel<br>
- brew install composer   
- composer create-project "laravel/laravel=8.*" アプリケーション名 --prefer-dist
-*cloudinary
+  brew install composer   
+  composer create-project "laravel/laravel=8.*" アプリケーション名 --prefer-dist  
+  <br>
+*cloudinary  
   composer require jrm2k6/cloudder<br>
-  php artisan vendor:publish --provider="JD\Cloudder\CloudderServiceProvider"
-  
-*cleardb
+  php artisan vendor:publish --provider="JD\Cloudder\CloudderServiceProvider"  
+  <br>
+*cleardb  
 heroku addons:create cleardb:ignite --app アプリケーションid
  
 # Author
