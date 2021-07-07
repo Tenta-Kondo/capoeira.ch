@@ -5,7 +5,11 @@ capoeirach is a bulletin board for capoeirista. You need to create a free accoun
 # description
 capoeirach is basically free to use and can be used by any group.<br>
 If you register as a paid member, you will be able to access a special thread.<br>
-Upload a video of your movement to that thread and get advice from someone with a instructor or higher rank.
+Upload a video of your movement to that thread and get advice from someone with a instructor or higher rank.<br>
+You can log in as a test user by entering the following e-mail address and password when logging in.<br>
+adress:testuser@gmail.com
+pass:jAvW58wXk5sstnc
+
  
 # Features
  
