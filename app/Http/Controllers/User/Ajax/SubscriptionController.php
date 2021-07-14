@@ -71,8 +71,8 @@ class SubscriptionController extends Controller
     }
 
     $defaultCard2 = Payment::getDefaultcard($token, $user);
-
-    return view('subscription.subscriptCreate', compact('user', 'defaultCard2'))->with("success", "カード情報の登録が完了しました。");
+    $success = "カード情報の登録が完了しました。";
+    return view('subscription.subscriptCreate', compact('user', 'defaultCard2'))->with("success", $success);
 
     // return redirect('/user/payment')->with("success", "カード情報の登録が完了しました。")->with(compact("token"));
   }
@@ -96,7 +96,7 @@ class SubscriptionController extends Controller
     $Customer->update();
 
     if ($result) {
-      return redirect('/user-page')->with("success", "カード情報の削除が完了しました。");
+      return redirect(route("userpage"))->with("success", "カード情報の削除が完了しました。");
     } else {
       return redirect('/user-page')->with("errors", "カード情報の削除に失敗しました。恐れ入りますが、通信状況の良い場所で再度お試しいただくか、しばらく経ってから再度お試しください。");
     }

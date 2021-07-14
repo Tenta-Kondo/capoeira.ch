@@ -38,7 +38,14 @@
                 <a href="/user-page" class="btn-simple user-page-btn">UserInfo</a>
 
             </div>
-            <ul>
+            <div class="hum">
+                <a class="hum-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+            <ul class="nav-menu">
                 <li>
                     <h2 class="btn-simple"><a href="/">Site Top</a></h2>
                 </li>

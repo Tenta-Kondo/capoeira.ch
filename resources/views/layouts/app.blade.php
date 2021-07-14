@@ -39,7 +39,27 @@
                 $(".login-data").toggleClass("position");
             })
         })
+        $(function() {
+            $(".terms").click(function() {
+                $(".modal-bg-terms").toggleClass("block");
+            })
+        })
+        $(function() {
+            $(".privacy").click(function() {
+                $(".modal-bg-privacy").toggleClass("block");
+            })
+        })
+        $(function() {
+            $(".terms-close").click(function() {
+                $(".modal-bg-terms").toggleClass("block");
+            })
+        })
        
+        $(function() {
+            $(".privacy-close").click(function() {
+                $(".modal-bg-privacy").toggleClass("block");
+            })
+        })
     </script>
 </body>
 

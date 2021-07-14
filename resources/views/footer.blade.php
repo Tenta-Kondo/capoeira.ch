@@ -34,8 +34,15 @@
             $("#up,#down").toggleClass("none");
         })
     })
+    $(function() {
+        $(".hum").click(function() {
+            $(".black").toggleClass("black-bg");
+            $(".hum").toggleClass("batsu");
+            $(".nav-menu").toggle("linear");
+        });
+    });
 
-
+ 
 
     function checkSubmit() {
         if (window.confirm('投稿してよろしいですか？')) {

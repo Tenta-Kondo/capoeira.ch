@@ -4,7 +4,7 @@
 
     <div class="sitetop-header">
         <div class="sitetop-title">
-            <h2><span style="font-weight: lighter;">カポエイリスタ用掲示板</span> Capoeira.ch</h2>
+            <h2><span style="font-weight: lighter;">カポエイリスタ用掲示板<br class="br"></span> Capoeira.ch</h2>
         </div>
         <div class="sitetop-nav">
             <p>Capoeira.chは、カポエイリスタによるカポエイリスタの為の掲示板です。<br>

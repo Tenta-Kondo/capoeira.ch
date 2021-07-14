@@ -26,7 +26,7 @@ Route::get('/success', [App\Http\Controllers\HomeController::class, 'index'])->n
 Route::post("/comment", "App\Http\Controllers\BrogController@comment")->middleware('auth');
 // Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
-Route::get('/user-page', "App\Http\Controllers\User\Ajax\SubscriptionController@userpage")->middleware('auth');
+Route::get('/user-page', "App\Http\Controllers\User\Ajax\SubscriptionController@userpage")->middleware('auth')->name("userpage");
 Route::get('/', "App\Http\Controllers\BrogController@sitetop");
 Route::get('/success', "App\Http\Controllers\BrogController@success")->middleware('auth');
 
