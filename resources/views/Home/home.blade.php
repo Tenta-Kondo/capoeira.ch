@@ -6,8 +6,16 @@
     <p class="flash_message">
         {{ session('message') }}
     </p>
+    @elseif(session('deletemessage'))
+    <p class="flash_message">
+        {{ session('deletemessage') }}
+    </p>
+    @elseif(session('updatemessage'))
+    <p class="flash_message">
+        {{ session('updatemessage') }}
+    </p>
     @endif
-    <div class="blog-contents">
+    <div class="main-contents">
         <div class="search-header">
             <h2>Thread List</h2>
             <form action="/search" class="search-form">
@@ -15,54 +23,51 @@
                 <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
             </form>
         </div>
-        @foreach($thread as $threads)
-        <div class="blog-content">
+        <div class="thread-contents">
+            @foreach($thread as $threads)
+            <div class="thread-content">
 
 
-            <div class="thread-head">
-                <p class="right">{{$threads->created_at}}</p>
-                <p>作成者 : {{$threads->username}}</p>
+                <div class="thread-head">
+                    <p class="right">{{$threads->created_at}}</p>
+                    <p>作成者 : {{$threads->username}}</p>
+                </div>
+                <h3 style="margin-top: 20px;"> <a href="/thread/{{$threads->id}}" style="font-weight: lighter;">スレッドタイトル : {{$threads->title}}</a></h3>
+                <p style="margin-top: 10px;"> <a href="/thread/{{$threads->id}}">{{$threads->contents}}</a></p>
                 <?php
-                $class = "";
-                if ($threads->username === Auth::user()->name) {
-                    $class = "flex";
-                }
+                $title = $threads->title;
 
+                $img = $image->where("title", $title)->first();
                 ?>
-                <div class="open-btn <?php echo $class ?>">
-                    <span class="circle"></span>
-                    <span class="circle"></span>
-                    <span class="circle"></span>
-                </div>
+                @if($img)
+                <img src="{{$img->file_path}}" alt="">
+                @endif
+                <div class="right-bottom">
 
-                <div class="btn-group">
-                    <div class="triangle"></div>
-                    <button type="button" onclick="location.href='/blog/edit/{{$threads->id}}'" class="edit-btn ">編集</button>
-                    <button type="button" onSubmit="return checkSubmit()" onclick="location.href='/blog/delete/{{$threads->id}}'" class="delete-btn">削除</button>
+                    <p style="margin-bottom: 5px;"><i class="far fa-comment fa-lg" style="margin-right: 10px;"></i><?php
+                                                                                                                    $id = $threads->id;
+                                                                                                                    $commentN = (int)$id;
+                                                                                                                    $commentcount = $comment->where("commentnumber", $commentN)->count();
+                                                                                                                    echo $commentcount
+                                                                                                                    ?></p>
+                    <a href="/thread/{{$threads->id}}" class="detail-link">スレッドへ</a>
+                    <?php
+                    $class = "";
+                    if ($threads->username === Auth::user()->name) {
+                        $class = "block";
+                    }
+
+                    ?>
+                    <!-- <div class="open-btn <?php echo $class ?>">
+                        <span class="circle"></span>
+                        <span class="circle"></span>
+                        <span class="circle"></span>
+                    </div> -->
+                    <p class="edit-link <?php echo $class ?>"><a href="/blog/edit/{{$threads->id}}"><i class="fas fa-info-circle" style="margin-right: 5px;"></i>スレッドを編集</a></p>
                 </div>
             </div>
-            <h4 style="margin-top: 20px;"> <a href="/thread/{{$threads->id}}" style="font-weight: lighter;">スレッドタイトル : {{$threads->title}}</a></h4>
-            <p style="margin-top: 10px;"> <a href="/thread/{{$threads->id}}">{{$threads->contents}}</a></p>
-            <?php
-            $title = $threads->title;
-
-            $img = $image->where("title", $title)->first();
-            ?>
-            @if($img)
-            <img src="{{$img->file_path}}" alt="">
-            @endif
-            <div class="right-bottom">
-
-                <p>コメント数 : <?php
-                            $id = $threads->id;
-                            $commentN = (int)$id;
-                            $commentcount = $comment->where("commentnumber", $commentN)->count();
-                            echo $commentcount
-                            ?></p>
-                <a href="/thread/{{$threads->id}}" class="detail-link">スレッドへ</a>
-            </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
 
 </main>

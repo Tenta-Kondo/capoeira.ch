@@ -67,7 +67,7 @@ header {
     display: none;
     text-align: center;
     width: 85px;
-    top: 32px;
+    top: 33px;
 }
 
 header h2 {
@@ -165,13 +165,16 @@ ul li a {
     margin-bottom: 50px;
 }
 
-.blog-contents {
+.main-contents {
     width: 90%;
     margin: 0 auto;
     margin-top: 4rem;
 }
-
-.blog-content {
+.thread-contents {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.thread-content {
     margin-bottom: 3rem;
     margin-right: 5px;
     background-color: #ffffff;
@@ -181,9 +184,15 @@ ul li a {
 
     position: relative;
 }
-.blog-content h4 > a,
-.blog-content p > a {
+.thread-content h3 > a,
+.thread-content p > a {
     color: black;
+}
+.thread-content h3 {
+    font-size: 18px;
+}
+.thread-content p {
+    font-size: 14px;
 }
 .all-contents {
     text-align: center;
@@ -192,6 +201,9 @@ ul li a {
     margin-top: 30px;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 60px 80px;
+}
+.all-contents h2{
+    font-weight: lighter;
 }
 .contents {
     width: 90%;
@@ -279,29 +291,9 @@ textarea {
 .err_msg {
     color: red;
 }
-.edit-btn,
-.delete-btn {
-    width: 70px;
-    background-color: #fff;
-    cursor: pointer;
-}
-.btn-group {
-    display: none;
-    position: absolute;
-    right: -24px;
-    top: 62px;
-
-    flex-direction: column;
-}
-.triangle {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid rgb(71, 219, 71);
-    position: absolute;
-    right: 35%;
-    top: -10px;
+.back-btn {
+    color: black;
+    margin-left: 10px;
 }
 .block {
     display: block !important;
@@ -392,32 +384,10 @@ textarea::-webkit-scrollbar {
     background-color: rgb(71, 219, 71);
     color: white;
 }
-.open-btn {
-    width: 23px;
-    height: 23px;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    border: rgb(71, 219, 71) solid 0.3px;
-    transition: 300ms;
+
+.edit-link {
     display: none;
-    position: absolute;
-    top: 22px;
-    right: 0;
-}
-.circle {
-    border-radius: 50%;
-    background-color: rgb(71, 219, 71);
-    width: 17%;
-    height: 17%;
-    display: block;
-    margin: 0 7%;
-}
-.open-btn:hover {
-    background-color: rgb(71, 219, 71);
-}
-.open-btn:hover .circle {
-    background-color: white;
+    margin-top: 20px;
 }
 .container-fluid {
     width: 100%;
@@ -431,7 +401,7 @@ textarea::-webkit-scrollbar {
     position: relative;
 }
 .card {
-    width: 50%;
+    width: 500px;
     padding: 20px 20px;
     margin: 0 auto;
     background-color: white;
@@ -440,11 +410,15 @@ textarea::-webkit-scrollbar {
 .login-form,
 .register-form,
 .reset-form {
-    width: 70%;
+    width: 85%;
     margin: 0 auto;
 }
+.register-form input,
+.login-form input {
+    font-size: 15px;
+}
 .card-form {
-    width: 500px;
+    width: 100%;
 }
 .cardTitle {
     margin-top: 10px;
@@ -454,7 +428,7 @@ textarea::-webkit-scrollbar {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .forget {
     font-size: 80%;
@@ -465,8 +439,10 @@ textarea::-webkit-scrollbar {
     font-size: 80%;
 }
 
-.regi-label {
+.regi-label,
+.log-label {
     margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .open-header {
@@ -532,6 +508,7 @@ textarea::-webkit-scrollbar {
     text-align: right;
     margin-right: 10px;
     margin-bottom: 10px;
+    margin: 20px 10px 10px 0;
 }
 
 .choises {
@@ -730,6 +707,10 @@ img {
 .terms-close {
     margin: 0 auto;
 }
+.terms-privacy {
+    display: flex;
+    margin: 10px auto;
+}
 @media (max-width: 800px) {
     .nav-menu {
         display: none;
@@ -771,5 +752,61 @@ img {
     }
     p {
         font-size: 90%;
+    }
+    .payment-card {
+        padding: 25px;
+        width: 350px;
+    }
+    .list-group-item {
+        font-size: 12.5px;
+    }
+    .card {
+        width: 400px;
+    }
+    .terms,
+    .privacy {
+        font-size: 12px;
+    }
+    .terms-label {
+        font-size: 12px;
+    }
+    .register-form input,
+    .login-form input {
+        font-size: 10px;
+    }
+    .register-form label,
+    .login-form label {
+        font-size: 13px;
+    }
+    .terms-privacy {
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    .thread-content {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+}
+@media (max-width: 530px) {
+    .nav-menu {
+        flex-direction: column;
+    }
+    .batsu {
+        right: 170px;
+    }
+    .nav-menu li {
+        width: 150px;
+    }
+}
+@media (max-width: 484px) {
+    .search-input {
+        font-size: 18px;
+    }
+    .search-btn {
+        padding: 3px;
+    }
+    .main-contents {
+        width: 95%;
     }
 }

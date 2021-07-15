@@ -22,7 +22,7 @@
         <div id="app"></div>
         <div class="nav">
             <!-- <h1 style=" font-family: 'Quicksand', sans-serif;">Nao pode parar</h1> -->
-            <div style="position:relative;">
+            <div class="user-info" style="position:relative;">
                 <p class="user-data btn-simple"> USER NAME : <?php
                                                                 if (empty(Auth::user())) {
                                                                     echo "guest";
@@ -56,11 +56,11 @@
                 $classA = "";
                 $classB = "";
                 if (!empty(Auth::user())) {
-                    $classA = "flex";
+                    $classA = "block";
                     $classB = "none";
                 } else {
                     $classA = "none";
-                    $classB = "flex";
+                    $classB = "block";
                 }
                 ?>
                 <li class="<?php echo $classA ?>">

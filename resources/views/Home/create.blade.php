@@ -8,7 +8,7 @@ $url = url()->previous();
     <a href="{{$url}}" class="back-btn" style="color:black;"><i class="fas fa-arrow-left"></i>前のページへ戻る</a>
     <section>
         <div class="all-contents">
-            <h2 style="margin-bottom: 1rem;font-weight:lighter;">スレッド作成</h2>
+            <h2 style="margin-bottom: 1rem;">スレッド作成</h2>
             <form action="/threadCreating" method="POST" onSubmit="return checkSubmit()" enctype="multipart/form-data" files="true">
                 {{ csrf_field() }}
 

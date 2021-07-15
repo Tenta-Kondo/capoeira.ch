@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row" style="margin: 0 auto;">
-    <div class="card col-12" style="padding: 5px 20px;">
+    <div class="card" style="padding: 5px 20px;">
         <div class="cardTitle">
             <h2>{{ __('CREATE') }}</h2>
         </div>
@@ -12,35 +12,35 @@
             <form method="POST" action="{{ route('register') }}" class="register-form">
                 {{ csrf_field() }}
                 <label for="name" style="margin-bottom:0 ;">{{ __('アペリード(ユーザーネーム) *変更出来ません') }}</label>
-                <input id="name" type="text" style="font-size: 15px;" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                 @error('name')
                 <span class="invalid-feedback" role="alert">
                     <div class="err_msg">{{ $message }}</div>
                 </span>
                 @enderror
-                <label for="email" class="regi-label" style="margin-bottom:0 ;">{{ __('メールアドレス') }}</label>
-                <input id="email" type="email" style="font-size: 15px;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                <label for="email" class="regi-label">{{ __('メールアドレス') }}</label>
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                 @error('email')
                 <span class="invalid-feedback" role="alert">
                     <div class="err_msg">{{ $message }}</div>
                 </span>
                 @enderror
-                <label for="password" class="regi-label" style="margin-bottom:0 ;">{{ __('パスワード') }}</label>
-                <input id="password" type="password" style="font-size: 15px;" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                <label for="password" class="regi-label">{{ __('パスワード') }}</label>
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                 @error('password')
                 <span class="invalid-feedback" role="alert">
                     <div class="err_msg">{{ $message }}</div>
                 </span>
                 @enderror
-                <label for="password-confirm" class="regi-label" style="margin-bottom:0 ;">{{ __('パスワード(確認用)') }}</label>
+                <label for="password-confirm" class="regi-label">{{ __('パスワード(確認用)') }}</label>
 
-                <input id="password-confirm" type="password" style="font-size: 15px;" name="password_confirmation" required autocomplete="new-password" style="margin-bottom: 15px;">
-                <div style="display: flex;margin-top:10px;">
+                <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password" style="margin-bottom: 15px;">
+                <div class="terms-privacy">
                     <button type="button" class="terms btn-simple">利用規約を確認</button>
                     <button type="button" class="privacy btn-simple">プライバシーポリシーを確認</button>
                 </div>
 
-                <label for="check" style="margin: 0;">
+                <label for="check" style="margin: 0 auto;" class="terms-label">
                     <input name="check" type="checkbox" id="check" />
                     利用規約・プライバシーポリシーに同意する</label>
                 <button type="submit" class="btn btn-outline-primary" style="margin-bottom: 10px;">

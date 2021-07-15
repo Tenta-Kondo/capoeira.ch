@@ -23,9 +23,7 @@
         });
     });
     $(function() {
-        $(".open-btn").click(function() {
-            $(this).next().toggleClass("flex");
-        })
+       
         $(".tag").click(function() {
             $(".login-data").toggleClass("position");
         })

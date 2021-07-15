@@ -11,8 +11,9 @@ use App\Models\Comment;
 use App\Models\Image;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Session\Middleware\StartSession;
+use \Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Models\Pricess;
-
 
 class BrogController extends Controller
 {
@@ -87,7 +88,8 @@ class BrogController extends Controller
 
 
         Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
-        return redirect("/top")->with("message", "投稿完了");
+        // return redirect("/top")->with("message", "投稿完了");
+        return redirect("/top")->with(['message' => '投稿完了']);
     }
     public function delete($id)
     {
@@ -95,7 +97,7 @@ class BrogController extends Controller
 
         $number = (int)$id;
         Image::where("number", $number)->delete();
-        return redirect("/top")->with("message", "削除しました");
+        return redirect("/top")->with("deletemessage", "削除しました");
     }
     public function edit($id)
     {
@@ -111,7 +113,7 @@ class BrogController extends Controller
         $blog = Blogapp::find($id);
         $blog->fill(["title" => $title, "contents" => $contents, "username" => $username]);
         $blog->save();
-        return redirect("/top")->with("message", "更新しました");
+        return redirect("/top")->with("updatemessage", "更新しました");
     }
     public function comment(CommentRequest $request)
     {

@@ -1,10 +1,9 @@
-
 @extends('layouts.app')
 
 @section('content')
 
 <div class="row" style="margin: 0 auto;">
-    <div class="card col-12" style="padding: 5px 20px;">
+    <div class="card" style="padding: 5px 0;">
         <div class="cardTitle">
             <h2>{{ __('LOGIN') }}</h2>
         </div>
@@ -13,9 +12,9 @@
             <form method="POST" action="{{ route('login') }}" class="login-form">
                 {{ csrf_field() }}
 
-                <label for="email">{{ __('メールアドレス') }}</label>
+                <label for="email" class="log-label">{{ __('メールアドレス') }}</label>
 
-                <input id="email" type="email" style="font-size: 20px;" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                 @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -24,7 +23,7 @@
                 @enderror
 
                 <div class="password">
-                    <label for="password">{{ __('パスワード') }}</label>
+                    <label for="password" class="log-label">{{ __('パスワード') }}</label>
                     @if (Route::has('password.request'))
                     <a class="forget" href="{{ route('password.request') }}">
                         {{ __('パスワードを忘れた場合はこちら') }}
