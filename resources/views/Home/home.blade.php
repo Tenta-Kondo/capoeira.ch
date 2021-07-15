@@ -58,11 +58,7 @@
                     }
 
                     ?>
-                    <!-- <div class="open-btn <?php echo $class ?>">
-                        <span class="circle"></span>
-                        <span class="circle"></span>
-                        <span class="circle"></span>
-                    </div> -->
+                    
                     <p class="edit-link <?php echo $class ?>"><a href="/blog/edit/{{$threads->id}}"><i class="fas fa-info-circle" style="margin-right: 5px;"></i>スレッドを編集</a></p>
                 </div>
             </div>
