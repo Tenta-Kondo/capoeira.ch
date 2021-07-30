@@ -113,6 +113,7 @@ ul li a {
     background-image: url(../image/無題3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     position: relative;
 }
 .nav-link a {

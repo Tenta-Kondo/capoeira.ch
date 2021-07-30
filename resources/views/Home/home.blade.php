@@ -5,7 +5,9 @@
     @if (session('message'))
     <p class="flash_message">
         {{ session('message') }}
+        err
     </p>
+    
     @elseif(session('deletemessage'))
     <p class="flash_message">
         {{ session('deletemessage') }}
@@ -17,7 +19,7 @@
     @endif
     <div class="main-contents">
         <div class="search-header">
-            <h2>Thread List</h2>
+            <h2>{{ session('message') }}</h2>
             <form action="/search" class="search-form">
                 <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
                 <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
@@ -58,7 +60,7 @@
                     }
 
                     ?>
-                    
+
                     <p class="edit-link <?php echo $class ?>"><a href="/blog/edit/{{$threads->id}}"><i class="fas fa-info-circle" style="margin-right: 5px;"></i>スレッドを編集</a></p>
                 </div>
             </div>

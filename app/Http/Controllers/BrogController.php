@@ -11,8 +11,8 @@ use App\Models\Comment;
 use App\Models\Image;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Support\Facades\Auth;
-use \Illuminate\Session\Middleware\StartSession;
-use \Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Models\Pricess;
 
 class BrogController extends Controller
@@ -23,6 +23,8 @@ class BrogController extends Controller
     }
     public function Home()
     {
+        //
+        
         $thread = Blogapp::paginate(8);
         $comment = Comment::all();
         $image = Image::all();
@@ -85,16 +87,14 @@ class BrogController extends Controller
             ]);
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
         }
-
-
         Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
+
         // return redirect("/top")->with("message", "投稿完了");
-        return redirect("/top")->with(['message' => '投稿完了']);
+        return redirect("/top")->with(["message", "投稿完了"]);
     }
     public function delete($id)
     {
         Blogapp::destroy($id);
-
         $number = (int)$id;
         Image::where("number", $number)->delete();
         return redirect("/top")->with("deletemessage", "削除しました");
