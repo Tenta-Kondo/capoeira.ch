@@ -23,23 +23,12 @@ header {
     padding-bottom: 15px;
     position: relative;
 }
-
-.header-container {
-    width: 100%;
-    height: 45vh;
+.jumbotron {
     background-image: url(../image/sirokuro3.1.jpg);
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: right;
-    text-align: left;
-    display: flex;
-    align-items: flex-end;
-}
-.header-container h1 {
-    font-family: "Quicksand", sans-serif;
+    background-position: center;
     color: white;
-    font-size: 300%;
 }
 
 .user-name {
@@ -61,26 +50,11 @@ header {
     background-color: #f1f1f1;
 }
 
-.user-page-btn {
-    position: absolute;
-    right: 0;
-    display: none;
-    text-align: center;
-    width: 85px;
-    top: 33px;
-}
-
 header h2 {
     margin-left: 15px;
     font-weight: lighter;
 }
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 0.5rem 10px 0.5rem 0;
-}
+
 ul {
     list-style: none;
     display: flex;
@@ -105,6 +79,9 @@ ul li a {
 }
 .sitetop-nav {
     text-align: center;
+}
+.navbar-nav {
+    margin-top: 10px;
 }
 .nav-link {
     margin-top: 20px;
@@ -167,7 +144,7 @@ ul li a {
 }
 
 .main-contents {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     margin-top: 4rem;
 }
@@ -175,15 +152,15 @@ ul li a {
     display: flex;
     flex-direction: column-reverse;
 }
+.thread-title:hover {
+    color: red;
+}
 .thread-content {
-    margin-bottom: 3rem;
-    margin-right: 5px;
     background-color: #ffffff;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 30px 20px;
-    width: 500px;
-
-    position: relative;
+    margin-bottom: 60px;
+    margin-left: 10%;
 }
 .thread-content h3 > a,
 .thread-content p > a {
@@ -197,13 +174,12 @@ ul li a {
 }
 .all-contents {
     text-align: center;
-    width: 65%;
     margin: 0 auto;
     margin-top: 30px;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 60px 80px;
 }
-.all-contents h2{
+.all-contents h2 {
     font-weight: lighter;
 }
 .contents {
@@ -222,7 +198,11 @@ ul li a {
     justify-content: space-between;
 }
 .thread-head {
-    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+.thread-head p {
+    margin-bottom: 5px;
 }
 .comment-data {
     display: flex;
@@ -236,10 +216,13 @@ ul li a {
 .comment-content {
     margin-top: 20px;
 }
-.right {
-    margin-right: 30px;
+.visitor {
+    width: 70%;
 }
-footer {
+.right {
+    margin-right: 20px;
+}
+#footer {
     width: 100%;
     background-color: #575757;
     padding: 0.5rem 0;
@@ -248,7 +231,7 @@ footer {
     justify-content: space-between;
     margin-top: 5rem;
 }
-footer a {
+#footer a {
     color: white;
 }
 footer p {
@@ -313,17 +296,15 @@ textarea {
     background-color: rgb(238, 238, 238);
 }
 .fixed-menu {
-    position: fixed;
+    position: fixed !important;
     top: 0;
-    display: flex;
-    justify-content: space-between;
-    z-index: 10;
     width: 100%;
+    z-index: 20 !important;
 }
 .comment-form {
     width: 50%;
     margin: 0 auto;
-    margin-top: 20vh;
+    margin-top: 20vh !important;
 }
 .reply-form {
     width: 50%;
@@ -390,7 +371,8 @@ textarea::-webkit-scrollbar {
     display: none;
     margin-top: 20px;
 }
-.container-fluid {
+
+.signin-bg {
     width: 100%;
     height: 100vh;
     background-image: url(../image/無題.jpg);
@@ -507,9 +489,7 @@ textarea::-webkit-scrollbar {
 .right-bottom {
     width: 100%;
     text-align: right;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin: 20px 10px 10px 0;
+    margin: 50px 10px 10px 0;
 }
 
 .choises {
@@ -598,7 +578,6 @@ img {
 .payment-card {
     border: 0.1px solid rgb(231, 231, 231);
     padding: 50px;
-    width: 500px;
     margin: 0 auto;
 }
 .payment-list-group {
@@ -622,55 +601,7 @@ img {
     height: 2px;
     margin: 0 auto;
 }
-.hum span {
-    display: block;
-    height: 2.5px;
-    width: 20px;
-    margin: 4px 5.5px;
-    border-radius: 2px;
-    background-color: rgb(0, 0, 0);
-    transition: 300ms;
-}
-.hum {
-    display: none;
-    padding: 3px 1px;
-    border: rgb(226, 226, 226) 0.1px solid;
-}
-.hum:hover {
-    background-color: rgb(236, 236, 236);
-}
-.hum-menu {
-    height: 20%;
-    cursor: pointer;
-}
-.batsu {
-    position: absolute;
-    right: 400px;
-    z-index: 150;
-    border: none !important;
-    background-color: transparent !important;
-}
-.batsu span:nth-child(1) {
-    transform: rotateZ(45deg);
-    transition: 300ms;
-    position: absolute;
-    top: 7%;
-    background-color: rgb(0, 0, 0);
-    height: 5px;
-}
-.batsu span:nth-child(2) {
-    animation: span-height 0.3s ease 0.1s forwards;
-    background-color: #fff;
-}
 
-.batsu span:nth-child(3) {
-    transform: rotateZ(-45deg);
-    transition: 300ms;
-    position: absolute;
-    top: 7%;
-    background-color: rgb(0, 0, 0);
-    height: 5px;
-}
 .br {
     display: none;
 }
@@ -712,6 +643,18 @@ img {
     display: flex;
     margin: 10px auto;
 }
+.credit-window {
+    height: 100vh;
+    overflow: hidden;
+    background: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+}
+.credit-form {
+    margin: 0 auto;
+    max-height: 400px;
+    padding:30px 10px ;
+}
 @media (max-width: 800px) {
     .nav-menu {
         display: none;
@@ -720,12 +663,21 @@ img {
         display: block;
     }
 }
+@media (max-width: 768px) {
+    .thread-content {
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+}
 @media (max-width: 680px) {
     .nav-menu li > h2 {
         font-size: 20px;
     }
     .batsu {
         right: 340px;
+    }
+    .file-input {
+        font-size: 10px;
     }
 }
 @media (max-width: 600px) {
@@ -783,11 +735,6 @@ img {
         margin-top: 5px;
         margin-bottom: 0;
     }
-    .thread-content {
-        width: 80%;
-        margin: 0 auto;
-        margin-bottom: 3rem;
-    }
 }
 @media (max-width: 530px) {
     .nav-menu {
@@ -809,5 +756,17 @@ img {
     }
     .main-contents {
         width: 95%;
+    }
+    .thread-head {
+        flex-direction: column;
+    }
+    .thread-head p {
+        margin-bottom: 0;
+    }
+    p {
+        margin-bottom: 0;
+    }
+    .right {
+        margin-right: 0;
     }
 }

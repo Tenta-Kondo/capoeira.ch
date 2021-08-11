@@ -42,3 +42,4 @@ Route::get('/user/paidpage', 'App\Http\Controllers\User\Ajax\SubscriptionControl
 Route::post('/delete/card', 'App\Http\Controllers\User\Ajax\SubscriptionController@deletePaymentInfo');
 Route::post('/user/paid', 'App\Http\Controllers\User\Ajax\SubscriptionController@becomePaidMember')->name('user.paid');
 Route::post('/user/cancel', 'App\Http\Controllers\User\Ajax\SubscriptionController@cancelPaidMember')->name('user.cancel');
+

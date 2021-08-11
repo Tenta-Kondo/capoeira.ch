@@ -28,8 +28,8 @@
 
 <body>
     <div id="main">
-        
-        <div class="container-fluid">
+
+        <div class="container-fluid signin-bg">
             @yield('content')
 
         </div>
@@ -55,7 +55,7 @@
                 $(".modal-bg-terms").toggleClass("block");
             })
         })
-       
+
         $(function() {
             $(".privacy-close").click(function() {
                 $(".modal-bg-privacy").toggleClass("block");

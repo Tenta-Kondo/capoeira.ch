@@ -39,7 +39,7 @@
         <p>coming soon</p>
 
     </div>
-    <hr width="70%" style="margin-top: 50px;">
+    <hr width="70%" style="margin:0 auto;margin-top: 50px;">
     <div class=""></div>
 
 

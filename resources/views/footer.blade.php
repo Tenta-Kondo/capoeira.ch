@@ -1,8 +1,11 @@
-<footer>
+<footer id="footer">
     <p style="margin-left:1rem;">Capoeira.ch</p>
     <p style="margin-right: 1rem;"><a href="#top">TOP</a></p>
 </footer>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
+
 <script>
     $(window).scroll(function() {
         $(function() {
@@ -10,7 +13,7 @@
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
             if (scroll > imgPos) {
-                $(".nav").addClass("fixed-menu");
+                $("nav").addClass("fixed-menu");
             }
         });
         $(function() {
@@ -18,29 +21,25 @@
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
             if (imgPos > scroll) {
-                $(".nav").removeClass("fixed-menu");
+                $("nav").removeClass("fixed-menu");
             }
         });
     });
     $(function() {
-       
-        $(".tag").click(function() {
-            $(".login-data").toggleClass("position");
+
+        $(".btn-reply").click(function() {
+            $(this).parent().next().toggleClass("flex");
+            $(this).next().toggleClass("flex");
+            $(this).toggleClass("none");
         })
-        $(".user-data").click(function() {
-            $(".user-page-btn").toggleClass("block");
-            $("#up,#down").toggleClass("none");
+        $(".reply-close").click(function() {
+            $(this).prev().toggleClass("none");
+            $(this).toggleClass("flex");
         })
     })
-    $(function() {
-        $(".hum").click(function() {
-            $(".black").toggleClass("black-bg");
-            $(".hum").toggleClass("batsu");
-            $(".nav-menu").toggle("linear");
-        });
-    });
 
- 
+
+
 
     function checkSubmit() {
         if (window.confirm('投稿してよろしいですか？')) {

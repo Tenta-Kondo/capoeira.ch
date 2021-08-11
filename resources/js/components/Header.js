@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return(
      
-        <div class="header-container">
+        <div class="jumbotron">
             <h1>Capoeira.ch</h1>
         </div>
     )

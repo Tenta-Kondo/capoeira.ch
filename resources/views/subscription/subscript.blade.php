@@ -4,52 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous" />
     <style>
 
     </style>
 </head>
 
 <body>
-    <div id="app" class="container">
-        <h1 class="mb-4">Capoeira.ch 有料会員</h1>
+    <div id="app" class="container-fluid">
+        <div class="row credit-window">
+            <div class="col-8 bg-light credit-form">
+                <h1 class="mb-4" style="margin-left: 1.25rem;">Capoeira.ch 有料会員</h1>
 
-        @if (session('errors'))
-        <p class="flash_message">
-            {{ session('errors') }}
-        </p>
-        @endif
-        <div class="card-body">
-            <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="name">カード番号</label>
-                    <div id="cardNumber"></div>
-                </div>
+                @if (session('errors'))
+                <p class="flash_message">
+                    {{ session('errors') }}
+                </p>
+                @endif
+                <div class="card-body">
+                    <form action="{{route('user.payment.store')}}" id="form_payment" method="POST">
+                        {{ csrf_field() }}
+                        <div style="display: flex;" class="row">
+                            <div class="form-group col-7">
+                                <label for="name">カード番号</label>
+                                <div id="cardNumber" style="border-bottom: 0.2px #cacaca solid;"></div>
+                            </div>
 
-                <div class="form-group">
-                    <label for="name">セキュリティコード</label>
-                    <div id="securityCode"></div>
-                </div>
+                            <div class="form-group col-5">
+                                <label for="name">セキュリティコード</label>
+                                <div id="securityCode" style="border-bottom: 0.2px #cacaca solid;"></div>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="name">有効期限</label>
-                    <div id="expiration"></div>
-                </div>
 
-                <div class="form-group">
-                    <label for="name">カード名義</label>
-                    <input type="text" name="cardName" id="cardName" class="form-control" value="" placeholder="カード名義を入力">
+                        <div class="form-group">
+                            <label for="name">有効期限</label>
+                            <div id="expiration" style="border-bottom: 0.2px #cacaca solid;"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">カード名義</label>
+                            <input type="text" name="cardName" id="cardName" class="form-control" value="" placeholder="カード名義を入力">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" id="create_token" class="btn btn-primary">カードを登録する</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <button type="submit" id="create_token" class="btn btn-primary">カードを登録する</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         const stripe = Stripe('pk_test_51Ib03OGgpEHLIOoeRe3d4KvXZetkICnkJaWdSC40N6UzJowNFXxbnbexTN3ymZ4Nn8qdv6RlhI5ddqqOWOnmcLLv00Na0n4YN6');
         const elements = stripe.elements();

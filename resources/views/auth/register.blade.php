@@ -166,7 +166,7 @@
 </div>
 <div class="modal-bg-privacy">
     <div class="modal-window">
-        <h2>Capoeira.ch 利用規約2</h2>
+        <h2>Capoeira.ch プライバシーポリシー</h2>
         この利用規約（以下，「本規約」と呼称します。）は，＿＿＿＿＿（以下，「当社」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。<br>
         登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
         <br>
@@ -270,7 +270,7 @@
         </ul>
         <button type="button" class="btn-simple privacy-close" style="margin-top: 10px;">閉じる</button>
     </div>
- 
-    
+
+
 </div>
 @endsection

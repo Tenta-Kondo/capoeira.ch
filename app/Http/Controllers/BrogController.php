@@ -24,7 +24,7 @@ class BrogController extends Controller
     public function Home()
     {
         //
-        
+
         $thread = Blogapp::paginate(8);
         $comment = Comment::all();
         $image = Image::all();
@@ -178,5 +178,10 @@ class BrogController extends Controller
     {
 
         return view("Subscription.test");
+    }
+    public function scss()
+    {
+        dd("w");
+        return view("Home.test");
     }
 }
