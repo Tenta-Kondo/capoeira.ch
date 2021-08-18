@@ -6,7 +6,7 @@
         <div class="row">
 
 
-            <div class="payment-card col-6">
+            <div class="payment-card col-10 col-md-6">
                 <div class="payment-card-header">{{ $user->name }}さんの情報</div>
 
                 <div class="card-body">
@@ -50,14 +50,14 @@
                         </table>
                         @if($user->stripe_id || $defaultCard2 )
                         @if(!$user->status )
-                        <div style="display:flex;justify-content:center;">
+                        <div class="subsc-btn-group">
                             <form action="/user/paid" method="POST" onSubmit="return subscCheckSubmit()">
                                 @csrf
-                                <button id="" type="submit" class="btn btn-primary" style="display:flex;">有料会員登録はこちら</button>
+                                <button id="" type="submit" class="btn btn-primary subsc-btn" style="display:flex;">有料会員登録はこちら</button>
                             </form>
                             <form action="/delete/card" method="POST">
                                 @csrf
-                                <button id="" type="submit" class="btn btn-primary" style="display:flex;">カード情報削除はこちら</button>
+                                <button id="" type="submit" class="btn btn-primary subsc-btn" style="display:flex;">カード情報削除はこちら</button>
                             </form>
                         </div>
                         @elseif($user->status === 1)

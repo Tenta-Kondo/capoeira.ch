@@ -80,6 +80,9 @@ ul li a {
 .sitetop-nav {
     text-align: center;
 }
+.navbar {
+    background-color: white;
+}
 .navbar-nav {
     margin-top: 10px;
 }
@@ -110,6 +113,12 @@ ul li a {
     display: block;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 5px;
+}
+.nav-item{
+    margin-left: 10px;
+}
+.nav-item h3 {
+    border: none;
 }
 .link-name {
     width: 120px;
@@ -148,10 +157,7 @@ ul li a {
     margin: 0 auto;
     margin-top: 4rem;
 }
-.thread-contents {
-    display: flex;
-    flex-direction: column-reverse;
-}
+
 .thread-title:hover {
     color: red;
 }
@@ -653,7 +659,14 @@ img {
 .credit-form {
     margin: 0 auto;
     max-height: 400px;
-    padding:30px 10px ;
+    padding: 30px 10px;
+}
+.subsc-btn-group {
+    display: flex;
+    justify-content: center;
+}
+.userpage-inhum {
+    display: none;
 }
 @media (max-width: 800px) {
     .nav-menu {
@@ -667,6 +680,9 @@ img {
     .thread-content {
         margin: 0 auto;
         margin-bottom: 3rem;
+    }
+    .subsc-btn {
+        font-size: 13px !important;
     }
 }
 @media (max-width: 680px) {
@@ -768,5 +784,22 @@ img {
     }
     .right {
         margin-right: 0;
+    }
+}
+@media (max-width: 410px) {
+    .subsc-btn-group {
+        flex-direction: column;
+    }
+    .card-body {
+        font-size: 12px;
+    }
+    .userpage-inhum {
+        display: block;
+    }
+    .user-info {
+        display: none;
+    }
+    .nav-item h3 {
+        font-size: 16px;
     }
 }

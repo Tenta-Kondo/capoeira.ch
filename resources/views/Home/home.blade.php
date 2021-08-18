@@ -2,7 +2,7 @@
 @section("content")
 <main style="position: relative;">
 
-    @if (session('message'))
+    @if (session()->has('message'))
     <p class="flash_message">
         {{ session('message') }}
         err

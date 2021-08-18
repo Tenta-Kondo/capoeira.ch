@@ -10,6 +10,7 @@ $url = url()->previous();
             <h2 style="margin-bottom: 1rem;">投稿編集</h2>
             <form action="/blog/update/{{$blog->id}}" method="POST" onSubmit="return checkSubmit()">
                 {{ csrf_field() }}
+                <input type="hidden" name="username" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="id" value="{{$blog->id}}">
 
                 <span class="label">タイトル</span>
