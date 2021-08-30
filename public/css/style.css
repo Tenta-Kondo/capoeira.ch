@@ -117,7 +117,7 @@ ul li a {
 .nav-item{
     margin-left: 10px;
 }
-.nav-item h3 {
+.nav-item h4 {
     border: none;
 }
 .link-name {
@@ -184,6 +184,8 @@ ul li a {
     margin-top: 30px;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 60px 80px;
+    width: 80%;
+    background-color: white;
 }
 .all-contents h2 {
     font-weight: lighter;
@@ -277,6 +279,8 @@ textarea {
 .flash_message {
     color: red;
     text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
 }
 .err_msg {
     color: red;
@@ -667,6 +671,11 @@ img {
 }
 .userpage-inhum {
     display: none;
+}
+.input-alert p{
+    color: red;
+    margin-bottom: 0 !important;
+    margin-top: 10px;
 }
 @media (max-width: 800px) {
     .nav-menu {

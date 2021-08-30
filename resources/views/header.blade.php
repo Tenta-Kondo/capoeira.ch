@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <script src="{{asset('js/style.js')}}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
@@ -25,7 +27,7 @@
             <h1>Capoeira.ch</h1>
         </div>
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="user-info" style="position:relative;" >
+            <div class="user-info" style="position:relative;">
                 <a class="user-data btn-simple dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> USER NAME : <?php
                                                                                                                                                                                             if (empty(Auth::user())) {
                                                                                                                                                                                                 echo "guest";
@@ -47,10 +49,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <h3 class="btn-simple"><a href="/">SiteTop</a></h3>
+                        <h4 class="btn-simple"><a href="/">SiteTop</a></h4>
                     </li>
                     <li class="nav-item">
-                        <h3 class="btn-simple"><a href="/create">ThreadCreate</a></h3>
+                        <h4 class="btn-simple"><a href="/create">ThreadCreate</a></h4>
                     </li>
                     <?php
                     $classA = "";
@@ -64,32 +66,32 @@
                     }
                     ?>
                     <li class="<?php echo $classA ?> nav-item">
-                        <h3 class="btn-simple"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <h4 class="btn-simple"><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
-                            </a></h3>
+                            </a></h4>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </li>
                     <li class="<?php echo $classB ?> nav-item">
-                        <h3 class="btn-simple"><a href="/login">Login</a></h3>
+                        <h4 class="btn-simple"><a href="/login">Login</a></h4>
                     </li>
                     <li class="nav-item  btn-simple userpage-inhum">
-                        <h3 style="margin-bottom: 0;">
+                        <h4 style="margin-bottom: 0;">
                             <a class="user-data dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> USER NAME : <?php
-                                                                                                                                                                                                        if (empty(Auth::user())) {
-                                                                                                                                                                                                            echo "guest";
-                                                                                                                                                                                                        } else {
-                                                                                                                                                                                                            echo  Auth::user()->name;
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        ?></a>
+                                                                                                                                                                                            if (empty(Auth::user())) {
+                                                                                                                                                                                                echo "guest";
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                                echo  Auth::user()->name;
+                                                                                                                                                                                            }
+                                                                                                                                                                                            ?></a>
 
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a href="/user-page" class="btn-simple dropdown-item">UserInfo</a>
                             </div>
-                        </h3>
+                        </h4>
                     </li>
                 </ul>
             </div>

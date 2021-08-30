@@ -29,18 +29,14 @@ class SubscriptionController extends Controller
     dd($defaultCard);
     return view('subscription.index', compact('user', 'defaultCard'));
   }
-
   public function getPaymentForm()
   {
-
     $user = Auth::user();
     if ($user->stripe_id) {
       return redirect("/user-page");
     }
     return view('subscription.subscript', compact("user"));
   }
-
-
   public function storePaymentInfo(Request $request)
   {
     $token = $request->stripeToken;
@@ -66,7 +62,6 @@ class SubscriptionController extends Controller
         return view('subscription.subscriptCreate', compact('user', 'defaultCard2'))->with("success", "カード情報の登録が完了しました。");
       }
     } else {
-
       return redirect('/user/payment/form')->with('errors', '申し訳ありません、通信状況の良い場所で再度ご登録をしていただくか、しばらく立ってから再度登録を行ってください。');
     }
 
@@ -81,20 +76,10 @@ class SubscriptionController extends Controller
   public function deletePaymentInfo()
   {
     $user = User::find(Auth::id());
-
-    // $stripe = new \Stripe\StripeClient(
-    //   \Config::get('payment.stripe_secret_key')
-    // );
-    // $customer = $stripe->customers->retrieve(
-    //   $user->stripe_id,
-    //   []
-    // );
-    // dd($customer);
     $result = Payment::deleteCard($user);
     $Customer = User::find(Auth::id());
     $Customer->stripe_id = null;
     $Customer->update();
-
     if ($result) {
       return redirect(route("userpage"))->with("success", "カード情報の削除が完了しました。");
     } else {

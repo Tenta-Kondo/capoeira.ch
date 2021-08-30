@@ -8,7 +8,7 @@ $url = url()->previous();
     <section>
         <div class="all-contents">
             <h2 style="margin-bottom: 1rem;">投稿編集</h2>
-            <form action="/blog/update/{{$blog->id}}" method="POST" onSubmit="return checkSubmit()">
+            <form action="/blog/update/{{$blog->id}}" method="POST" onSubmit="return updateCheckSubmit()">
                 {{ csrf_field() }}
                 <input type="hidden" name="username" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="id" value="{{$blog->id}}">

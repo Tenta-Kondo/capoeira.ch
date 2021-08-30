@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Models\Pricess;
+use SebastianBergmann\Environment\Console;
 
 class BrogController extends Controller
 {
@@ -22,12 +23,19 @@ class BrogController extends Controller
     {
         return view("Home.open");
     }
-    public function Home()
-    {
+    public function Home(
+        Request $request
+    ) {
+        // if (session('flash')) {
+        //     $flash_msg = session()->get('flash');
+        //     dd("flash");
+        // }
+        $flash_msg = session()->get('flash');
+        session()->forget("flash");
         $thread = Blogapp::orderBy('updated_at', 'desc')->paginate(8);
         $comment = Comment::all();
         $image = Image::all();
-        return view("Home.home", compact("thread", "comment", "image"));
+        return view("Home.home", compact("thread", "comment", "image", "flash_msg"));
     }
     public function sitetop()
     {
@@ -62,16 +70,19 @@ class BrogController extends Controller
         $thread = Blogapp::all();
         return view("Home.create", compact("thread"));
     }
-    public function creating(BlogRequest $request)
+    public function creating(Request $request)
     {
 
+        $request->validate([
+            'title' => ['required', 'unique:threadtable', 'max:100'],
+            'contents' => ['required'],
+            'image'=>['file','image','mimes:png,jpeg']
+           
+        ]
+    );
         $title = $request->input("title");
         $contents = $request->input("contents");
-        $username = $request->input(("username"));
-        $request->validate([
-            'image' => 'file|image|mimes:png,jpeg'
-        ]);
-
+        $username = $request->input("username");
         $upload_image = $request->file('image');
 
         if ($upload_image) {
@@ -87,18 +98,50 @@ class BrogController extends Controller
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
         }
         Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
-   
-        return redirect("/top")->with("message", "投稿完了");
-        // return redirect("/top");
-    }
 
-    public function delete($id)
-    {
-        Blogapp::destroy($id);
-        $number = (int)$id;
-        Image::where("number", $number)->delete();
-        return redirect("/top")->with("deletemessage", "削除しました");
+        session()->put('flash', "投稿が完了しました");
+        return redirect("/top");
     }
+    // public function creating(BlogRequest $request)
+    // {
+    //     $title = $request->input("title");
+    //     $contents = $request->input("contents");
+    //     $username = $request->input(("username"));
+    //     $request->validate([
+    //         'image' => 'file|image|mimes:png,jpeg'
+    //     ]);
+
+    //     $upload_image = $request->file('image');
+
+    //     if ($upload_image) {
+    //         $image_path = $upload_image->getRealPath();
+    //         Cloudder::upload($image_path, null);
+
+    //         $publicId = Cloudder::getPublicId();
+
+    //         $logoUrl = Cloudder::secureShow($publicId, [
+    //             'width'     => 200,
+    //             'height'    => 200
+    //         ]);
+    //         Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
+    //     }
+    //     Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
+
+    //     session()->put('flash', "投稿が完了しました");
+    //     return redirect("/top");
+    // }
+
+
+
+
+    // public function delete($id)
+    // {
+    //     Blogapp::destroy($id);
+    //     $number = (int)$id;
+    //     Image::where("number", $number)->delete();
+    //     session()->put('flash', "投稿が完了しました");
+    //     return redirect("/top");
+    // }
     public function edit($id)
     {
         $blog = Blogapp::find($id);
@@ -113,7 +156,8 @@ class BrogController extends Controller
         $blog = Blogapp::find($id);
         $blog->fill(["title" => $title, "contents" => $contents, "username" => $username]);
         $blog->save();
-        return redirect("/top")->with("updatemessage", "更新しました");
+        session()->put('flash', "投稿を更新しました");
+        return redirect("/top");
     }
     public function comment(CommentRequest $request)
     {
@@ -173,15 +217,5 @@ class BrogController extends Controller
         $Threadcount = Blogapp::where('title', 'like', "%$searchWord%")->count();
 
         return view("Home.search", compact("searchThread", "comment", "image", "Threadcount", "searchWord"));
-    }
-    public function test()
-    {
-
-        return view("Subscription.test");
-    }
-    public function scss()
-    {
-        dd("w");
-        return view("Home.test");
     }
 }

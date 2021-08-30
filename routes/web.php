@@ -24,12 +24,14 @@ Route::post("/blog/update/{id}", "App\Http\Controllers\BrogController@update")->
 Auth::routes();
 Route::get('/success', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::post("/comment", "App\Http\Controllers\BrogController@comment")->middleware('auth');
-// Route::get("/", "App\Http\Controllers\BrogController@open")->name('open');
 Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('auth');
 Route::get('/user-page', "App\Http\Controllers\User\Ajax\SubscriptionController@userpage")->middleware('auth')->name("userpage");
 Route::get('/', "App\Http\Controllers\BrogController@sitetop");
 Route::get('/success', "App\Http\Controllers\BrogController@success")->middleware('auth');
 
+
+Route::get('/post/create', [PostController::class, 'create']);
+Route::post('/post', [PostController::class, 'store']);
 Auth::routes();
 
 Route::get('/search', "App\Http\Controllers\BrogController@search")->middleware('auth');

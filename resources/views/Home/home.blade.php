@@ -2,21 +2,15 @@
 @section("content")
 <main style="position: relative;">
 
-    @if (session()->has('message'))
+    @if ($flash_msg)
     <p class="flash_message">
-        {{ session('message') }}
-        err
+        {{ $flash_msg }}
+
     </p>
 
-    @elseif(session('deletemessage'))
-    <p class="flash_message">
-        {{ session('deletemessage') }}
-    </p>
-    @elseif(session('updatemessage'))
-    <p class="flash_message">
-        {{ session('updatemessage') }}
-    </p>
     @endif
+  
+
     <div class="main-contents container-fluid">
         <div class="search-header">
             <h2>{{ session('message') }}</h2>
