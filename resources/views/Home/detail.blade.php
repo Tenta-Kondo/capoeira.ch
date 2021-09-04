@@ -15,8 +15,6 @@ $url = url()->previous();
                     <span class="name">スレッド作成者 : {{$thread->username}}</span>
                 </div>
                 <h2 style="font-weight:lighter;" class="detail-title">{{$thread->title}}</h2>
-
-
                 <div class="comment">
                     <div class="comment-data">
                         <span class="right">1</span>
@@ -45,7 +43,6 @@ $url = url()->previous();
                         {{$errors->first("comment")}}
                     </div>
                     @endif
-
                     <input type="file" name="image" accept="image/png, image/jpeg" style="font-size: 0.8rem;">
                     <button type="submit" class="primary-btn">返信を投稿</button>
                 </form>

@@ -2,10 +2,7 @@
     <p style="margin-left:1rem;">Capoeira.ch</p>
     <p style="margin-right: 1rem;"><a href="#top">TOP</a></p>
 </footer>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
 </body>
-
 <script>
     $(window).scroll(function() {
         $(function() {
@@ -36,21 +33,11 @@
             $(this).toggleClass("flex");
         })
     })
-
-
-    // function checkSubmit() {
-    //     if (window.confirm('投稿してよろしいですか？(スレッドの削除は出来ません)')) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
     var form = document.getElementById("create-form");
     var title = document.getElementById("title");
     var contents = document.getElementById("contents");
     var nameAlert = document.getElementById("name-alert");
     var contentsAlert = document.getElementById("contents-alert");
-
     function inputCheck() {
         while (nameAlert.firstChild ) {
             nameAlert.removeChild(nameAlert.firstChild);
@@ -77,9 +64,6 @@
             }
         }
     }
-
-
-
     function updateCheckSubmit() {
         if (window.confirm('投稿を更新しますか？')) {
             return true;
@@ -104,5 +88,4 @@
         }
     }
 </script>
-
 </html>

@@ -47,7 +47,6 @@
         <img src="{{$img->file_path}}" alt="">
         @endif
         <div class="right-bottom">
-
             <p>コメント数 : <?php
                         $id = $threads->id;
                         $commentN = (int)$id;
@@ -57,7 +56,6 @@
             <a href="/thread/{{$threads->id}}" class="detail-link">スレッドへ</a>
         </div>
     </div>
-
     @endforeach
 </div>
 {{ $searchThread->links('pagination::default') }}

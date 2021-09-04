@@ -12,7 +12,6 @@ $url = url()->previous();
             <form action="/threadCreating" method="POST" onSubmit="return inputCheck() " id="create-form" enctype="multipart/form-data" files="true">
                 {{ csrf_field() }}
                 @if ($errors->any())
-
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -21,11 +20,9 @@ $url = url()->previous();
                     </ul>
                 </div>
                 @endif
-
                 <input type="hidden" name="username" value="{{ Auth::user()->name }}">
                 <div id="name-alert" class="input-alert"></div>
                 <input type="text" name="title" id="title" placeholder="タイトル(必須)" value="{{ old('title') }}">
-
                 @if($errors->has("title"))
                 <div class="err_msg">
                     {{$errors->first("title")}}
@@ -41,7 +38,6 @@ $url = url()->previous();
                 @csrf
                 <input type="file" name="image" accept="image/png, image/jpeg">
                 <button type="submit" class="primary-btn" id="thread-create-btn">投稿</button>
-
             </form>
         </div>
     </section>

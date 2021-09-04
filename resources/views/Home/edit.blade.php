@@ -12,7 +12,6 @@ $url = url()->previous();
                 {{ csrf_field() }}
                 <input type="hidden" name="username" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="id" value="{{$blog->id}}">
-
                 <span class="label">タイトル</span>
                 <input type="text" name="title" placeholder="タイトル(必須)" value="{{$blog->title}}">
                 @if($errors->has("title"))
