@@ -7,13 +7,10 @@
     </p>
     @endif
     <div class="main-contents container-fluid">
-        <div class="search-header">
-            <h2>{{ session('message') }}</h2>
-            <form action="/search" class="search-form">
-                <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
-                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
-            </form>
-        </div>
+        <form action="/search" class="search-form">
+            <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+        </form>
         <div class="thread-contents row">
             @foreach($thread as $threads)
             <div class="thread-content col-md-6 col-10">
@@ -55,4 +52,32 @@
     </div>
 </main>
 {{ $thread->links('pagination::default') }}
+<footer id="footer">
+    <p style="margin-left:1rem;">Capoeira.ch</p>
+    <p style="margin-right: 1rem;"><a href="#top">TOP</a></p>
+</footer>
+
+<script>
+    $(window).scroll(function() {
+        $(function() {
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > imgPos) {
+                $("nav").addClass("fixed-menu");
+            }
+        });
+        $(function() {
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (imgPos > scroll) {
+                $("nav").removeClass("fixed-menu");
+            }
+        });
+    });
+   
+</script>
+</body>
+</html>
 @endsection

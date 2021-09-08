@@ -54,14 +54,10 @@ class BrogController extends Controller
     {
 
         $thread = Blogapp::find($id);
-
-
         $num = (int)$id;
         $commentnumber = Comment::where("commentnumber", $num)->get();
         $title = $thread->title;
-
         $image = Image::where("number", $num)->get();
-
         $topimage = Image::where("title", $title)->get();
         return view("Home.detail", compact("thread", "commentnumber", "image", "topimage"));
     }
@@ -73,13 +69,14 @@ class BrogController extends Controller
     public function creating(Request $request)
     {
 
-        $request->validate([
-            'title' => ['required', 'unique:threadtable', 'max:100'],
-            'contents' => ['required'],
-            'image'=>['file','image','mimes:png,jpeg']
-           
-        ]
-    );
+        $request->validate(
+            [
+                'title' => ['required', 'unique:threadtable', 'max:100'],
+                'contents' => ['required'],
+                'image' => ['file', 'image', 'mimes:png,jpeg']
+
+            ]
+        );
         $title = $request->input("title");
         $contents = $request->input("contents");
         $username = $request->input("username");
@@ -102,35 +99,6 @@ class BrogController extends Controller
         session()->put('flash', "投稿が完了しました");
         return redirect("/top");
     }
-    // public function creating(BlogRequest $request)
-    // {
-    //     $title = $request->input("title");
-    //     $contents = $request->input("contents");
-    //     $username = $request->input(("username"));
-    //     $request->validate([
-    //         'image' => 'file|image|mimes:png,jpeg'
-    //     ]);
-
-    //     $upload_image = $request->file('image');
-
-    //     if ($upload_image) {
-    //         $image_path = $upload_image->getRealPath();
-    //         Cloudder::upload($image_path, null);
-
-    //         $publicId = Cloudder::getPublicId();
-
-    //         $logoUrl = Cloudder::secureShow($publicId, [
-    //             'width'     => 200,
-    //             'height'    => 200
-    //         ]);
-    //         Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
-    //     }
-    //     Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
-
-    //     session()->put('flash', "投稿が完了しました");
-    //     return redirect("/top");
-    // }
-
 
 
 
@@ -217,5 +185,27 @@ class BrogController extends Controller
         $Threadcount = Blogapp::where('title', 'like', "%$searchWord%")->count();
 
         return view("Home.search", compact("searchThread", "comment", "image", "Threadcount", "searchWord"));
+    }
+    public function icon(Request $request)
+    {
+        $request->validate([
+            'image' => 'file|image|mimes:png,jpeg'
+        ]);
+        $icon_image = $request->file('image');
+        if ($icon_image) {
+            $image_path = $icon_image->getRealPath();
+            Cloudder::upload($image_path, null);
+            $publicId = Cloudder::getPublicId();
+
+            $logoUrl = Cloudder::secureShow($publicId, [
+                'width'     => 200,
+                'height'    => 200
+            ]);
+            $user = Auth::user();
+            Image::create([
+                "file_path" => $logoUrl, "file_name" => $icon_image->getClientOriginalName(), "title" => $user->email
+            ]);
+            return redirect("/done");
+        }
     }
 }

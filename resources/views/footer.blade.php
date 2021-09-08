@@ -2,7 +2,6 @@
     <p style="margin-left:1rem;">Capoeira.ch</p>
     <p style="margin-right: 1rem;"><a href="#top">TOP</a></p>
 </footer>
-</body>
 <script>
     $(window).scroll(function() {
         $(function() {
@@ -71,7 +70,6 @@
             return false;
         }
     }
-
     function subscCheckSubmit() {
         if (window.confirm('サブスクリプションを開始してよろしいですか？キャンセル料はかかりません。')) {
             return true;
@@ -79,7 +77,6 @@
             return false;
         }
     }
-
     function cancelCheckSubmit() {
         if (window.confirm('有料会員を解約してよろしいですか？再度会員になるには料金がかかります。')) {
             return true;
@@ -88,4 +85,5 @@
         }
     }
 </script>
+</body>
 </html>

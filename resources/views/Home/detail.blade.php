@@ -6,8 +6,8 @@ $url = url()->previous();
 @extends("layout")
 @section("content")
 <main>
-    <section class="container-fluid">
-        <div class="row">
+    <section class="container-fluid" style="margin-top:20px;">
+        <div class="row" style="margin: 0;">
             <a href="{{$url}}" class="back-btn"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i>前のページへ戻る</a>
             <div class="all-contents col-10 col-md-8">
                 <div class="thread-data">
@@ -43,7 +43,8 @@ $url = url()->previous();
                         {{$errors->first("comment")}}
                     </div>
                     @endif
-                    <input type="file" name="image" accept="image/png, image/jpeg" style="font-size: 0.8rem;">
+                    <label for="main-reply-image" class="input-file">画像を追加</label>
+                    <input type="file" name="image" accept="image/png, image/jpeg" id="main-reply-image">
                     <button type="submit" class="primary-btn">返信を投稿</button>
                 </form>
                 @foreach ($commentnumber as $comment)
@@ -79,29 +80,107 @@ $url = url()->previous();
                         {{$errors->first("comment")}}
                     </div>
                     @endif
-
-                    <input type="file" name="image" accept="image/png, image/jpeg" style="font-size: 0.8rem;">
+                    <label for="reply-image" class="input-file">画像を追加</label>
+                    <input type="file" name="image" accept="image/png, image/jpeg" id="reply-image">
                     <button type="submit" class="primary-btn">返信を投稿</button>
                 </form>
                 @endforeach
             </div>
-            <form action="/comment" method="POST" class="comment-form col-md-6 col-sm-8 col-10" enctype="multipart/form-data" files="true">
+            <form action="/comment" method="POST" class="comment-form col-md-5 col-sm-8 col-10" enctype="multipart/form-data" files="true">
                 {{ csrf_field() }}
                 <input type="hidden" name="name" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="commentID" id="" value="{{$commentcount+1}}">
                 <input type="hidden" name="commentnumber" value="{{$thread->id}}">
-                <textarea name="comment" id="" cols="30" rows="10" placeholder="コメントを入力"></textarea>
+                <textarea name="comment" id="" cols="30" rows="6" placeholder="コメントを入力"></textarea>
                 @if($errors->has("comment"))
                 <div class="err_msg">
                     {{$errors->first("comment")}}
                 </div>
                 @endif
-
-                <input type="file" name="image" accept="image/png, image/jpeg" class="file-input">
-                <button type="submit" class="btn-simple" style="margin-top: 10px;">コメントを投稿</button>
+                <label for="create-image" class="input-file">画像を追加</label>
+                <input type="file" name="image" accept="image/png, image/jpeg" id="create-image">
+                <button type="submit">掲示板に書き込む</button>
             </form>
         </div>
+        <button class="form-display btn-outline-primary">書き込む</button>
+        <div class="black-bg"></div>
     </section>
 </main>
+<footer id="footer">
+    <p style="margin-left:1rem;">Capoeira.ch</p>
+    <p style="margin-right: 1rem;"><a href="#top">TOP</a></p>
+</footer>
 
+<script>
+    $(window).scroll(function() {
+        $(function() {
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > imgPos) {
+                $("nav").addClass("fixed-menu");
+            }
+        });
+        $(function() {
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (imgPos > scroll) {
+                $("nav").removeClass("fixed-menu");
+            }
+        });
+    });
+    $(function() {
+        $(".btn-reply").click(function() {
+            $(this).parent().next().toggleClass("flex");
+            $(this).next().toggleClass("flex");
+            $(this).toggleClass("none");
+        })
+        $(".reply-close").click(function() {
+            $(this).prev().toggleClass("none");
+            $(this).toggleClass("flex");
+        })
+    })
+    $(function() {
+        $(".form-display").click(function() {
+            $(".comment-form").toggle("display");
+            $(".black-bg").toggle("display");
+        })
+    })
+
+    // var form = document.getElementById("create-form");
+    // var title = document.getElementById("title");
+    // var contents = document.getElementById("contents");
+    // var nameAlert = document.getElementById("name-alert");
+    // var contentsAlert = document.getElementById("contents-alert");
+    // function inputCheck() {
+    //     while (nameAlert.firstChild ) {
+    //         nameAlert.removeChild(nameAlert.firstChild);
+    //     }
+    //     while (contentsAlert.firstChild) {
+    //         contentsAlert.removeChild(contentsAlert.firstChild);
+    //     }
+    //     if (title.value === "") {
+
+    //         var nameAlert_p = document.createElement("p");
+    //         nameAlert_p.innerHTML = "タイトルを入力してください";
+    //         nameAlert.appendChild(nameAlert_p);
+    //         return false;
+    //     }else if (contents.value === "") {
+    //         var contentsAlert_p = document.createElement("p");
+    //         contentsAlert_p.innerHTML = "本文を入力してください";
+    //         contentsAlert.appendChild(contentsAlert_p);
+    //         return false;
+    //     } else {
+    //         if (window.confirm('投稿してよろしいですか？(スレッドの削除は出来ません)')) {
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     }
+    // }
+</script>
+</body>
+
+</html>
 @endsection

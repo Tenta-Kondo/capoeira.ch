@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="user-info" style="position:relative;">
                 <a class="user-data btn-simple dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    USER NAME : <?php
+                    USER NAME : <img src="{{asset('image/f318x318.jpg')}}" class="user-icon" alt=""> <?php
                                 if (empty(Auth::user())) {
                                     echo "guest";
                                 } else {
@@ -85,6 +85,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a href="/user-page" class="btn-simple dropdown-item">UserInfo</a>
                             </div>
+                            
                         </h4>
                     </li>
                 </ul>

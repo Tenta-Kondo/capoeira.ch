@@ -1,5 +1,4 @@
 @extends('layout')
-
 @section('content')
 <main>
     <div class="container-fluid">
@@ -7,18 +6,15 @@
             <div class="payment-card col-10 col-md-6">
                 <div class="payment-card-header">{{ $user->name }}さんの情報</div>
                 <div class="card-body">
-                    @if (session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                    @endif
-                    @if (session('errors'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('errors') }}
-                    </div>
-                    @endif
+                    <img src="{{asset('image/f318x318.jpg')}}" style="margin: 0 auto;display:block;" alt="">
                     <div class="form-group">
                         <table class="table">
+                            <form action="/icon" method="POST">
+                            {{ csrf_field() }}
+                                <!-- <label for="icon-image" class="input-file">アイコンを変更</label> -->
+                                <input type="file" name="image" accept="image/png, image/jpeg" id="icon-image">
+                                <button type="submit" class="btn-putline-primary">確定</button>
+                            </form>
                             <tbody>
                                 <tr>
                                     <th scope="row">お名前：</th>
@@ -71,4 +67,47 @@
     </div>
     </div>
 </main>
+<footer id="footer">
+    <p style="margin-left:1rem;">Capoeira.ch</p>
+    <p style="margin-right: 1rem;"><a href="#top">TOP</a></p>
+</footer>
+<script>
+    $(window).scroll(function() {
+        $(function() {
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > imgPos) {
+                $("nav").addClass("fixed-menu");
+            }
+        });
+        $(function() {
+            var imgPos = $("main").offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (imgPos > scroll) {
+                $("nav").removeClass("fixed-menu");
+            }
+        });
+    });
+
+    function subscCheckSubmit() {
+        if (window.confirm('サブスクリプションを開始してよろしいですか？キャンセル料はかかりません。')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function cancelCheckSubmit() {
+        if (window.confirm('有料会員を解約してよろしいですか？再度会員になるには料金がかかります。')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+</body>
+
+</html>
 @endsection

@@ -36,6 +36,10 @@ header {
     background-color: black;
     color: white;
 }
+.user-icon {
+    height: 30px;
+    width: 30px;
+}
 .btn-simple {
     border: 0.1px solid rgb(231, 231, 231);
     padding: 5px;
@@ -65,13 +69,13 @@ ul li a {
 }
 .sitetop-header,
 .nav-link {
-    border: 0.1px solid rgb(223, 223, 223);
+    border: 0.5px solid rgb(223, 223, 223);
     width: 55%;
-    margin: 0 auto;
 }
 .sitetop-header {
     box-shadow: 0 0 2px 2px rgb(190, 255, 204);
     padding: 30px 20px;
+    margin: 0 auto;
 }
 .sitetop-title {
     text-align: center;
@@ -87,13 +91,8 @@ ul li a {
     margin-top: 10px;
 }
 .nav-link {
-    margin-top: 20px;
-    width: 40%;
-    height: 200px;
-    background-image: url(../image/無題3.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    width: 400px;
+    height: 300px;
     position: relative;
 }
 .nav-link a {
@@ -101,20 +100,48 @@ ul li a {
     width: 100%;
     height: 100%;
 }
-.nav-link p {
+.nav-link h4 {
     margin-top: 30px;
-
-    font-size: 110%;
     color: rgb(0, 0, 0);
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 5;
     display: block;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 5px;
 }
-.nav-item{
+.toplink-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+.toplink-thread {
+    background-image: url(../image/Chat-pana.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.toplink-create {
+    background-image: url(../image/Profile\ Interface-rafiki.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.toplink-subsc {
+    background-image: url(../image/Subscriber-pana.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.toplink-riber {
+    background-image: url(../image/Analysis-amico.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.nav-item {
     margin-left: 10px;
 }
 .nav-item h4 {
@@ -130,6 +157,7 @@ ul li a {
 }
 .search-form {
     display: inline-block;
+    margin-left: 9%;
 }
 .search-input {
     display: block;
@@ -146,12 +174,17 @@ ul li a {
 .search-data h3 {
     font-weight: lighter;
 }
-.search-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
+.input-file {
+    padding: 10px 10px;
+    color: #ffffff;
+    width: 150px;
+    text-align: center;
+    background-color: #384878;
+    cursor: pointer;
 }
-
+/* input[type="file"] {
+    display: none;
+} */
 .main-contents {
     width: 100%;
     margin: 0 auto;
@@ -184,7 +217,6 @@ ul li a {
     margin-top: 30px;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 60px 80px;
-    width: 80%;
     background-color: white;
 }
 .all-contents h2 {
@@ -200,6 +232,17 @@ ul li a {
     width: 50%;
     text-align: left;
     margin-top: 40px;
+}
+.form-display {
+    padding: 40px 30px;
+    background-color: white;
+    border: #4b90f6 solid 2.5px;
+    border-radius: 20px;
+    box-shadow: 0 0 2px 2px rgb(112, 112, 112);
+    position: fixed;
+    right: 3%;
+    bottom: 5vh;
+    z-index: 71;
 }
 .thread-data {
     display: flex;
@@ -312,9 +355,38 @@ textarea {
     z-index: 20 !important;
 }
 .comment-form {
-    width: 50%;
     margin: 0 auto;
-    margin-top: 20vh !important;
+    position: fixed !important;
+    right: 0;
+    left: 0;
+    bottom: 2vh;
+    background-color: white;
+    z-index: 80;
+    border-radius: 10px;
+    padding-top: 10px;
+    display: none;
+}
+.comment-form textarea {
+    font-size: 25px;
+}
+.comment-form button {
+    padding: 10px;
+    margin: 0 auto;
+    border: rgb(106, 106, 216) solid;
+    background: rgb(106, 106, 216);
+    color: white;
+    border-radius: 25px;
+    margin: 10px 0;
+}
+.black-bg {
+    background-color: rgb(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100vh;
+    z-index: 70;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
 }
 .reply-form {
     width: 50%;
@@ -513,7 +585,6 @@ textarea::-webkit-scrollbar {
 img {
     width: 200px;
     height: 200px;
-    margin-top: 10px;
 }
 .alert ul > li {
     color: red;
@@ -672,7 +743,7 @@ img {
 .userpage-inhum {
     display: none;
 }
-.input-alert p{
+.input-alert p {
     color: red;
     margin-bottom: 0 !important;
     margin-top: 10px;
@@ -791,8 +862,11 @@ img {
     p {
         margin-bottom: 0;
     }
+    .comment-data {
+        flex-direction: column;
+    }
     .right {
-        margin-right: 0;
+        margin-bottom: 0;
     }
 }
 @media (max-width: 410px) {
