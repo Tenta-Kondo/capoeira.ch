@@ -182,9 +182,9 @@ ul li a {
     background-color: #384878;
     cursor: pointer;
 }
-/* input[type="file"] {
+input[type="file"] {
     display: none;
-} */
+}
 .main-contents {
     width: 100%;
     margin: 0 auto;
@@ -739,6 +739,10 @@ img {
 .subsc-btn-group {
     display: flex;
     justify-content: center;
+}
+.icon-image{
+    margin: 0 auto;
+    display: block;
 }
 .userpage-inhum {
     display: none;

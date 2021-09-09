@@ -19,29 +19,44 @@ use SebastianBergmann\Environment\Console;
 
 class BrogController extends Controller
 {
-    public function open()
+    public function openviewUser()
     {
-        return view("Home.open");
+        $user = Auth::user();
+        $adress = $user->email;
+        $icon_image = Image::where("title", $adress)->first();
+        $defaultCard2 = "";
+        return view('Home.SiteTop', compact('user', 'icon_image'));
     }
+    // public function openviewGuest()
+    // {
+    //     $user = Auth::user();
+    //     $adress = $user->email;
+    //     $image = Image::where("title", $adress)->first();
+    //     $defaultCard2 = "";
+    //     return view('Home.SiteTop-guest', compact('user','image'));
+    // }
+
     public function Home(
         Request $request
     ) {
-        // if (session('flash')) {
-        //     $flash_msg = session()->get('flash');
-        //     dd("flash");
-        // }
         $flash_msg = session()->get('flash');
         session()->forget("flash");
         $thread = Blogapp::orderBy('updated_at', 'desc')->paginate(8);
         $comment = Comment::all();
         $image = Image::all();
-        return view("Home.home", compact("thread", "comment", "image", "flash_msg"));
+
+        $user = Auth::user();
+        $adress = $user->email;
+        $icon_image = Image::where("title", $adress)->first();
+
+
+        return view("Home.home", compact("thread", "comment", "image", "flash_msg", "icon_image"));
     }
     public function sitetop()
     {
         $user = Auth::user();
         if ($user) {
-            return view("Home.SiteTop", compact("user"));
+            return redirect("/User");
         } else {
             return view("Home.SiteTop-guest");
         }
@@ -52,19 +67,26 @@ class BrogController extends Controller
     }
     public function detail($id)
     {
-
         $thread = Blogapp::find($id);
         $num = (int)$id;
         $commentnumber = Comment::where("commentnumber", $num)->get();
         $title = $thread->title;
         $image = Image::where("number", $num)->get();
         $topimage = Image::where("title", $title)->get();
-        return view("Home.detail", compact("thread", "commentnumber", "image", "topimage"));
+
+        $user = Auth::user();
+        $adress = $user->email;
+        $icon_image = Image::where("title", $adress)->first();
+        
+        return view("Home.detail", compact("thread", "commentnumber", "image", "topimage", "icon_image"));
     }
     public function create()
     {
+        $user = Auth::user();
+        $adress = $user->email;
+        $icon_image = Image::where("title", $adress)->first();
         $thread = Blogapp::all();
-        return view("Home.create", compact("thread"));
+        return view("Home.create", compact("thread", "icon_image"));
     }
     public function creating(Request $request)
     {
@@ -85,23 +107,27 @@ class BrogController extends Controller
         if ($upload_image) {
             $image_path = $upload_image->getRealPath();
             Cloudder::upload($image_path, null);
-
             $publicId = Cloudder::getPublicId();
-
             $logoUrl = Cloudder::secureShow($publicId, [
                 'width'     => 200,
                 'height'    => 200
             ]);
             Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
         }
-        Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
-
-        session()->put('flash', "投稿が完了しました");
-        return redirect("/top");
+        $user = Auth::user();
+        $adress = $user->email;
+        $icon_image = Image::where("title", $adress)->first();
+        if ($icon_image) {
+            $filePath = $icon_image->file_path;
+            Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username, "IconString" => $filePath]);
+            session()->put('flash', "投稿が完了しました");
+            return redirect("/top");
+        } else {
+            Blogapp::create(["title" => $title, "contents" => $contents, "username" => $username]);
+            session()->put('flash', "投稿が完了しました");
+            return redirect("/top");
+        }
     }
-
-
-
     // public function delete($id)
     // {
     //     Blogapp::destroy($id);
@@ -112,8 +138,11 @@ class BrogController extends Controller
     // }
     public function edit($id)
     {
+        $user = Auth::user();
+        $adress = $user->email;
+        $icon_image = Image::where("title", $adress)->first();
         $blog = Blogapp::find($id);
-        return view("Home.edit", compact("blog"));
+        return view("Home.edit", compact("blog", "icon_image"));
     }
     public function update(BlogRequest $request)
     {
@@ -163,19 +192,13 @@ class BrogController extends Controller
     {
         return view("Home.done");
     }
-    public function userpage()
-    {
-        return view("Home.user-page");
-    }
-
-    public function subsc(Request $request)
-    {
-
-        $user = $request->user();
-        return view('subscription.subscription')->with([
-            'intent' => $user->createSetupIntent()
-        ]);
-    }
+    // public function subsc(Request $request)
+    // {
+    //     $user = $request->user();
+    //     return view('subscription.subscription')->with([
+    //         'intent' => $user->createSetupIntent()
+    //     ]);
+    // }
     public function search(Request $request)
     {
         $searchWord = $request->input("search-word");
@@ -183,8 +206,10 @@ class BrogController extends Controller
         $image = Image::all();
         $searchThread = Blogapp::where('title', 'like', "%$searchWord%")->paginate(8);
         $Threadcount = Blogapp::where('title', 'like', "%$searchWord%")->count();
-
-        return view("Home.search", compact("searchThread", "comment", "image", "Threadcount", "searchWord"));
+        $user = Auth::user();
+        $adress = $user->email;
+        $icon_image = Image::where("title", $adress)->first();
+        return view("Home.search", compact("searchThread", "comment", "image", "Threadcount", "searchWord", "icon_image"));
     }
     public function icon(Request $request)
     {
@@ -196,7 +221,6 @@ class BrogController extends Controller
             $image_path = $icon_image->getRealPath();
             Cloudder::upload($image_path, null);
             $publicId = Cloudder::getPublicId();
-
             $logoUrl = Cloudder::secureShow($publicId, [
                 'width'     => 200,
                 'height'    => 200

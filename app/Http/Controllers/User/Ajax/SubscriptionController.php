@@ -13,14 +13,17 @@ use Laravel\Cashier\Cashier;
 use Stripe\Stripe;
 use Stripe\Charge;
 use App\Models\Payment;
+use App\Models\Image;
 
 class SubscriptionController extends Controller
 {
   public function userpage()
   {
     $user = Auth::user();
+    $adress = $user->email;
+    $icon_image = Image::where("title", $adress)->first();
     $defaultCard2 = "";
-    return view('subscription.subscriptCreate', compact('user', 'defaultCard2'));
+    return view('subscription.subscriptCreate', compact('user', 'defaultCard2','icon_image'));
   }
   public function getCurrentPayment()
   {

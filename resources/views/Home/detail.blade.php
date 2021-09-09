@@ -12,14 +12,27 @@ $url = url()->previous();
             <div class="all-contents col-10 col-md-8">
                 <div class="thread-data">
                     <p style="text-align: left;">{{$thread->created_at}}</p>
-                    <span class="name">スレッド作成者 : {{$thread->username}}</span>
+                    <span class="name">スレッド作成者 :
+                        @if($thread->IconString)
+                        <img src="{{$thread->IconString}}" alt="" class="user-icon">
+                        @else
+                        <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                        @endif
+                        {{$thread->username}}</span>
                 </div>
                 <h2 style="font-weight:lighter;" class="detail-title">{{$thread->title}}</h2>
                 <div class="comment">
                     <div class="comment-data">
                         <span class="right">1</span>
                         <p class="right">{{$thread->created_at}}</p>
-                        <p>作成者 : {{$thread->username}}</p>
+                        <p>作成者 :
+                            @if($thread->IconString)
+                            <img src="{{$thread->IconString}}" alt="" class="user-icon">
+                            @else
+                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                            @endif
+                            {{$thread->username}}
+                        </p>
                     </div>
                     <p class="comment-content">{{$thread->contents}}</p>
                     <?php

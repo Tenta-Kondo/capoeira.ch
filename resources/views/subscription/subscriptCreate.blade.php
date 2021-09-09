@@ -1,20 +1,25 @@
 @extends('layout')
 @section('content')
 <main>
+
     <div class="container-fluid">
         <div class="row">
             <div class="payment-card col-10 col-md-6">
                 <div class="payment-card-header">{{ $user->name }}さんの情報</div>
                 <div class="card-body">
-                    <img src="{{asset('image/f318x318.jpg')}}" style="margin: 0 auto;display:block;" alt="">
+                    @if($icon_image)
+                    <img src="{{$icon_image->file_path}}" alt="" class="icon-image">
+                    @else
+                    <img src="{{asset('image/f318x318.jpg')}}" class="icon-image" alt="">
+                    @endif
                     <div class="form-group">
-                        <table class="table">
-                            <form action="/icon" method="POST">
+                        <form action="/icon" method="POST" files="true" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                                <!-- <label for="icon-image" class="input-file">アイコンを変更</label> -->
-                                <input type="file" name="image" accept="image/png, image/jpeg" id="icon-image">
-                                <button type="submit" class="btn-putline-primary">確定</button>
-                            </form>
+                            <!-- <label for="icon-image" class="input-file">アイコンを変更</label> -->
+                            <input type="file" name="image" accept="image/png, image/jpeg" id="icon-image">
+                            <button type="submit" class="btn-outline-primary">確定</button>
+                        </form>
+                        <table class="table">
                             <tbody>
                                 <tr>
                                     <th scope="row">お名前：</th>

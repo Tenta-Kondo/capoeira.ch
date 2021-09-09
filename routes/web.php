@@ -28,7 +28,8 @@ Route::get('/done', "App\Http\Controllers\BrogController@done")->middleware('aut
 Route::get('/user-page', "App\Http\Controllers\User\Ajax\SubscriptionController@userpage")->middleware('auth')->name("userpage");
 Route::get('/', "App\Http\Controllers\BrogController@sitetop");
 Route::get('/success', "App\Http\Controllers\BrogController@success")->middleware('auth');
-
+Route::get('/User', "App\Http\Controllers\BrogController@openviewUser")->middleware('auth');
+Route::get('/Guest', "App\Http\Controllers\BrogController@openviewGuest");
 
 Route::get('/post/create', [PostController::class, 'create']);
 Route::post('/post', [PostController::class, 'store']);

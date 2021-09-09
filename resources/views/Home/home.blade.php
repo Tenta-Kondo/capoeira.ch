@@ -26,7 +26,13 @@
                 <div class="right-bottom">
                     <div class="thread-head">
                         <p class="right">{{$threads->created_at}}</p>
-                        <p>作成者 : {{$threads->username}}</p>
+                        <p>作成者 : 
+                        @if($threads->IconString)  
+                        <img src="{{$threads->IconString}}" alt="" class="user-icon">
+                        @else
+                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                        @endif
+                        {{$threads->username}}</p>
                     </div>
                     <div style="display: flex;justify-content:flex-end;">
                         <p style="margin:3px 10px 0 0;"><i class="far fa-comment fa-lg" style="margin-right: 10px;">
