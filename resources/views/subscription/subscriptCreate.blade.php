@@ -8,16 +8,19 @@
                 <div class="payment-card-header">{{ $user->name }}さんの情報</div>
                 <div class="card-body">
                     @if($icon_image)
-                    <img src="{{$icon_image->file_path}}" alt="" class="icon-image">
+                    <img src="{{$icon_image->file_path}}" alt="" class="icon-image" id="icon">
                     @else
-                    <img src="{{asset('image/f318x318.jpg')}}" class="icon-image" alt="">
+                    <img src="{{asset('image/f318x318.jpg')}}" class="icon-image" alt="" id="icon-unknown">
                     @endif
+                    <img id="preview" class="icon-image none">
                     <div class="form-group">
                         <form action="/icon" method="POST" files="true" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <!-- <label for="icon-image" class="input-file">アイコンを変更</label> -->
-                            <input type="file" name="image" accept="image/png, image/jpeg" id="icon-image">
-                            <button type="submit" class="btn-outline-primary">確定</button>
+                            <div style="display: flex;">
+                                <label for="icon-image" class="input-file">＋アイコンを変更</label>
+                                <input type="file" name="image" accept="image/png, image/jpeg" id="icon-image">
+                                <button type="submit" class="btn-outline-primary">保存</button>
+                            </div>
                         </form>
                         <table class="table">
                             <tbody>
@@ -111,6 +114,23 @@
             return false;
         }
     }
+
+    $('#icon-image').on('change', function(e) {
+        var preview =document.getElementById("preview");
+        preview.classList.toggle("none");
+        var iconImage = document.getElementById("icon");
+        var iconUnknown = document.getElementById("icon-unknown")
+        if (iconImage) {
+            iconImage.classList.toggle("none");
+        } else if (iconUnknown) {
+            iconUnknown.classList.toggle("none");
+        }
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#preview").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
 </script>
 </body>
 

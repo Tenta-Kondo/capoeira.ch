@@ -30,7 +30,7 @@
                         @if($threads->IconString)  
                         <img src="{{$threads->IconString}}" alt="" class="user-icon">
                         @else
-                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                        <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
                         @endif
                         {{$threads->username}}</p>
                     </div>

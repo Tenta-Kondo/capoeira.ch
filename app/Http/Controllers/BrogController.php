@@ -49,7 +49,6 @@ class BrogController extends Controller
         $adress = $user->email;
         $icon_image = Image::where("title", $adress)->first();
 
-
         return view("Home.home", compact("thread", "comment", "image", "flash_msg", "icon_image"));
     }
     public function sitetop()
@@ -77,8 +76,10 @@ class BrogController extends Controller
         $user = Auth::user();
         $adress = $user->email;
         $icon_image = Image::where("title", $adress)->first();
-        
-        return view("Home.detail", compact("thread", "commentnumber", "image", "topimage", "icon_image"));
+
+        //改善の余地あり
+        $allImage=Image::all();
+        return view("Home.detail", compact("thread", "commentnumber", "image", "topimage", "icon_image","allImage"));
     }
     public function create()
     {
@@ -90,7 +91,6 @@ class BrogController extends Controller
     }
     public function creating(Request $request)
     {
-
         $request->validate(
             [
                 'title' => ['required', 'unique:threadtable', 'max:100'],
@@ -159,14 +159,16 @@ class BrogController extends Controller
     public function comment(CommentRequest $request)
     {
         $username = $request->input("name");
+        $adress = $request->input("email");
         $comment = $request->input("comment");
         $commentnumber = $request->input("commentnumber");
         $commentID = $request->input("commentID");
-
+      
         $request->validate([
             'image' => 'file|image|mimes:png,jpeg'
         ]);
         $upload_image = $request->file('image');
+
         if ($upload_image) {
             $image_path = $upload_image->getRealPath();
             Cloudder::upload($image_path, null);
@@ -182,11 +184,15 @@ class BrogController extends Controller
                 "comment-img-number" => $commentID
             ]);
         }
-
-
+        $icon_image = Image::where("title", $adress)->first();
+        if ($icon_image) {
+            $icon_path=$icon_image->file_path;
+            Comment::create(["name" => $username, "comment" => $comment, "commentnumber" => $commentnumber, "commentID" => $commentID, "IconString"=>$icon_path]);
+            return redirect("/done");
+        }else{
         Comment::create(["name" => $username, "comment" => $comment, "commentnumber" => $commentnumber, "commentID" => $commentID]);
-
         return redirect("/done");
+        }
     }
     public function done()
     {
@@ -213,10 +219,16 @@ class BrogController extends Controller
     }
     public function icon(Request $request)
     {
+        $icon_image = $request->file('image');
+        $user = Auth::user();
+        $adress = $user->email;
+        if (Image::where("title", $adress)->first()) {
+            Image::where("title", $adress)->first()->delete();
+        }
         $request->validate([
             'image' => 'file|image|mimes:png,jpeg'
         ]);
-        $icon_image = $request->file('image');
+
         if ($icon_image) {
             $image_path = $icon_image->getRealPath();
             Cloudder::upload($image_path, null);
@@ -229,7 +241,7 @@ class BrogController extends Controller
             Image::create([
                 "file_path" => $logoUrl, "file_name" => $icon_image->getClientOriginalName(), "title" => $user->email
             ]);
-            return redirect("/done");
+            return redirect("/user-page");
         }
     }
 }

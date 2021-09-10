@@ -65,16 +65,20 @@ $url = url()->previous();
                     <div class="comment-data">
                         <span class="right">{{$count++}}</span>
                         <p class="right">{{$comment->created_at}}</p>
-                        <p>作成者 : {{$comment->name}}</p>
+                        <p>作成者 :
+                            @if($comment->IconString)
+                            <img src="{{$comment->IconString}}" alt="" class="user-icon">
+                            @else
+                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                            @endif
+                            {{$comment->name}}
+                        </p>
                     </div>
                     <p class="comment-content">{{$comment->comment}}</p>
-
                     <?php
                     $commentID = $comment->commentID;
-
                     $img = $image->where("comment-img-number", $commentID)->first();
                     ?>
-
                     @if($img)
                     <img src="{{$img->file_path}}" alt="">
                     @endif
@@ -102,6 +106,7 @@ $url = url()->previous();
             <form action="/comment" method="POST" class="comment-form col-md-5 col-sm-8 col-10" enctype="multipart/form-data" files="true">
                 {{ csrf_field() }}
                 <input type="hidden" name="name" value="{{ Auth::user()->name }}">
+                <input type="hidden" name="email" value="{{Auth::user()->email}}">
                 <input type="hidden" name="commentID" id="" value="{{$commentcount+1}}">
                 <input type="hidden" name="commentnumber" value="{{$thread->id}}">
                 <textarea name="comment" id="" cols="30" rows="6" placeholder="コメントを入力"></textarea>
