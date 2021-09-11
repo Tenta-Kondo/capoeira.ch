@@ -14,9 +14,9 @@ $url = url()->previous();
                     <p style="text-align: left;">{{$thread->created_at}}</p>
                     <span class="name">スレッド作成者 :
                         @if($thread->IconString)
-                        <img src="{{$thread->IconString}}" alt="" class="user-icon">
+                        <img src="{{$thread->IconString}}" alt="" class="user-icon rounded-circle">
                         @else
-                        <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                        <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon rounded-circle">
                         @endif
                         {{$thread->username}}</span>
                 </div>
@@ -27,9 +27,9 @@ $url = url()->previous();
                         <p class="right">{{$thread->created_at}}</p>
                         <p>作成者 :
                             @if($thread->IconString)
-                            <img src="{{$thread->IconString}}" alt="" class="user-icon">
+                            <img src="{{$thread->IconString}}" alt="" class="user-icon rounded-circle">
                             @else
-                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon rounded-circle">
                             @endif
                             {{$thread->username}}
                         </p>
@@ -67,9 +67,9 @@ $url = url()->previous();
                         <p class="right">{{$comment->created_at}}</p>
                         <p>作成者 :
                             @if($comment->IconString)
-                            <img src="{{$comment->IconString}}" alt="" class="user-icon">
+                            <img src="{{$comment->IconString}}" alt="" class="user-icon rounded-circle">
                             @else
-                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
+                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon rounded-circle">
                             @endif
                             {{$comment->name}}
                         </p>

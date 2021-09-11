@@ -7,9 +7,9 @@
     </p>
     @endif
     <div class="main-contents container-fluid">
-        <form action="/search" class="search-form">
+        <form action="/search" class="search-form" >
             <input type="text" placeholder="タイトルで検索" name="search-word" class="search-input">
-            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+            <button type="button" class="btn btn-outline-primary" style="margin: 0;background:white;">search</button>
         </form>
         <div class="thread-contents row">
             @foreach($thread as $threads)
@@ -26,13 +26,14 @@
                 <div class="right-bottom">
                     <div class="thread-head">
                         <p class="right">{{$threads->created_at}}</p>
-                        <p>作成者 : 
-                        @if($threads->IconString)  
-                        <img src="{{$threads->IconString}}" alt="" class="user-icon">
-                        @else
-                        <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon">
-                        @endif
-                        {{$threads->username}}</p>
+                        <p>作成者 :
+                            @if($threads->IconString)
+                            <img src="{{$threads->IconString}}" alt="" class="user-icon rounded-circle">
+                            @else
+                            <img src="{{asset('image/f318x318.jpg')}}" alt="" class="user-icon rounded-circle">
+                            @endif
+                            {{$threads->username}}
+                        </p>
                     </div>
                     <div style="display: flex;justify-content:flex-end;">
                         <p style="margin:3px 10px 0 0;"><i class="far fa-comment fa-lg" style="margin-right: 10px;">
@@ -82,8 +83,8 @@
             }
         });
     });
-   
 </script>
 </body>
+
 </html>
 @endsection

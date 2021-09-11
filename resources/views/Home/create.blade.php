@@ -23,22 +23,25 @@ $url = url()->previous();
                     @endif
                     <input type="hidden" name="username" value="{{ Auth::user()->name }}">
                     <div id="name-alert" class="input-alert"></div>
-                    <input type="text" name="title" id="title" placeholder="タイトル(必須)" value="{{ old('title') }}">
+                    <label class="form-label" for="formal">title</label>
+                    <input type="text" name="title" class="form-control" id="title formal" placeholder="タイトル(必須)" value="{{ old('title') }}">
                     @if($errors->has("title"))
                     <div class="err_msg">
                         {{$errors->first("title")}}
                     </div>
                     @endif
                     <div id="contents-alert" class="input-alert"></div>
-                    <textarea name="contents" cols="30" rows="10" placeholder="内容(必須)" id="contents">{{old('contents')}}</textarea>
+                    <textarea name="contents" class="form-control" cols="30" rows="10" placeholder="内容(必須)" id="contents">{{old('contents')}}</textarea>
                     @if($errors->has("contents"))
                     <div class="err_msg">
                         {{$errors->first("contents")}}
                     </div>
                     @endif
                     @csrf
-                    <label for="create-image" class="input-file">画像を追加</label>
-                        <input type="file" name="image" accept="image/png, image/jpeg" id="create-image">
+                    <!-- <label for="thread-image" class="input-file">画像を追加</label> -->
+                    <input type="file" name="image" accept="image/png, image/jpeg" id="thread-image" multiple>
+                    <!-- <img id="preview" class="none"> -->
+                    <div class="gallery"></div>
                     <button type="submit" class="primary-btn" id="thread-create-btn">投稿</button>
                 </form>
             </div>
@@ -68,6 +71,32 @@ $url = url()->previous();
             }
         });
     });
+    // $(function() {
+    //     var imagesPreview = function(input, placeToInsertImagePreview) {
+
+    //         if (input.files) {
+    //             var filesAmount = input.files.length;
+
+    //             for (i = 0; i < filesAmount; i++) {
+    //                 var reader = new FileReader();
+
+    //                 reader.onload = function(event) {
+    //                     $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+    //                 }
+
+    //                 reader.readAsDataURL(input.files[i]);
+    //             }
+    //         }
+
+    //     };
+
+    //     $('#thread-image').on('change', function() {
+    //         imagesPreview(this, 'div.gallery');
+    //     });
+    // });
+
+
+
     var form = document.getElementById("create-form");
     var title = document.getElementById("title");
     var contents = document.getElementById("contents");
@@ -100,6 +129,15 @@ $url = url()->previous();
             }
         }
     }
+    // $('#thread-image').on('change', function(e) {
+    //     var preview = document.getElementById("preview");
+    //     preview.classList.toggle("none");
+    //     var reader = new FileReader();
+    //     reader.onload = function(e) {
+    //         $("#preview").attr('src', e.target.result);
+    //     }
+    //     reader.readAsDataURL(e.target.files[0]);
+    // });
 </script>
 </body>
 

@@ -1,5 +1,5 @@
 @extends("layout") @section("content")<main>
-    <div class="sitetop-header">
+    <div class="sitetop-header shadow-1-strong">
         <div class="sitetop-title">
             <h2>Capoeira.ch</h2>
         </div>
