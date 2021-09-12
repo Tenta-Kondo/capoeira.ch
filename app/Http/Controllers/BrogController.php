@@ -95,25 +95,40 @@ class BrogController extends Controller
             [
                 'title' => ['required', 'unique:threadtable', 'max:100'],
                 'contents' => ['required'],
-                'image' => ['file', 'image', 'mimes:png,jpeg']
+                'image.0' => ['file', 'image', 'mimes:png,jpeg'],
+                'image.1' => ['file', 'image', 'mimes:png,jpeg'],
+                'image.2' => ['file', 'image', 'mimes:png,jpeg']
+                ]
+            );
+            $title = $request->input("title");
+            $contents = $request->input("contents");
+            $username = $request->input("username");
+            $upload_image = $request->file('image');
 
-            ]
-        );
-        $title = $request->input("title");
-        $contents = $request->input("contents");
-        $username = $request->input("username");
-        $upload_image = $request->file('image');
-
+        // if ($upload_image) {
+        //     $image_path = $upload_image->getRealPath();
+        //     Cloudder::upload($image_path, null);
+        //     $publicId = Cloudder::getPublicId();
+        //     $logoUrl = Cloudder::secureShow($publicId, [
+        //         'width'     => 200,
+        //         'height'    => 200
+        //     ]);
+        //     Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
+        // }
         if ($upload_image) {
-            $image_path = $upload_image->getRealPath();
-            Cloudder::upload($image_path, null);
-            $publicId = Cloudder::getPublicId();
-            $logoUrl = Cloudder::secureShow($publicId, [
-                'width'     => 200,
-                'height'    => 200
-            ]);
-            Image::create(["file_path" => $logoUrl, "file_name" => $upload_image->getClientOriginalName(), "title" => $title]);
+            $n=count($upload_image);
+            for($i = 0; $i < $n; $i++){
+                $image_path = $upload_image[$i]->getRealPath();
+                Cloudder::upload($image_path, null);
+                $publicId = Cloudder::getPublicId();
+                $logoUrl = Cloudder::secureShow($publicId, [
+                    'width'     => 200,
+                    'height'    => 200
+                ]);
+                Image::create(["file_path" => $logoUrl, "file_name" => $upload_image[$i]->getClientOriginalName(), "title" => $title]);
+                }
         }
+       
         $user = Auth::user();
         $adress = $user->email;
         $icon_image = Image::where("title", $adress)->first();

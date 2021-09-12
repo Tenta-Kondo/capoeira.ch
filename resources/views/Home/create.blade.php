@@ -23,8 +23,7 @@ $url = url()->previous();
                     @endif
                     <input type="hidden" name="username" value="{{ Auth::user()->name }}">
                     <div id="name-alert" class="input-alert"></div>
-                    <label class="form-label" for="formal">title</label>
-                    <input type="text" name="title" class="form-control" id="title formal" placeholder="タイトル(必須)" value="{{ old('title') }}">
+                    <input type="text" name="title" class="form-control" id="title" placeholder="タイトル(必須)" value="{{ old('title') }}">
                     @if($errors->has("title"))
                     <div class="err_msg">
                         {{$errors->first("title")}}
@@ -38,8 +37,18 @@ $url = url()->previous();
                     </div>
                     @endif
                     @csrf
-                    <!-- <label for="thread-image" class="input-file">画像を追加</label> -->
-                    <input type="file" name="image" accept="image/png, image/jpeg" id="thread-image" multiple>
+                    <label for="thread-image" class="input-file">画像を追加</label>
+                    <input type="file" name="image[]" accept="image/png, image/jpeg" id="thread-image" multiple>
+                    <img id="preview" class="icon-image none">
+
+                    <label for="thread-image2" class="input-file none" id="image-label2">画像を追加</label>
+                    <input type="file" name="image[]" accept="image/png, image/jpeg" id="thread-image2" multiple>
+                    <img id="preview2" class="icon-image none">
+
+                    <label for="thread-image3" class="input-file none" id="image-label3">画像を追加</label>
+                    <input type="file" name="image[]" accept="image/png, image/jpeg" id="thread-image3" multiple>
+                    <img id="preview3" class="icon-image none">
+
                     <!-- <img id="preview" class="none"> -->
                     <div class="gallery"></div>
                     <button type="submit" class="primary-btn" id="thread-create-btn">投稿</button>
@@ -71,31 +80,6 @@ $url = url()->previous();
             }
         });
     });
-    // $(function() {
-    //     var imagesPreview = function(input, placeToInsertImagePreview) {
-
-    //         if (input.files) {
-    //             var filesAmount = input.files.length;
-
-    //             for (i = 0; i < filesAmount; i++) {
-    //                 var reader = new FileReader();
-
-    //                 reader.onload = function(event) {
-    //                     $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-    //                 }
-
-    //                 reader.readAsDataURL(input.files[i]);
-    //             }
-    //         }
-
-    //     };
-
-    //     $('#thread-image').on('change', function() {
-    //         imagesPreview(this, 'div.gallery');
-    //     });
-    // });
-
-
 
     var form = document.getElementById("create-form");
     var title = document.getElementById("title");
@@ -129,15 +113,37 @@ $url = url()->previous();
             }
         }
     }
-    // $('#thread-image').on('change', function(e) {
-    //     var preview = document.getElementById("preview");
-    //     preview.classList.toggle("none");
-    //     var reader = new FileReader();
-    //     reader.onload = function(e) {
-    //         $("#preview").attr('src', e.target.result);
-    //     }
-    //     reader.readAsDataURL(e.target.files[0]);
-    // });
+    $('#thread-image').on('change', function(e) {
+        var preview = document.getElementById("preview");
+        preview.classList.toggle("none");
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#preview").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        var image2=document.getElementById("image-label2");
+        image2.classList.toggle("none");
+    });
+    $('#thread-image2').on('change', function(e) {
+        var preview = document.getElementById("preview2");
+        preview.classList.toggle("none");
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#preview2").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+        var image3=document.getElementById("image-label3");
+        image3.classList.toggle("none");
+    });
+    $('#thread-image3').on('change', function(e) {
+        var preview = document.getElementById("preview3");
+        preview.classList.toggle("none");
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#preview3").attr('src', e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    });
 </script>
 </body>
 

@@ -399,12 +399,11 @@ textarea {
     display: none;
     border: 0.1px solid rgb(231, 231, 231);
     padding: 5px;
-
     flex-direction: column;
     justify-content: center;
 }
 .reply-close {
-    display: none;
+    display: none !important;
 }
 
 .btn-reply {
@@ -412,6 +411,7 @@ textarea {
     background-color: #f5f5f5;
     margin-top: 25px;
     cursor: pointer;
+    display: inline-flex;
 }
 .fa-level-up-alt {
     transform: rotate(90deg);

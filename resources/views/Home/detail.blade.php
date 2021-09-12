@@ -34,16 +34,20 @@ $url = url()->previous();
                             {{$thread->username}}
                         </p>
                     </div>
-                    <p class="comment-content">{{$thread->contents}}</p>
-                    <?php
-                    $title = $thread->title;
-                    $img = $topimage->first();
-                    ?>
-                    @if($img)
-                    <img src="{{$img->file_path}}" alt="">
-                    @endif
-                    <button type="btn" class="btn-reply" id="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
-                    <button type="btn" class="btn-reply reply-close" id="reply-close"><i class="fas fa-level-up-alt"></i>閉じる</button>
+                    <div class="flex" style="flex-direction: column;">
+                        <p class="comment-content">{{$thread->contents}}</p>
+                        <?php
+                        $title = $thread->title;
+                        $img = $topimage->all();
+                        ?>
+                        @if($img)
+                        @foreach($img as $imgs)
+                        <img src="{{$imgs->file_path}}" alt="">
+                        @endforeach
+                        @endif
+                        <button type="btn" class="btn-reply" id="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
+                        <button type="btn" class="btn-reply reply-close" id="reply-close"><i class="fas fa-level-up-alt"></i>閉じる</button>
+                    </div>
                 </div>
                 <form action="/comment" method="POST" id="reply-form" class="reply-form" enctype="multipart/form-data" files="true">
                     {{ csrf_field() }}
@@ -74,17 +78,18 @@ $url = url()->previous();
                             {{$comment->name}}
                         </p>
                     </div>
-                    <p class="comment-content">{{$comment->comment}}</p>
-                    <?php
-                    $commentID = $comment->commentID;
-                    $img = $image->where("comment-img-number", $commentID)->first();
-                    ?>
-                    @if($img)
-                    <img src="{{$img->file_path}}" alt="">
-                    @endif
-                    <button type="btn" class="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
-                    <button type="btn" class="btn-reply reply-close"><i class="fas fa-level-up-alt"></i>閉じる</button>
-
+                    <div class="flex" style="flex-direction: column;">
+                        <p class="comment-content">{{$comment->comment}}</p>
+                        <?php
+                        $commentID = $comment->commentID;
+                        $img = $image->where("comment-img-number", $commentID)->first();
+                        ?>
+                        @if($img)
+                        <img src="{{$img->file_path}}" alt="">
+                        @endif
+                        <button type="btn" class="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
+                        <button type="btn" class="btn-reply reply-close"><i class="fas fa-level-up-alt"></i>閉じる</button>
+                    </div>
                 </div>
                 <form action="/comment" method="POST" class="reply-form" enctype="multipart/form-data" files="true">
                     {{ csrf_field() }}
@@ -150,7 +155,7 @@ $url = url()->previous();
     });
     $(function() {
         $(".btn-reply").click(function() {
-            $(this).parent().next().toggleClass("flex");
+            $(this).parent().parent().next().toggleClass("flex");
             $(this).next().toggleClass("flex");
             $(this).toggleClass("none");
         })
