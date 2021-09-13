@@ -216,7 +216,7 @@ input[type="file"] {
 .thread-content p {
     font-size: 14px;
 }
-.thread-image{
+.thread-image {
     max-width: 300px;
     max-height: 300px;
 }
@@ -890,5 +890,16 @@ img {
     }
     .nav-item h3 {
         font-size: 16px;
+    }
+    .respon-nav {
+        width: 100%;
+    }
+    .user-data{
+        display: flex;
+        flex-direction: column;
+    }
+    .icon-name{
+        display: flex;
+        margin: 0 auto;
     }
 }

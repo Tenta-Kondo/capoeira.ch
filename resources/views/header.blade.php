@@ -54,7 +54,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse respon-nav" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <h4 class="btn-simple"><a href="/">SiteTop</a></h4>
@@ -88,13 +88,23 @@
                     <li class="nav-item  btn-simple userpage-inhum">
                         <h4 style="margin-bottom: 0;">
                             <a class="user-data dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                USER NAME : <?php
-                                            if (empty(Auth::user())) {
-                                                echo "guest";
-                                            } else {
-                                                echo  Auth::user()->name;
-                                            }
-                                            ?></a>
+                                USER NAME : 
+                                <div class="icon-name">
+                                @if(Auth::user())
+                                @if($icon_image)
+                                <img src="{{$icon_image->file_path}}" alt="" class="user-icon rounded-circle">
+                                @else
+                                <img src="{{asset('image/f318x318.jpg')}}" class="user-icon rounded-circle" alt="">
+                                @endif
+                                @else
+                                <img src="{{asset('image/f318x318.jpg')}}" class="user-icon rounded-circle" alt="">
+                                @endif<?php
+                                        if (empty(Auth::user())) {
+                                            echo "guest";
+                                        } else {
+                                            echo  Auth::user()->name;
+                                        }
+                                        ?></div></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a href="/user-page" class="btn-simple dropdown-item">UserInfo</a>
                             </div>
