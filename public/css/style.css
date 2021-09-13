@@ -216,6 +216,10 @@ input[type="file"] {
 .thread-content p {
     font-size: 14px;
 }
+.thread-image{
+    max-width: 300px;
+    max-height: 300px;
+}
 .all-contents {
     text-align: center;
     margin: 0 auto;

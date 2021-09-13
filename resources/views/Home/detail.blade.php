@@ -42,7 +42,7 @@ $url = url()->previous();
                         ?>
                         @if($img)
                         @foreach($img as $imgs)
-                        <img src="{{$imgs->file_path}}" alt="">
+                        <img src="{{$imgs->file_path}}" class="thread-image" alt="">
                         @endforeach
                         @endif
                         <button type="btn" class="btn-reply" id="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
@@ -85,7 +85,7 @@ $url = url()->previous();
                         $img = $image->where("comment-img-number", $commentID)->first();
                         ?>
                         @if($img)
-                        <img src="{{$img->file_path}}" alt="">
+                        <img src="{{$img->file_path}}" class="thread-image" alt="">
                         @endif
                         <button type="btn" class="btn-reply"><i class="fas fa-level-up-alt"></i>この投稿へ返信する</button>
                         <button type="btn" class="btn-reply reply-close"><i class="fas fa-level-up-alt"></i>閉じる</button>
