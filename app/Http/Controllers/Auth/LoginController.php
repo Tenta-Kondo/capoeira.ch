@@ -45,6 +45,6 @@ class LoginController extends Controller
     public function redirectPath()
     {
         
-      return '/success';
+      return '/';
     }
 }
