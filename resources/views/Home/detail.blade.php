@@ -125,7 +125,7 @@ $url = url()->previous();
                 <button type="submit">掲示板に書き込む</button>
             </form>
         </div>
-        <button class="form-display btn-outline-primary">書き込む</button>
+        <button class="form-display btn-outline-primary"><span class="form-display-inner">書き込む</span><span class="form-display-back none">戻る</span></button>
         <div class="black-bg"></div>
     </section>
 </main>
@@ -168,6 +168,8 @@ $url = url()->previous();
         $(".form-display").click(function() {
             $(".comment-form").toggle("display");
             $(".black-bg").toggle("display");
+            $(".form-display-inner").toggleClass("none");
+            $(".form-display-back").toggleClass("none");
         })
     })
 
