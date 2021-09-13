@@ -848,6 +848,9 @@ img {
     .nav-menu li {
         width: 150px;
     }
+    .sitetop-header{
+        width: 75%;
+    }
 }
 @media (max-width: 484px) {
     .search-input {
@@ -901,5 +904,8 @@ img {
     .icon-name{
         display: flex;
         margin: 0 auto;
+    }
+    .sitetop-header{
+        width: 85%;
     }
 }
