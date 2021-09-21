@@ -51,9 +51,12 @@
                     <a href="/user-page" class="btn-simple dropdown-item">UserInfo</a>
                 </div>
             </div>
+            <div class="responsiv-header">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <h4 style="margin-top: 0.3rem;" class="top-logo">Capoeira.ch</h4>
+            </div>
             <div class="collapse navbar-collapse respon-nav" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">

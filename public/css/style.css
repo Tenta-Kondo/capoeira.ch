@@ -757,6 +757,9 @@ img {
     margin-bottom: 0 !important;
     margin-top: 10px;
 }
+.top-logo {
+    display: none;
+}
 @media (max-width: 800px) {
     .nav-menu {
         display: none;
@@ -848,7 +851,7 @@ img {
     .nav-menu li {
         width: 150px;
     }
-    .sitetop-header{
+    .sitetop-header {
         width: 75%;
     }
 }
@@ -897,15 +900,26 @@ img {
     .respon-nav {
         width: 100%;
     }
-    .user-data{
+    .user-data {
         display: flex;
         flex-direction: column;
     }
-    .icon-name{
+    .icon-name {
         display: flex;
         margin: 0 auto;
     }
-    .sitetop-header{
+    .sitetop-header {
         width: 85%;
+    }
+    .navbar {
+        box-shadow: none !important;
+    }
+    .top-logo {
+        display: block;
+    }
+    .responsiv-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
     }
 }
