@@ -52,10 +52,10 @@
                 </div>
             </div>
             <div class="responsiv-header">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <h4 style="margin-top: 0.3rem;" class="top-logo">Capoeira.ch</h4>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <img class="top-logo" src="{{asset('image/capologo.jpg')}}" alt="">
             </div>
             <div class="collapse navbar-collapse respon-nav" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
@@ -91,23 +91,25 @@
                     <li class="nav-item  btn-simple userpage-inhum">
                         <h4 style="margin-bottom: 0;">
                             <a class="user-data dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                USER NAME : 
+                                USER NAME :
                                 <div class="icon-name">
-                                @if(Auth::user())
-                                @if($icon_image)
-                                <img src="{{$icon_image->file_path}}" alt="" class="user-icon rounded-circle">
-                                @else
-                                <img src="{{asset('image/f318x318.jpg')}}" class="user-icon rounded-circle" alt="">
-                                @endif
-                                @else
-                                <img src="{{asset('image/f318x318.jpg')}}" class="user-icon rounded-circle" alt="">
-                                @endif<?php
-                                        if (empty(Auth::user())) {
-                                            echo "guest";
-                                        } else {
-                                            echo  Auth::user()->name;
-                                        }
-                                        ?></div></a>
+                                    @if(Auth::user())
+                                    @if($icon_image)
+                                    <img src="{{$icon_image->file_path}}" alt="" class="user-icon rounded-circle">
+                                    @else
+                                    <img src="{{asset('image/f318x318.jpg')}}" class="user-icon rounded-circle" alt="">
+                                    @endif
+                                    @else
+                                    <img src="{{asset('image/f318x318.jpg')}}" class="user-icon rounded-circle" alt="">
+                                    @endif<?php
+                                            if (empty(Auth::user())) {
+                                                echo "guest";
+                                            } else {
+                                                echo  Auth::user()->name;
+                                            }
+                                            ?>
+                                </div>
+                            </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a href="/user-page" class="btn-simple dropdown-item">UserInfo</a>
                             </div>

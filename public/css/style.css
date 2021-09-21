@@ -759,6 +759,7 @@ img {
 }
 .top-logo {
     display: none;
+    height: auto;
 }
 @media (max-width: 800px) {
     .nav-menu {
@@ -921,5 +922,12 @@ img {
         display: flex;
         justify-content: space-between;
         width: 100%;
+    }
+    .jumbotron{
+        display: none;
+    }
+    .nav-link{
+        width: 250px;
+        height: 250px;
     }
 }
