@@ -911,6 +911,7 @@ img {
     }
     .sitetop-header {
         width: 85%;
+        margin-top: 40px;
     }
     .navbar {
         box-shadow: none !important;
