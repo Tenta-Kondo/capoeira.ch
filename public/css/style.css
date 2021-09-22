@@ -932,3 +932,9 @@ img {
         height: 250px;
     }
 }
+@media (max-width:297px){
+    .top-logo{
+        width: 120px;
+    height: 30px;
+    }
+}
