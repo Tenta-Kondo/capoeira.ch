@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="row" style="margin: 0 auto;">
-    <div class="card" style="padding: 5px 20px;">
+<div class="row register-row" style="margin: 0 auto;">
+    <div class="card register-card">
         <div class="cardTitle">
             <h2>{{ __('CREATE') }}</h2>
         </div>
@@ -34,7 +34,7 @@
                 @enderror
                 <label for="password-confirm" class="regi-label">{{ __('パスワード(確認用)') }}</label>
 
-                <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password" style="margin-bottom: 15px;">
+                <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password" style="margin-bottom: 5px;">
                 <div class="terms-privacy">
                     <button type="button" class="terms btn-simple">利用規約を確認</button>
                     <button type="button" class="privacy btn-simple">プライバシーポリシーを確認</button>

@@ -4,7 +4,9 @@
             <h2>Capoeira.ch</h2>
         </div>
         <div class="sitetop-nav">
-            <p>Capoeira.chは、カポエイリスタによるカポエイリスタの為の掲示板です。<br> roda情報・情報共有・動画へのアドバイス・雑談etc...<br> 所属団体不問です。<br> 団体の壁を越えて繋がりましょう！
+            <p>Capoeira.chは、カポエイリスタによるカポエイリスタの為の掲示板です。<br> roda情報・情報共有・動画へのアドバイス・雑談etc...<br>
+            所属団体不問です。<br> 団体の壁を越えて繋がりましょう！<br>
+            まずは<a href="/register" style="border-bottom: solid 0.2px black;">ココから</a>会員登録！
         </div>
     </div>
     <div class="toplink-group">

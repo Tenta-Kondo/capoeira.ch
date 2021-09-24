@@ -491,6 +491,9 @@ textarea::-webkit-scrollbar {
 .login-form input {
     font-size: 15px;
 }
+.register-card{
+    padding: 5px 20px;
+}
 .card-form {
     width: 100%;
 }
@@ -881,6 +884,9 @@ img {
     .right {
         margin-bottom: 0;
     }
+    .register-row{
+        width: 95%;
+    }
 }
 @media (max-width: 410px) {
     .subsc-btn-group {
@@ -930,6 +936,10 @@ img {
     .nav-link{
         width: 250px;
         height: 250px;
+    }
+    .register-card{
+        padding-top: 0;
+        padding-bottom: 0;
     }
 }
 @media (max-width:297px){
