@@ -9,7 +9,7 @@ $url = url()->previous();
     <section class="container-fluid" style="margin-top:20px;">
         <div class="row" style="margin: 0;">
             <a href="{{$url}}" class="back-btn"><i class="fas fa-arrow-left" style="margin-right: 5px;"></i>前のページへ戻る</a>
-            <div class="all-contents col-10 col-md-8">
+            <div class="all-contents col-lg-10 col-sm-10 col-md-8 col-xs-12">
                 <div class="thread-data">
                     <p style="text-align: left;">{{$thread->created_at}}</p>
                     <span class="name">スレッド作成者 :
@@ -172,7 +172,14 @@ $url = url()->previous();
             $(".form-display-back").toggleClass("none");
         })
     })
-
+    $(function(){
+        $(".black-bg").click(function(){
+            $(".comment-form").toggle("display");
+            $(".black-bg").toggle("display");
+            $(".form-display-inner").toggleClass("none");
+            $(".form-display-back").toggleClass("none");
+        })
+    })
     // var form = document.getElementById("create-form");
     // var title = document.getElementById("title");
     // var contents = document.getElementById("contents");

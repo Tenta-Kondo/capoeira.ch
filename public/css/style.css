@@ -340,6 +340,7 @@ textarea {
 .back-btn {
     color: black;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 .block {
     display: block !important;
@@ -887,6 +888,14 @@ img {
     .register-row{
         width: 95%;
     }
+    .thread-data {
+        flex-direction: column;
+        float: left;
+        margin-bottom: 20px;
+    }
+    .thread-data p {
+        margin-bottom: 0;
+    }
 }
 @media (max-width: 410px) {
     .subsc-btn-group {
@@ -940,6 +949,9 @@ img {
     .register-card{
         padding-top: 0;
         padding-bottom: 0;
+    }
+    .sitetop-nav p{
+        font-size: 13px;
     }
 }
 @media (max-width:297px){

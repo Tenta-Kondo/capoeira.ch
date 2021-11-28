@@ -35,7 +35,6 @@ class BrogController extends Controller
     //     $defaultCard2 = "";
     //     return view('Home.SiteTop-guest', compact('user','image'));
     // }
-
     public function Home(
         Request $request
     ) {
