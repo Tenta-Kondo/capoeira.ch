@@ -492,7 +492,7 @@ textarea::-webkit-scrollbar {
 .login-form input {
     font-size: 15px;
 }
-.register-card{
+.register-card {
     padding: 5px 20px;
 }
 .card-form {
@@ -864,7 +864,7 @@ img {
     .search-input {
         font-size: 18px;
     }
-    .search-form button{
+    .search-form button {
         font-size: 9px;
     }
     .search-btn {
@@ -888,7 +888,7 @@ img {
     .right {
         margin-bottom: 0;
     }
-    .register-row{
+    .card-row {
         width: 95%;
     }
     .thread-data {
@@ -942,24 +942,24 @@ img {
         justify-content: space-between;
         width: 100%;
     }
-    .jumbotron{
+    .jumbotron {
         display: none;
     }
-    .nav-link{
+    .nav-link {
         width: 250px;
         height: 250px;
     }
-    .register-card{
+    .register-card {
         padding-top: 0;
         padding-bottom: 0;
     }
-    .sitetop-nav p{
+    .sitetop-nav p {
         font-size: 13px;
     }
 }
-@media (max-width:297px){
-    .top-logo{
+@media (max-width: 297px) {
+    .top-logo {
         width: 120px;
-    height: 30px;
+        height: 30px;
     }
 }

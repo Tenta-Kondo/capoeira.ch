@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row register-row" style="margin: 0 auto;">
+<div class="row card-row" style="margin: 0 auto;">
     <div class="card register-card">
         <div class="cardTitle">
             <h2>{{ __('CREATE') }}</h2>
