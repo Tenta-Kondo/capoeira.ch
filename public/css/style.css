@@ -864,6 +864,9 @@ img {
     .search-input {
         font-size: 18px;
     }
+    .search-form button{
+        font-size: 9px;
+    }
     .search-btn {
         padding: 3px;
     }

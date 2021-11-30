@@ -19,7 +19,7 @@
                             <div style="display: flex;">
                                 <label for="icon-image" class="input-file">＋アイコンを変更</label>
                                 <input type="file" name="image" accept="image/png, image/jpeg" id="icon-image">
-                                <button type="submit" class="btn-outline-primary">保存</button>
+                                <button type="submit" style="border: none;background:white;margin-left:10px;">保存</button>
                             </div>
                         </form>
                         <table class="table">
